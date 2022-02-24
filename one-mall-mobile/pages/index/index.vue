@@ -1,25 +1,28 @@
 <template>
-	<view>
-		我是首页
-	</view>
+  <view class="home">
+    <page-search class="home-search"></page-search>
+    <index-swiper></index-swiper>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-			}
-		},
-		methods: {
-
-		}
-	}
+export default {
+  data() {
+    return {};
+  },
+  methods: {}
+};
 </script>
 
-<style>
-	.container {
-		padding: 20px;
-		font-size: 14px;
-		line-height: 24px;
-	}
+<style lang="scss">
+.home {
+  position: relative;
+  .home-search {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    z-index: 999;
+    opacity: 0.7;
+  }
+}
 </style>
