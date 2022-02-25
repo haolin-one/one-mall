@@ -1,8 +1,14 @@
 const service = require('../service/goodsCate.service');
 
 class GoodsCateController {
-  async getGoodsCate(ctx) {
-    const result = await service.getGoodsCate();
+  async getGoodsParentCate(ctx) {
+    const result = await service.getGoodsParentCate();
+    ctx.body = result;
+  }
+
+  async getGoodsChildCate(ctx) {
+    const { parentId } = ctx.params;
+    const result = await service.getGoodsChildCate(parentId);
     ctx.body = result;
   }
 }

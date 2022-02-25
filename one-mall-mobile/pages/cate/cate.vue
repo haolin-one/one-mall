@@ -1,12 +1,34 @@
 <template>
   <view class="cate">
     <scroll-view class="scroll-view-left" scroll-y="true" show-scrollbar="true">
-      <block v-for="cate in cateList" :key="cate.id" v-if="cate.parent_id === 0">
-        <view>{{ cate.name }}</view>
+      <block v-for="(cate, index) in parentCateList" :key="cate.id">
+        <view
+          :class="['levelOne', index === active ? 'active' : '']"
+          v-if="cate.level === 1"
+          @click="clickParentCate(cate.id, index)"
+          >{{ cate.name }}</view
+        >
       </block>
     </scroll-view>
+
     <scroll-view class="scroll-view-right" scroll-y="true">
-      <view>我是分类</view>
+      <block v-for="cateLevel2 in childCateList" :key="cateLevel2.id">
+        <view class="levelTwo" v-if="cateLevel2.level === 2">{{
+          cateLevel2.name
+        }}</view>
+
+        <view class="levelThree">
+          <block v-for="cateLevel3 in childCateList" :key="cateLevel3">
+            <view
+              class="levelThreeItem"
+              v-if="cateLevel3.parent_id === cateLevel2.id"
+            >
+              <image :src="cateLevel3.img_url"></image>
+              <text>{{ cateLevel3.name }}</text>
+            </view>
+          </block>
+        </view>
+      </block>
     </scroll-view>
   </view>
 </template>
@@ -15,36 +37,33 @@
 export default {
   data() {
     return {
-      cateList: []
+      parentCateList: [],
+      childCateList: [],
+      active: 0
     };
   },
   created() {
     uni.request({
       url: 'http://localhost:7777/goodsCate',
       success: (res) => {
-        this.cateList = res.data;
-        console.log(this.cateList);
+        this.parentCateList = res.data;
       }
     });
   },
-  methods: {}
+  methods: {
+    clickParentCate(parent_id, index) {
+      this.active = index;
+      uni.request({
+        url: `http://localhost:7777/goodsCate/${parent_id}`,
+        success: (res) => {
+          this.childCateList = res.data;
+        }
+      });
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-.cate {
-  height: 100vh;
-  display: flex;
-  .scroll-view-left {
-    width: 25vw;
-    view {
-      font-size: 26rpx;
-      padding: 30rpx 0 30rpx 30rpx;
-    }
-  }
-  .scroll-view-right {
-    background-color: #ffffff;
-    flex: 1;
-  }
-}
+@import './style.scss';
 </style>

@@ -2,6 +2,9 @@
 .local
 .output.js
 /node_modules/**
+/uni_modules/**
+
+uni_modules
 
 **/*.svg
 **/*.sh

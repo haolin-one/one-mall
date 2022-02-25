@@ -1,0 +1,58 @@
+.cate {
+  height: 100vh;
+  display: flex;
+  .scroll-view-left {
+    width: 25vw;
+    .levelOne {
+      font-size: 26rpx;
+      padding: 30rpx 0 30rpx 30rpx;
+
+      &.active {
+        position: relative;
+        background-color: #ffffff;
+        color: #007aff;
+        &::after {
+          content: ' ';
+          position: absolute;
+          display: block;
+          right: 0;
+          top: 25%;
+          width: 6rpx;
+          height: 60rpx;
+          background-color: #007aff;
+        }
+      }
+    }
+  }
+  .scroll-view-right {
+    background-color: #ffffff;
+    flex: 1;
+
+    .levelTwo {
+      font-size: 26rpx;
+      font-weight: 700;
+      margin: 30rpx 0 15rpx 35rpx;
+    }
+
+    .levelThree {
+      display: flex;
+      flex-wrap: wrap;
+      .levelThreeItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5rpx 5rpx 10rpx 5rpx;
+        width: 31%;
+        image {
+          width: 120rpx;
+          height: 120rpx;
+        }
+        text {
+          font-size: 24rpx;
+          margin-top: 5rpx;
+        }
+      }
+    }
+  }
+}
