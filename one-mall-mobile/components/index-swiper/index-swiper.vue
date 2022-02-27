@@ -1,7 +1,7 @@
 <template>
   <view class="swiper">
     <swiper
-      circular="true"
+      :circular="true"
       :indicator-dots="true"
       :autoplay="true"
       :interval="3000"
@@ -26,11 +26,10 @@ export default {
     };
   },
   created() {
-    uni.request({
-      url: 'http://localhost:7777/banner',
+    this.hloRequest({
+      url: 'banner',
       success: (res) => {
         this.banners = res.data;
-        console.log(this.banners);
       }
     });
   }

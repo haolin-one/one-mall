@@ -1,6 +1,6 @@
 <template>
   <view class="home">
-    <page-search class="home-search"></page-search>
+    <page-search class="home-search" @searchBox="gotoSearch"></page-search>
     <index-swiper></index-swiper>
   </view>
 </template>
@@ -10,7 +10,13 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {
+    gotoSearch(){
+      uni.navigateTo({
+        url:'../../subpackage/search/search'
+      })
+    }
+  }
 };
 </script>
 

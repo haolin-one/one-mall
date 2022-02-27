@@ -12,23 +12,29 @@
     </scroll-view>
 
     <scroll-view class="scroll-view-right" scroll-y="true">
-      <block v-for="cateLevel2 in childCateList" :key="cateLevel2.id">
-        <view class="levelTwo" v-if="cateLevel2.level === 2">{{
-          cateLevel2.name
-        }}</view>
-
-        <view class="levelThree">
-          <block v-for="cateLevel3 in childCateList" :key="cateLevel3">
-            <view
-              class="levelThreeItem"
-              v-if="cateLevel3.parent_id === cateLevel2.id"
-            >
-              <image :src="cateLevel3.img_url"></image>
-              <text>{{ cateLevel3.name }}</text>
-            </view>
-          </block>
-        </view>
-      </block>
+      <view v-if="childCateList.length">
+        <block v-for="cateLevel2 in childCateList" :key="cateLevel2.id">
+          <view class="levelTwo" v-if="cateLevel2.level === 2">{{
+            cateLevel2.name
+          }}</view>
+        
+          <view class="levelThree">
+            <block v-for="cateLevel3 in childCateList" :key="cateLevel3.id">
+              <view
+                class="levelThreeItem"
+                v-if="cateLevel3.parent_id === cateLevel2.id"
+              >
+                <image :src="cateLevel3.img_url"></image>
+                <text>{{ cateLevel3.name }}</text>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+      <view v-else>
+        该暂无数据哦~
+      </view>
+      
     </scroll-view>
   </view>
 </template>
@@ -43,8 +49,8 @@ export default {
     };
   },
   created() {
-    uni.request({
-      url: 'http://localhost:7777/goodsCate',
+    this.hloRequest({
+      url: 'goodsCate',
       success: (res) => {
         this.parentCateList = res.data;
       }
@@ -53,8 +59,8 @@ export default {
   methods: {
     clickParentCate(parent_id, index) {
       this.active = index;
-      uni.request({
-        url: `http://localhost:7777/goodsCate/${parent_id}`,
+      this.hloRequest({
+        url: `goodsCate/${parent_id}`,
         success: (res) => {
           this.childCateList = res.data;
         }

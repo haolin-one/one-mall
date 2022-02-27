@@ -3,9 +3,17 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:vue/recommended',
+    'eslint:recommended',
+    'plugin:prettier/recommended'
+  ],
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
+    sourceType: 'module'
+  },
+  globals: {
+    uni: true
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
