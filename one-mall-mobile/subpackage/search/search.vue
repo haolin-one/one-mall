@@ -13,8 +13,13 @@
       <text v-if="keyword" class="searchButton" @click="search">搜索</text>
     </view>
     <view v-if="suggestList.length" class="suggestBox">
-      <view class="suggessItem" v-for="(item,index) in suggestList" :key="item.id" @click="search(item.name)">
-        <view class="goodsName">{{item.name}}</view>
+      <view
+        class="suggessItem"
+        v-for="(item, index) in suggestList"
+        :key="item.id"
+        @click="search(item.name)"
+      >
+        <view class="goodsName">{{ item.name }}</view>
       </view>
     </view>
     <view v-if="!suggestList.length && histories.length" class="historySearch">
@@ -41,65 +46,65 @@ export default {
   name: 'search',
   data() {
     return {
-      timer:null,
-      keyword:'',
-      historyList:uni.getStorageSync('keyword'),
-      suggestList:[]
+      timer: null,
+      keyword: '',
+      historyList: uni.getStorageSync('keyword'),
+      suggestList: []
     };
   },
   computed: {
     histories() {
       return [...this.historyList].reverse();
-    },
+    }
   },
-  methods:{
-    input(e){
+  methods: {
+    input(e) {
       clearTimeout(this.timer);
-      this.timer = setTimeout(()=>{
+      this.timer = setTimeout(() => {
         this.keyword = e;
         this.getSuggestList();
-      },500)
+      }, 500);
     },
-    getSuggestList(){
-      if(this.keyword.length === 0){
-        this.suggestList = []
-      }else{
+    getSuggestList() {
+      if (this.keyword.length === 0) {
+        this.suggestList = [];
+      } else {
         uni.hloRequest({
-          url:`goods/qSearch/${this.keyword}`,
-          success:(res)=>{
+          url: `goods/qSearch/${this.keyword}`,
+          success: (res) => {
             this.suggestList = res.data;
           }
-        })
+        });
       }
     },
-    search(name){
-      this.saveSearchHistory(name)
+    search(name) {
+      this.saveSearchHistory(name);
     },
-    saveSearchHistory(name){
-      if(name instanceof Object){
-        this.historyList.push(this.keyword)
-      }else{
-        this.historyList.push(name)
+    saveSearchHistory(name) {
+      if (name instanceof Object) {
+        this.historyList.push(this.keyword);
+      } else {
+        this.historyList.push(name);
       }
-      uni.setStorageSync('keyword',this.historyList)
-      uni.getStorageSync("keyword")
+      uni.setStorageSync('keyword', this.historyList);
+      uni.getStorageSync('keyword');
     },
-    clearSearchHistory(){
+    clearSearchHistory() {
       uni.showModal({
-        title:"提示",
-        content:"确定清空搜索历史吗？",
+        title: '提示',
+        content: '确定清空搜索历史吗？',
         success: (res) => {
-          if(res.confirm){
-            this.historyList = []
-            uni.setStorageSync("keyword",[])
+          if (res.confirm) {
+            this.historyList = [];
+            uni.setStorageSync('keyword', []);
           }
         }
-      })  
+      });
     }
   }
 };
 </script>
 
 <style lang="scss">
-@import './style.scss'
+@import './style.scss';
 </style>

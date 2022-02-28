@@ -1,12 +1,12 @@
 .search {
-  .searchBox{
+  .searchBox {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .searchBar{
+    .searchBar {
       flex: 1;
     }
-    .searchButton{
+    .searchButton {
       margin-right: 10rpx;
       padding-right: 10rpx;
       font-size: 26rpx;
@@ -14,14 +14,14 @@
       color: #087dd8;
     }
   }
-  .suggestBox{
+  .suggestBox {
     padding: 20rpx;
     margin: 0 30rpx;
     border-radius: 20px;
-    background-color: #FFFFFF;
-    .suggessItem{
+    background-color: #ffffff;
+    .suggessItem {
       border-bottom: 1px solid #e8ecf5;
-      .goodsName{
+      .goodsName {
         font-size: 24rpx;
         margin: 5px 0;
       }
