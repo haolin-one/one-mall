@@ -4,18 +4,18 @@
       <uni-search-bar
         class="searchBar"
         @input="input"
-        @confirm="search"
+        @confirm="search(keyword)"
         placeholder="搜索您喜欢的商品"
         bgColor="#fff"
         radius="100"
         cancelButton="none"
       ></uni-search-bar>
-      <text v-if="keyword" class="searchButton" @click="search">搜索</text>
+      <text v-if="keyword" class="searchButton" @click="search(keyword)">搜索</text>
     </view>
     <view v-if="suggestList.length" class="suggestBox">
       <view
         class="suggessItem"
-        v-for="(item, index) in suggestList"
+        v-for="item in suggestList"
         :key="item.id"
         @click="search(item.name)"
       >
@@ -34,7 +34,8 @@
           circle="true"
           inverted="true"
           v-for="item in histories"
-          :key="i"
+          :key="item"
+          @click="search(item)"
         ></uni-tag>
       </view>
     </view>
@@ -78,16 +79,23 @@ export default {
       }
     },
     search(name) {
+      console.log(name)
       this.saveSearchHistory(name);
+      uni.redirectTo({
+        url: `../goodsList/goodsList?query=` + name
+      });
     },
     saveSearchHistory(name) {
+      const set = new Set(this.historyList)
       if (name instanceof Object) {
-        this.historyList.push(this.keyword);
+        set.delete(this.keyword)
+        set.add(this.keyword);
       } else {
-        this.historyList.push(name);
+        set.delete(name)
+        set.add(name);
       }
+      this.historyList = Array.from(set)
       uni.setStorageSync('keyword', this.historyList);
-      uni.getStorageSync('keyword');
     },
     clearSearchHistory() {
       uni.showModal({

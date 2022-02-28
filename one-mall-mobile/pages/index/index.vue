@@ -1,6 +1,6 @@
 <template>
   <view class="home">
-    <page-search class="home-search" @searchBox="gotoSearch"></page-search>
+    <hlo-search class="home-search" @searchBox="gotoSearch"></hlo-search>
     <index-swiper></index-swiper>
   </view>
 </template>
