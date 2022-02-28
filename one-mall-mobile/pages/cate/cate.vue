@@ -17,7 +17,7 @@
           <view class="levelTwo" v-if="cateLevel2.level === 2">{{
             cateLevel2.name
           }}</view>
-        
+
           <view class="levelThree">
             <block v-for="cateLevel3 in childCateList" :key="cateLevel3.id">
               <view
@@ -31,10 +31,7 @@
           </view>
         </block>
       </view>
-      <view v-else>
-        该暂无数据哦~
-      </view>
-      
+      <view v-else> 该暂无数据哦~ </view>
     </scroll-view>
   </view>
 </template>
@@ -49,7 +46,7 @@ export default {
     };
   },
   created() {
-    this.hloRequest({
+    uni.hloRequest({
       url: 'goodsCate',
       success: (res) => {
         this.parentCateList = res.data;
@@ -59,7 +56,7 @@ export default {
   methods: {
     clickParentCate(parent_id, index) {
       this.active = index;
-      this.hloRequest({
+      uni.hloRequest({
         url: `goodsCate/${parent_id}`,
         success: (res) => {
           this.childCateList = res.data;

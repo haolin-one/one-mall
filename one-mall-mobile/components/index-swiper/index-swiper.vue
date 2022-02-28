@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    this.hloRequest({
+    uni.hloRequest({
       url: 'banner',
       success: (res) => {
         this.banners = res.data;

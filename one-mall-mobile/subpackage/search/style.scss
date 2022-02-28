@@ -1,0 +1,46 @@
+.search {
+  .searchBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .searchBar{
+      flex: 1;
+    }
+    .searchButton{
+      margin-right: 10rpx;
+      padding-right: 10rpx;
+      font-size: 26rpx;
+      font-weight: 600;
+      color: #087dd8;
+    }
+  }
+  .suggestBox{
+    padding: 20rpx;
+    margin: 0 30rpx;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    .suggessItem{
+      border-bottom: 1px solid #e8ecf5;
+      .goodsName{
+        font-size: 24rpx;
+        margin: 5px 0;
+      }
+    }
+  }
+  .historySearch {
+    height: 24vh;
+    margin: 0 30rpx;
+    .historySearchTitle {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .historySearchContent {
+      .uni-tag {
+        display: inline-block;
+        margin: 10rpx 10px 0 0;
+      }
+    }
+  }
+}

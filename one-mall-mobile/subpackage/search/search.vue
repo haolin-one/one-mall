@@ -1,11 +1,38 @@
 <template>
-  <view>
-    <uni-search-bar
-      placeholder="搜索您喜欢的商品"
-      bgColor="#fff"
-      radius="15"
-      cancelButton="none"
-    ></uni-search-bar>
+  <view class="search">
+    <view class="searchBox">
+      <uni-search-bar
+        class="searchBar"
+        @input="input"
+        @confirm="search"
+        placeholder="搜索您喜欢的商品"
+        bgColor="#fff"
+        radius="100"
+        cancelButton="none"
+      ></uni-search-bar>
+      <text v-if="keyword" class="searchButton" @click="search">搜索</text>
+    </view>
+    <view v-if="suggestList.length" class="suggestBox">
+      <view class="suggessItem" v-for="(item,index) in suggestList" :key="item.id" @click="search(item.name)">
+        <view class="goodsName">{{item.name}}</view>
+      </view>
+    </view>
+    <view v-if="!suggestList.length && histories.length" class="historySearch">
+      <view class="historySearchTitle">
+        <text>搜索历史</text>
+        <uni-icons type="trash" @click="clearSearchHistory"></uni-icons>
+      </view>
+      <view class="historySearchContent">
+        <uni-tag
+          :text="item"
+          type="default"
+          circle="true"
+          inverted="true"
+          v-for="item in histories"
+          :key="i"
+        ></uni-tag>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -13,9 +40,66 @@
 export default {
   name: 'search',
   data() {
-    return {};
+    return {
+      timer:null,
+      keyword:'',
+      historyList:uni.getStorageSync('keyword'),
+      suggestList:[]
+    };
+  },
+  computed: {
+    histories() {
+      return [...this.historyList].reverse();
+    },
+  },
+  methods:{
+    input(e){
+      clearTimeout(this.timer);
+      this.timer = setTimeout(()=>{
+        this.keyword = e;
+        this.getSuggestList();
+      },500)
+    },
+    getSuggestList(){
+      if(this.keyword.length === 0){
+        this.suggestList = []
+      }else{
+        uni.hloRequest({
+          url:`goods/qSearch/${this.keyword}`,
+          success:(res)=>{
+            this.suggestList = res.data;
+          }
+        })
+      }
+    },
+    search(name){
+      this.saveSearchHistory(name)
+    },
+    saveSearchHistory(name){
+      if(name instanceof Object){
+        this.historyList.push(this.keyword)
+      }else{
+        this.historyList.push(name)
+      }
+      uni.setStorageSync('keyword',this.historyList)
+      uni.getStorageSync("keyword")
+    },
+    clearSearchHistory(){
+      uni.showModal({
+        title:"提示",
+        content:"确定清空搜索历史吗？",
+        success: (res) => {
+          if(res.confirm){
+            this.historyList = []
+            uni.setStorageSync("keyword",[])
+          }
+        }
+      })  
+    }
   }
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import './style.scss'
+</style>

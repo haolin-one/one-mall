@@ -11,10 +11,10 @@ export default {
     return {};
   },
   methods: {
-    gotoSearch(){
+    gotoSearch() {
       uni.navigateTo({
-        url:'../../subpackage/search/search'
-      })
+        url: '../../subpackage/search/search'
+      });
     }
   }
 };

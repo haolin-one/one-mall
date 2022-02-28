@@ -29,12 +29,12 @@
       }
     }
   ],
-  "subPackages":[
+  "subPackages": [
     {
-      "root":"subpackage",
-      "pages":[
+      "root": "subpackage",
+      "pages": [
         {
-          "path":"search/search",
+          "path": "search/search",
           "style": {
             "navigationBarTitleText": "one-mall",
             "enablePullDownRefresh": false
