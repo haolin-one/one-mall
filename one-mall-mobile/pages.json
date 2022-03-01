@@ -41,7 +41,14 @@
           }
         },
         {
-          "path":"goodsList/goodsList",
+          "path": "goodsList/goodsList",
+          "style": {
+            "navigationBarTitleText": "one-mall",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "goodsDetail/goodsDetail",
           "style": {
             "navigationBarTitleText": "one-mall",
             "enablePullDownRefresh": false

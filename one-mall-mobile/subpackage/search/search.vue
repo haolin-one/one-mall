@@ -10,7 +10,9 @@
         radius="100"
         cancelButton="none"
       ></uni-search-bar>
-      <text v-if="keyword" class="searchButton" @click="search(keyword)">搜索</text>
+      <text v-if="keyword" class="searchButton" @click="search(keyword)"
+        >搜索</text
+      >
     </view>
     <view v-if="suggestList.length" class="suggestBox">
       <view
@@ -79,22 +81,22 @@ export default {
       }
     },
     search(name) {
-      console.log(name)
+      console.log(name);
       this.saveSearchHistory(name);
       uni.redirectTo({
         url: `../goodsList/goodsList?query=` + name
       });
     },
     saveSearchHistory(name) {
-      const set = new Set(this.historyList)
+      const set = new Set(this.historyList);
       if (name instanceof Object) {
-        set.delete(this.keyword)
+        set.delete(this.keyword);
         set.add(this.keyword);
       } else {
-        set.delete(name)
+        set.delete(name);
         set.add(name);
       }
-      this.historyList = Array.from(set)
+      this.historyList = Array.from(set);
       uni.setStorageSync('keyword', this.historyList);
     },
     clearSearchHistory() {

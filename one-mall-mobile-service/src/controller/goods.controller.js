@@ -6,6 +6,12 @@ class GoodsController {
     const result = await service.qSearch(queryInfo);
     ctx.body = result;
   }
+
+  async goodsDetail(ctx) {
+    const { id } = ctx.params;
+    const result = await service.goodsDetail(id);
+    ctx.body = result;
+  }
 }
 
 module.exports = new GoodsController();

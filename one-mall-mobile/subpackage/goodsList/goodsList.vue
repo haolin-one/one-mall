@@ -1,33 +1,40 @@
 <template>
   <view class="goodsList">
-    <view v-for="item in goods" :key="item.id">
+    <view v-for="item in goods" :key="item.id" @click="gotoDetail(item.id)">
       <hlo-goods :goods="item"></hlo-goods>
     </view>
   </view>
 </template>
 
 <script>
-  export default{
-    onLoad(options) {
-      console.log(options)
-      uni.hloRequest({
-        url: `goods/qSearch/${options.query}`,
-        success: (res) => {
-          this.goods = res.data;
-        }
-      });
-    },
-    data() {
-      return {
-        goods: []
+export default {
+  onLoad(options) {
+    console.log(options);
+    uni.hloRequest({
+      url: `goods/qSearch/${options.query}`,
+      success: (res) => {
+        this.goods = res.data;
       }
-    },
+    });
+  },
+  data() {
+    return {
+      goods: []
+    };
+  },
+  methods: {
+    gotoDetail(id) {
+      uni.navigateTo({
+        url: `../goodsDetail/goodsDetail?id=` + id
+      });
+    }
   }
+};
 </script>
 
 <style lang="scss">
-  .goodsList{
-    min-height: 100vh;
-    background-color: #FFFFFF;
-  }
+.goodsList {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
 </style>

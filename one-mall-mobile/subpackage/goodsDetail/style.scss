@@ -1,0 +1,22 @@
+.goodsDetail {
+  background-color: #ffffff;
+  .goodsInfo {
+    padding: 10px;
+    image {
+      height: 40vh;
+      width: 100%;
+    }
+    .price {
+      padding: 0;
+      margin: 0;
+      display: block;
+      font-size: 40rpx;
+      font-weight: 800;
+      color: #e4393c;
+    }
+    .description {
+      font-size: 28rpx;
+      font-weight: 600;
+    }
+  }
+}
