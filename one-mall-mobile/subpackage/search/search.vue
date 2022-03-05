@@ -68,16 +68,14 @@ export default {
         this.getSuggestList();
       }, 500);
     },
-    getSuggestList() {
+    async getSuggestList() {
       if (this.keyword.length === 0) {
         this.suggestList = [];
       } else {
-        uni.hloRequest({
-          url: `goods/qSearch/${this.keyword}`,
-          success: (res) => {
-            this.suggestList = res.data;
-          }
+        const res = await uni.hloRequest.get({
+          url: `goods/qSearch/${this.keyword}`
         });
+        this.suggestList = res;
       }
     },
     search(name) {

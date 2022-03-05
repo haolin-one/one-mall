@@ -1,4 +1,4 @@
-import { hloRequest } from './api/index.js';
+import hloRequest from './request/index.js';
 uni.hloRequest = hloRequest;
 // #ifndef VUE3
 import Vue from 'vue';

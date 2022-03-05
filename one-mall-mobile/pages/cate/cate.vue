@@ -45,23 +45,19 @@ export default {
       active: 0
     };
   },
-  created() {
-    uni.hloRequest({
-      url: 'goodsCate',
-      success: (res) => {
-        this.parentCateList = res.data;
-      }
+  async created() {
+    const res = await uni.hloRequest.get({
+      url: 'goodsCate'
     });
+    this.parentCateList = res;
   },
   methods: {
-    clickParentCate(parent_id, index) {
+    async clickParentCate(parent_id, index) {
       this.active = index;
-      uni.hloRequest({
-        url: `goodsCate/${parent_id}`,
-        success: (res) => {
-          this.childCateList = res.data;
-        }
+      const res = await uni.hloRequest.get({
+        url: `goodsCate/${parent_id}`
       });
+      this.childCateList = res;
     }
   }
 };

@@ -13,6 +13,11 @@
         'is-disabled': disabled
       }"
       :style="{
+        'height':styles.height,
+        'border':styles.border,
+        'box-shadow':styles.boxShadow,
+        'border-radius':styles.boderRadius,
+        'overflow':styles.overflow,
         'border-color': inputBorder && msg ? '#dd524d' : styles.borderColor,
         'background-color': disabled ? styles.disableColor : ''
       }"
@@ -479,8 +484,6 @@ $uni-border-1: #dcdfe6 !default;
   /* #endif */
   flex-direction: row;
   align-items: center;
-  border: 1px solid $uni-border-1;
-  border-radius: 4px;
 }
 
 .uni-error-message {

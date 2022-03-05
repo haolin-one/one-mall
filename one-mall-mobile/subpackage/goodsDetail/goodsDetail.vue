@@ -11,15 +11,11 @@
 
 <script>
 export default {
-  onLoad(options) {
-    console.log(options);
-    uni.hloRequest({
-      url: `goods/${options.id}`,
-      success: (res) => {
-        this.goodsDetail = res.data;
-        console.log(res.data);
-      }
+  async onLoad(options) {
+    const res = await uni.hloRequest.get({
+      url: `goods/${options.id}`
     });
+    this.goodsDetail = res;
   },
   data() {
     return {

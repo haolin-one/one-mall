@@ -25,13 +25,11 @@ export default {
       banners: []
     };
   },
-  created() {
-    uni.hloRequest({
-      url: 'banner',
-      success: (res) => {
-        this.banners = res.data;
-      }
+  async created() {
+    const res = await uni.hloRequest.get({
+      url: 'banner'
     });
+    this.banners = res;
   }
 };
 </script>

@@ -8,14 +8,11 @@
 
 <script>
 export default {
-  onLoad(options) {
-    console.log(options);
-    uni.hloRequest({
-      url: `goods/qSearch/${options.query}`,
-      success: (res) => {
-        this.goods = res.data;
-      }
+  async onLoad(options) {
+    const res = await uni.hloRequest.get({
+      url: `goods/qSearch/${options.query}`
     });
+    this.goods = res;
   },
   data() {
     return {
