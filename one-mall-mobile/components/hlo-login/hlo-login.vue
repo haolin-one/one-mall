@@ -35,20 +35,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'hlo-login',
   emits: ['changeStatus'],
   methods: {
+    ...mapActions(['user/login']),
     async login() {
       try {
         const result = await this.$refs.loginForm.validate();
-        const res = await uni.hloRequest.post({
-          url: 'user',
-          data: result
-        });
-        uni.showToast({
-          title: res
-        });
+        await this['user/login'](this.formData);
       } catch (e) {
         console.log(e);
       }

@@ -1,25 +1,32 @@
 <template>
   <view class="my">
+    <hlo-user v-if="userInfo.id"></hlo-user>
     <hlo-login
       @changeStatus="status = 'register'"
-      v-if="status === 'login'"
+      v-else-if="status === 'login' && !userInfo.id"
     ></hlo-login>
     <hlo-register
       @changeStatus="status = 'login'"
-      v-else-if="status === 'register'"
+      v-else-if="status === 'register' && !userInfo.id"
     ></hlo-register>
   </view>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   created() {},
   data() {
     return {
-      status: 'register'
+      status: 'login'
     };
   },
-  methods: {}
+  methods: {},
+  computed: {
+    ...mapState({
+      userInfo: (state) => state.user.userInfo
+    })
+  }
 };
 </script>
 

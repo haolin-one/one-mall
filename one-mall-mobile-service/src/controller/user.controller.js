@@ -1,8 +1,11 @@
 const service = require('../service/user.service');
 
 class userController {
-  login(ctx) {
-    ctx.body = '登录成功~';
+  async login(ctx) {
+    const { account, password } = ctx.request.body;
+    const result = await service.login(account, password);
+    console.log(result);
+    ctx.body = result;
   }
   register(ctx) {
     const userInfo = ctx.request.body;

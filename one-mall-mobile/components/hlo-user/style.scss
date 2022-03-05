@@ -1,0 +1,46 @@
+.hloUser {
+  .user {
+    .userInfo {
+      display: flex;
+
+      .avatar {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 100%;
+        margin-right: 10px;
+        overflow: hidden;
+        background-color: #eeeeee;
+      }
+
+      .userInfoRight {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // padding: 10px 0;
+        .nickname {
+          font-weight: 600;
+          font-size: 30rpx;
+        }
+
+        .signature {
+          font-size: 26rpx;
+        }
+      }
+    }
+  }
+  .order {
+    display: flex;
+    justify-content: space-around;
+    navigator {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  .service {
+    navigator {
+      padding: 10px 0;
+    }
+  }
+}

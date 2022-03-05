@@ -1,15 +1,14 @@
 const connection = require('../app/database');
 
 class userService {
-  async login(userInfo) {
-    const { account, password } = userInfo;
+  async login(account, password) {
     const statement = `SELECT * FROM user WHERE username = ? OR phone = ? AND password = ?`;
     const result = await connection.execute(statement, [
       account,
       account,
       password
     ]);
-    return result[0];
+    return result[0][0];
   }
   async getUserByUsernamePhone(account) {
     const statement = `SELECT * FROM user WHERE username = ? OR phone = ?`;
