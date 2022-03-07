@@ -7,13 +7,14 @@ import {
 
 const state = {
   token: '',
-  userInfo: {}
+  userInfo: {},
+  address: []
 };
 
 const mutations = {
   setToken(state, token) {
     state.token = token;
-    setCache('token', token);
+    uni.setStorageSync('token', state.token);
   },
 
   removeToken(state) {
@@ -23,12 +24,18 @@ const mutations = {
 
   setUserInfo(state, result) {
     state.userInfo = result;
-    setCache('userInfo', state.userInfo);
+    // setCache('userInfo', state.userInfo);
   },
 
   removeUserInfo(state) {
     state.userInfo = {};
     removeCache('userInfo');
+  },
+
+  setAddress(state, result) {
+    state.address = result[0];
+    console.log(state.address);
+    // setCache('address', state.address);
   }
 };
 
@@ -38,11 +45,14 @@ const actions = {
       url: 'user',
       data
     });
-    console.log(res);
+    const address = await uni.hloRequest.post({
+      url: `user/${res.id}`
+    });
     uni.showToast({
       title: '登陆成功~'
     });
     context.commit('setUserInfo', res);
+    context.commit('setAddress', address);
   },
 
   logout(context) {

@@ -12,6 +12,12 @@ class userController {
     const result = service.register(userInfo);
     ctx.body = '注册成功~';
   }
+  async getAddress(ctx) {
+    const { id } = ctx.params;
+    const result = await service.getAddress(id);
+    console.log(result);
+    ctx.body = result;
+  }
 }
 
 module.exports = new userController();

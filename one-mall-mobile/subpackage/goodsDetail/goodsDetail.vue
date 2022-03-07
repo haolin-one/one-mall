@@ -5,7 +5,7 @@
       <text class="price">￥{{ goodsDetail.price }}</text>
       <text class="description">{{ goodsDetail.description }}</text>
     </view>
-    <hlo-goods-nav></hlo-goods-nav>
+    <hlo-goods-nav :goods="goodsDetail"></hlo-goods-nav>
   </view>
 </template>
 

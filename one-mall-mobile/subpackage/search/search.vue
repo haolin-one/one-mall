@@ -79,7 +79,6 @@ export default {
       }
     },
     search(name) {
-      console.log(name);
       this.saveSearchHistory(name);
       uni.redirectTo({
         url: `../goodsList/goodsList?query=` + name

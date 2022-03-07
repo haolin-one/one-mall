@@ -63,6 +63,11 @@ class userService {
     const result = await connection.execute(statement, [phone]);
     return result[0];
   }
+  async getAddress(id) {
+    const statement = `SELECT * FROM useraddress WHERE user_id = ?`;
+    const result = await connection.execute(statement, [id]);
+    return result[0];
+  }
 }
 
 module.exports = new userService();

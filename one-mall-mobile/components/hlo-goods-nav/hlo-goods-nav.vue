@@ -3,6 +3,7 @@
     <uni-goods-nav
       :options="options"
       :buttonGroup="buttonGroup"
+      @buttonClick="buttonClick"
     ></uni-goods-nav>
   </view>
 </template>
@@ -10,6 +11,11 @@
 <script>
 export default {
   name: 'hlo-goods-nav',
+  props: {
+    goods: {
+      required: true
+    }
+  },
   data() {
     return {
       options: [
@@ -43,6 +49,18 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    buttonClick(e) {
+      if (e.index === 1) {
+        console.log(this.goods);
+        uni.navigateTo({
+          url:
+            '../../subpackage/order/order?goods=' + JSON.stringify(this.goods)
+        });
+      }
+      console.log(e);
+    }
   }
 };
 </script>

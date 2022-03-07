@@ -3,7 +3,7 @@
     <view class="leftGoodsInfo">
       <image :src="goods.pic"></image>
     </view>
-    <view class="rightGoodsInfo">
+    <view v-if="status === 'list'" class="rightGoodsInfo">
       <text class="name">{{ goods.description }}</text>
       <text class="price">￥{{ goods.price }}</text>
     </view>
@@ -15,7 +15,10 @@ export default {
   name: 'hlo-goods',
   props: {
     goods: {
-      default: []
+      default: {}
+    },
+    status: {
+      required: true
     }
   },
   data() {
@@ -32,14 +35,17 @@ export default {
   width: 100%;
   box-sizing: content-box;
   padding: 10px;
+
   .leftGoodsInfo {
     width: 240rpx;
     height: 100%;
+
     image {
       height: 100%;
       width: 100%;
     }
   }
+
   .rightGoodsInfo {
     display: flex;
     flex-direction: column;
@@ -47,6 +53,7 @@ export default {
     margin: 0 10px 0 20px;
     height: 100%;
     flex: 1;
+
     .name {
       font-size: 26rpx;
       overflow: hidden;
@@ -55,6 +62,7 @@ export default {
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
     }
+
     .price {
       font-size: 28rpx;
       color: #e4393c;
