@@ -60,6 +60,13 @@
             "navigationBarTitleText": "",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "settingUserInfo/settingUserInfo",
+          "style": {
+            "navigationBarTitleText": "账户设置",
+            "enablePullDownRefresh": false
+          }
         }
       ]
     }

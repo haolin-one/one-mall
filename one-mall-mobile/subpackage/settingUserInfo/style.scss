@@ -1,0 +1,75 @@
+.settinfUserInfo {
+  height: 100%;
+
+  .user {
+    margin-bottom: 20px;
+    .userInfo {
+      display: flex;
+
+      .avatar {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 100%;
+        margin-right: 10px;
+        overflow: hidden;
+        background-color: #eeeeee;
+      }
+
+      .userInfoRight {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        // padding: 10px 0;
+        .nickname {
+          font-weight: 600;
+          font-size: 30rpx;
+        }
+
+        .signature {
+          font-size: 26rpx;
+        }
+      }
+    }
+  }
+
+  .settinfUserInfoForm {
+    width: 80%;
+    .formItem {
+      display: flex;
+      border-bottom: 1px solid #7eb6ff;
+      font-size: 30rpx;
+      margin-top: 20px;
+      .label {
+        display: block;
+        width: 80px;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+      .input {
+        margin-bottom: 5px;
+      }
+    }
+    button {
+      border: 1px solid #2979ff;
+      background-color: #4690ff;
+      color: #ffffff;
+      height: 50px;
+      line-height: 50px;
+      margin: 5px 0 10px 0;
+    }
+    .navigate {
+      display: flex;
+      justify-content: space-between;
+      font-size: 24rpx;
+    }
+  }
+  .logout {
+    position: fixed;
+    width: 80%;
+    bottom: 30px;
+    left: 10%;
+    text-align: center;
+    color: #dd524d;
+  }
+}

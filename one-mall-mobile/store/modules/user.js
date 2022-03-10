@@ -1,10 +1,3 @@
-import {
-  setCache,
-  getCache,
-  removeCache,
-  clearCache
-} from '../../utils/cache.js';
-
 const state = {
   token: '',
   userInfo: {},
@@ -14,28 +7,26 @@ const state = {
 const mutations = {
   setToken(state, token) {
     state.token = token;
-    uni.setStorageSync('token', state.token);
   },
 
   removeToken(state) {
     state.token = null;
-    removeCache('token');
   },
 
   setUserInfo(state, result) {
     state.userInfo = result;
-    // setCache('userInfo', state.userInfo);
   },
 
   removeUserInfo(state) {
     state.userInfo = {};
-    removeCache('userInfo');
   },
 
   setAddress(state, result) {
     state.address = result[0];
-    console.log(state.address);
-    // setCache('address', state.address);
+  },
+
+  removeAddress(state) {
+    state.address = [];
   }
 };
 
@@ -48,6 +39,7 @@ const actions = {
     const address = await uni.hloRequest.post({
       url: `user/${res.id}`
     });
+
     uni.showToast({
       title: '登陆成功~'
     });
@@ -58,6 +50,7 @@ const actions = {
   logout(context) {
     context.commit('removeToken');
     context.commit('removeUserInfo');
+    context.commit('removeAddress');
   }
 };
 

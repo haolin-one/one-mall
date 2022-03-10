@@ -9,11 +9,25 @@
           <text class="name">{{ goods.description }}</text>
           <view class="cap">
             <text class="price">￥{{ goods.price }}</text>
-            <uni-number-box :min="1" :max="9"></uni-number-box>
+            <uni-number-box
+              v-model="goods.count"
+              :min="1"
+              :max="999"
+            ></uni-number-box>
           </view>
         </view>
       </view>
     </uni-card>
+    <view class="footer">
+      <view class="orderInfo">
+        <text class="count">共{{ goodsCount }}件</text>
+        合计:￥
+        <text class="price">{{ totalPrice }}</text>
+      </view>
+      <view class="submitBtn">
+        <button type="default" size="mini">提交订单</button>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -27,54 +41,18 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    totalPrice() {
+      return (this.goods.price * this.goods.count).toFixed(2);
+    },
+    goodsCount() {
+      return this.goods.count;
+    }
   }
 };
 </script>
 
 <style lang="scss">
-.goodsInfo {
-  display: flex;
-  justify-content: space-between;
-  height: 240rpx;
-  width: 100%;
-  box-sizing: content-box;
-  padding: 10px;
-
-  .leftGoodsInfo {
-    width: 200rpx;
-    height: 100%;
-
-    image {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  .rightGoodsInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 10px 0 10px;
-    height: 100%;
-    flex: 1;
-
-    .name {
-      font-size: 26rpx;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-    }
-
-    .cap {
-      display: flex;
-      justify-content: space-between;
-      .price {
-        font-size: 28rpx;
-        color: #e4393c;
-      }
-    }
-  }
-}
+@import './style.scss';
 </style>

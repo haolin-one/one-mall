@@ -40,11 +40,12 @@ export default {
   name: 'hlo-login',
   emits: ['changeStatus'],
   methods: {
-    ...mapActions(['user/login']),
+    ...mapActions(['user/login', 'cart/getCart']),
     async login() {
       try {
         const result = await this.$refs.loginForm.validate();
         await this['user/login'](this.formData);
+        this['cart/getCart'](this.$store.getters.userId);
       } catch (e) {
         console.log(e);
       }

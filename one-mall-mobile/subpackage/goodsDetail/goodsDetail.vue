@@ -5,22 +5,71 @@
       <text class="price">￥{{ goodsDetail.price }}</text>
       <text class="description">{{ goodsDetail.description }}</text>
     </view>
-    <hlo-goods-nav :goods="goodsDetail"></hlo-goods-nav>
+    <hlo-goods-nav
+      @goodsNavRightButtonClick="goodsNavRightButtonClick"
+      @goodsNavLeftButtonClick="goodsNavLeftButtonClick"
+      :goods="goodsDetail"
+    ></hlo-goods-nav>
+    <uni-popup class="popup" ref="popup" type="bottom" background-color="#fff">
+      <view class="count">
+        <text>购买数量</text>
+        <uni-number-box
+          v-model="goodsDetail.count"
+          :min="1"
+          :max="999"
+        ></uni-number-box>
+      </view>
+      <button type="default" @click="confirmBuy">确认</button>
+    </uni-popup>
   </view>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   async onLoad(options) {
     const res = await uni.hloRequest.get({
       url: `goods/${options.id}`
     });
-    this.goodsDetail = res;
+    this.goodsDetail = {
+      ...res,
+      count: 1
+    };
   },
   data() {
     return {
-      goodsDetail: {}
+      goodsDetail: {},
+      clickIndex: 0
     };
+  },
+  methods: {
+    ...mapActions('cart', ['updateCart']),
+    goodsNavRightButtonClick(index) {
+      this.clickIndex = index;
+      this.$refs.popup.open();
+    },
+    goodsNavLeftButtonClick(index) {
+      if (index === 2) {
+        uni.switchTab({
+          url: '../../pages/cart/cart'
+        });
+      }
+    },
+    confirmBuy() {
+      if (this.clickIndex === 0) {
+        this.updateCart(this.goodsDetail);
+        uni.showToast({
+          title: '已添加到购物车'
+        });
+        this.$refs.popup.close();
+      } else if (this.clickIndex === 1) {
+        uni.navigateTo({
+          url:
+            '../../subpackage/order/order?goods=' +
+            JSON.stringify(this.goodsDetail)
+        });
+      }
+    }
   }
 };
 </script>

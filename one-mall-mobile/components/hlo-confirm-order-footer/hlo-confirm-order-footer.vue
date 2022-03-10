@@ -1,9 +1,9 @@
 <template>
   <view class="footer">
     <view class="orderInfo">
-      <text class="count">共1件</text>
+      <text class="count">共{{ goods.count }}件</text>
       合计:￥
-      <text class="price">19.87</text>
+      <text class="price">{{ totalPrice }}</text>
     </view>
     <view class="submitBtn">
       <button type="default" size="mini">提交订单</button>
@@ -14,8 +14,16 @@
 <script>
 export default {
   name: 'hlo-confirm-order-footer',
+  props: {
+    goods: {}
+  },
   data() {
     return {};
+  },
+  computed: {
+    totalPrice() {
+      return (this.goods.price * this.goods.count).toFixed(2);
+    }
   }
 };
 </script>

@@ -4,7 +4,6 @@ class userController {
   async login(ctx) {
     const { account, password } = ctx.request.body;
     const result = await service.login(account, password);
-    console.log(result);
     ctx.body = result;
   }
   register(ctx) {

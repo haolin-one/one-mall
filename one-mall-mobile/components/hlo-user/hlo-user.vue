@@ -1,6 +1,6 @@
 <template>
   <view class="hloUser">
-    <uni-card>
+    <uni-card @click="editUserInfo">
       <view class="user">
         <view class="userInfo">
           <image
@@ -56,6 +56,13 @@ export default {
   name: 'hlo-user',
   data() {
     return {};
+  },
+  methods: {
+    editUserInfo() {
+      uni.navigateTo({
+        url: '../../subpackage/settingUserInfo/settingUserInfo'
+      });
+    }
   },
   computed: {
     ...mapGetters({

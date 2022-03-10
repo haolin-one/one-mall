@@ -3,12 +3,14 @@
     <uni-goods-nav
       :options="options"
       :buttonGroup="buttonGroup"
-      @buttonClick="buttonClick"
+      @buttonClick="goodsNavRightButtonClick"
+      @click="goodsNavLeftButtonClick"
     ></uni-goods-nav>
   </view>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'hlo-goods-nav',
   props: {
@@ -16,6 +18,7 @@ export default {
       required: true
     }
   },
+  emit: ['goodsNavRightButtonClick', 'goodsNavLeftButtonClick'],
   data() {
     return {
       options: [
@@ -25,15 +28,11 @@ export default {
         },
         {
           icon: 'shop',
-          text: '店铺',
-          info: 2,
-          infoBackgroundColor: '#007aff'
+          text: '店铺'
         },
         {
           icon: 'cart',
-          text: '购物车',
-          info: 2,
-          infoBackgroundColor: '#007aff'
+          text: '购物车'
         }
       ],
       buttonGroup: [
@@ -51,15 +50,11 @@ export default {
     };
   },
   methods: {
-    buttonClick(e) {
-      if (e.index === 1) {
-        console.log(this.goods);
-        uni.navigateTo({
-          url:
-            '../../subpackage/order/order?goods=' + JSON.stringify(this.goods)
-        });
-      }
-      console.log(e);
+    goodsNavRightButtonClick(e) {
+      this.$emit('goodsNavRightButtonClick', e.index);
+    },
+    goodsNavLeftButtonClick(e) {
+      this.$emit('goodsNavLeftButtonClick', e.index);
     }
   }
 };

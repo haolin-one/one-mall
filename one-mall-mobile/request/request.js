@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:7777/';
+const BASE_URL = 'http://10.23.79.240:7777/';
 
 class HLORequest {
   request(options) {

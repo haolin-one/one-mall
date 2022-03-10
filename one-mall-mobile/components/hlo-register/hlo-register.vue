@@ -1,7 +1,7 @@
 <template>
   <view class="register">
     <view class="registerForm">
-      <uni-forms ref="registerForm" :modelValue="formData" :rules="rules">
+      <uni-forms ref="registerForm" :modelValue="formData">
         <uni-forms-item name="username">
           <view class="formItem">
             <text class="label">用户名</text>
@@ -32,6 +32,17 @@
               type="password"
               v-model="formData.password"
               placeholder="请输入密码"
+            />
+          </view>
+        </uni-forms-item>
+        <uni-forms-item name="confirmPassword">
+          <view class="formItem">
+            <text class="label">确认密码</text>
+            <input
+              class="input"
+              type="password"
+              v-model="formData.confirmPassword"
+              placeholder="请确认密码"
             />
           </view>
         </uni-forms-item>
@@ -66,11 +77,16 @@ export default {
       this.$emit('changeStatus');
     }
   },
+  onReady() {
+    // 需要在onReady中设置规则
+    this.$refs.registerForm.setRules(this.rules);
+  },
   data() {
     return {
       formData: {
         username: 'coderone',
         password: '123456',
+        confirmPassword: '',
         phone: '19924688484'
       },
       rules: {
@@ -97,6 +113,21 @@ export default {
               minLength: 6,
               maxLength: 20,
               errorMessage: '密码长度在 {minLength} 到 {maxLength} 个字符'
+            }
+          ]
+        },
+        confirmPassword: {
+          rules: [
+            {
+              required: true,
+              errorMessage: '请确认密码'
+            },
+            {
+              validateFunction: (rule, value, data, callback) => {
+                if (value !== this.formData.password) {
+                  callback('两次密码不一致');
+                }
+              }
             }
           ]
         },
