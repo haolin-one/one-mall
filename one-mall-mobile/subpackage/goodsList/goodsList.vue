@@ -1,8 +1,11 @@
 <template>
   <view class="goodsList">
-    <view v-for="item in goods" :key="item.id" @click="gotoDetail(item.id)">
-      <hlo-goods status="list" :goods="item"></hlo-goods>
-    </view>
+    <block v-if="goods.length">
+      <view v-for="item in goods" :key="item.id" @click="gotoDetail(item.id)">
+        <hlo-goods status="list" :goods="item"></hlo-goods>
+      </view>
+    </block>
+    <block v-else> 抱歉,没有找到该商品 </block>
   </view>
 </template>
 

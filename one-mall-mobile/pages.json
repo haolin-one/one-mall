@@ -67,6 +67,13 @@
             "navigationBarTitleText": "账户设置",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "orderList/orderList",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
         }
       ]
     }

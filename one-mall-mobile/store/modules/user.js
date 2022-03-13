@@ -15,6 +15,7 @@ const mutations = {
 
   setUserInfo(state, result) {
     state.userInfo = result;
+    uni.setStorageSync('userInfo', state.UserInfo);
   },
 
   removeUserInfo(state) {

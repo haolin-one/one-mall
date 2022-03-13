@@ -6,6 +6,11 @@ class cartController {
     const result = await service.getCart(id);
     ctx.body = result;
   }
+  async addCart(ctx) {
+    const goods = ctx.request.body;
+    const result = await service.addCart(goods);
+    ctx.body = result;
+  }
 }
 
 module.exports = new cartController();

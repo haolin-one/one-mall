@@ -17,26 +17,26 @@
     </uni-card>
     <uni-card title="我的订单">
       <view class="order">
-        <navigator>
+        <view @click="gotoOrderList">
           <uni-icons type="wallet" size="30"></uni-icons>
           待付款
-        </navigator>
-        <navigator>
+        </view>
+        <view @click="gotoOrderList">
           <uni-icons type="paperplane" size="30"></uni-icons>
           待发货
-        </navigator>
-        <navigator>
+        </view>
+        <view @click="gotoOrderList">
           <uni-icons type="download" size="30"></uni-icons>
           待收货
-        </navigator>
-        <navigator>
+        </view>
+        <view @click="gotoOrderList">
           <uni-icons type="chat" size="30"></uni-icons>
           待评价
-        </navigator>
-        <navigator>
+        </view>
+        <view @click="gotoOrderList">
           <uni-icons type="calendar" size="30"></uni-icons>
           全部订单
-        </navigator>
+        </view>
       </view>
     </uni-card>
     <uni-card title="我的服务">
@@ -62,12 +62,18 @@ export default {
       uni.navigateTo({
         url: '../../subpackage/settingUserInfo/settingUserInfo'
       });
+    },
+    gotoOrderList() {
+      uni.navigateTo({
+        url: '../../subpackage/orderList/orderList?userId=' + this.userId
+      });
     }
   },
   computed: {
     ...mapGetters({
       nickname: 'nickname',
-      signature: 'signature'
+      signature: 'signature',
+      userId: 'userId'
     })
   }
 };

@@ -5,6 +5,7 @@ const getters = {
   username: (state) => state.user.userInfo.username,
   nickname: (state) => state.user.userInfo.nickname,
   signature: (state) => state.user.userInfo.personalized_signature,
-  address: (state) => state.user.address
+  address: (state) => state.user.address,
+  order: (state) => state.order.order
 };
 export default getters;

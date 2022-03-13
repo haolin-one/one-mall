@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   async onLoad(options) {
     const res = await uni.hloRequest.get({
@@ -42,6 +42,11 @@ export default {
       clickIndex: 0
     };
   },
+  computed: {
+    ...mapGetters({
+      userId: 'userId'
+    })
+  },
   methods: {
     ...mapActions('cart', ['updateCart']),
     goodsNavRightButtonClick(index) {
@@ -57,9 +62,10 @@ export default {
     },
     confirmBuy() {
       if (this.clickIndex === 0) {
-        this.updateCart(this.goodsDetail);
-        uni.showToast({
-          title: '已添加到购物车'
+        this.updateCart({
+          ...this.goodsDetail,
+          select_status: 1,
+          user_id: this.userId
         });
         this.$refs.popup.close();
       } else if (this.clickIndex === 1) {

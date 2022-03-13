@@ -21,6 +21,7 @@
           <view class="levelThree">
             <block v-for="cateLevel3 in childCateList" :key="cateLevel3.id">
               <view
+                @click="cate3ItemClick(cateLevel3.name)"
                 class="levelThreeItem"
                 v-if="cateLevel3.parent_id === cateLevel2.id"
               >
@@ -31,7 +32,7 @@
           </view>
         </block>
       </view>
-      <view v-else> 该暂无数据哦~ </view>
+      <view v-else> 该分类暂无数据哦~ </view>
     </scroll-view>
   </view>
 </template>
@@ -58,6 +59,11 @@ export default {
         url: `goodsCate/${parent_id}`
       });
       this.childCateList = res;
+    },
+    async cate3ItemClick(name) {
+      uni.navigateTo({
+        url: '../../subpackage/goodsList/goodsList?query=' + name
+      });
     }
   }
 };
