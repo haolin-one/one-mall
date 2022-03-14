@@ -17,19 +17,19 @@
     </uni-card>
     <uni-card title="我的订单">
       <view class="order">
-        <view @click="gotoOrderList">
+        <view @click="gotoOrderList(0)">
           <uni-icons type="wallet" size="30"></uni-icons>
           待付款
         </view>
-        <view @click="gotoOrderList">
+        <view @click="gotoOrderList(1)">
           <uni-icons type="paperplane" size="30"></uni-icons>
           待发货
         </view>
-        <view @click="gotoOrderList">
+        <view @click="gotoOrderList(2)">
           <uni-icons type="download" size="30"></uni-icons>
           待收货
         </view>
-        <view @click="gotoOrderList">
+        <view @click="gotoOrderList(3)">
           <uni-icons type="chat" size="30"></uni-icons>
           待评价
         </view>
@@ -63,9 +63,9 @@ export default {
         url: '../../subpackage/settingUserInfo/settingUserInfo'
       });
     },
-    gotoOrderList() {
+    gotoOrderList(status) {
       uni.navigateTo({
-        url: '../../subpackage/orderList/orderList?userId=' + this.userId
+        url: `../../subpackage/orderList/orderList?userId=${this.userId}&status=${status}`
       });
     }
   },

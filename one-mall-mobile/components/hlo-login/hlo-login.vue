@@ -46,6 +46,9 @@ export default {
         const result = await this.$refs.loginForm.validate();
         await this['user/login'](this.formData);
         this['cart/getCart'](this.$store.getters.userId);
+        uni.showToast({
+          title: '登陆成功~'
+        });
       } catch (e) {
         console.log(e);
       }

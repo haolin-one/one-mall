@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="hlo-address">
     <uni-card title="收货信息" @click="chooseAddress">
       <view class="address">
         <view class="icon">

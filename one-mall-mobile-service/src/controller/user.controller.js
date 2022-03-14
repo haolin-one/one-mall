@@ -14,7 +14,6 @@ class userController {
   async getAddress(ctx) {
     const { id } = ctx.params;
     const result = await service.getAddress(id);
-    console.log(result);
     ctx.body = result;
   }
 }

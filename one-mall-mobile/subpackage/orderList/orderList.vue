@@ -1,6 +1,6 @@
 <template>
   <view class="orderList">
-    <view v-for="order in orderList">
+    <view v-for="order in orderList" :key="order.id">
       <hlo-order-item :goods="order"></hlo-order-item>
     </view>
   </view>
@@ -10,7 +10,7 @@
 import { mapActions, mapGetters } from 'vuex';
 export default {
   onLoad(options) {
-    this.getOrder(options.userId);
+    this.getOrder(options);
   },
   data() {
     return {};

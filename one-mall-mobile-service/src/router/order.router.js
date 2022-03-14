@@ -4,6 +4,6 @@ const { getOrder } = require('../controller/order.controller');
 
 const orderRouter = new router({ prefix: '/order' });
 
-orderRouter.get('/:user_id', getOrder);
+orderRouter.get('/', getOrder);
 
 module.exports = orderRouter;

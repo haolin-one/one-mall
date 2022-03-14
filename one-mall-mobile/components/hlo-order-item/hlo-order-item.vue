@@ -2,14 +2,29 @@
   <view class="hlo-order-item">
     <uni-card>
       <view class="goodsInfo">
-        <view class="leftGoodsInfo">
+        <view class="goodsPic">
           <image :src="goods.pic" mode="aspectFit"></image>
         </view>
-        <view class="rightGoodsInfo">
+        <view class="name">
           <text class="name">{{ goods.description }}</text>
-          <view class="cap">
-            <text class="price">￥{{ goods.price }}</text>
-          </view>
+        </view>
+        <view class="cap">
+          <text class="price">￥{{ goods.price }}</text>
+          <text class="count">x 1</text>
+        </view>
+      </view>
+      <view class="footer">
+        <view v-if="goods.status === 0">
+          <button type="default" size="mini">去付款</button>
+        </view>
+        <view v-if="goods.status === 1">
+          <button type="default" size="mini">修改地址</button>
+        </view>
+        <view v-if="goods.status === 2">
+          <button type="default" size="mini">确认收货</button>
+        </view>
+        <view v-if="goods.status === 3">
+          <button type="default" size="mini">去评价</button>
         </view>
       </view>
     </uni-card>

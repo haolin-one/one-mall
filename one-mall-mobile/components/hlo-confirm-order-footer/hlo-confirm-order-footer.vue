@@ -6,7 +6,7 @@
       <text class="price">{{ totalPrice }}</text>
     </view>
     <view class="submitBtn">
-      <button type="default" size="mini">提交订单</button>
+      <button type="default" size="mini" @click="submitOrder">提交订单</button>
     </view>
   </view>
 </template>
@@ -14,11 +14,17 @@
 <script>
 export default {
   name: 'hlo-confirm-order-footer',
+  emits: ['submitOrder'],
   props: {
     goods: {}
   },
   data() {
     return {};
+  },
+  methods: {
+    submitOrder() {
+      this.$emit('submitOrder');
+    }
   },
   computed: {
     totalPrice() {

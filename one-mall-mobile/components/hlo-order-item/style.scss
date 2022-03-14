@@ -1,47 +1,43 @@
 .hlo-order-item {
   .goodsInfo {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 240rpx;
     width: 100%;
     box-sizing: content-box;
     padding: 10px;
 
-    .leftGoodsInfo {
-      width: 200rpx;
-      height: 100%;
-
+    .goodsPic {
       image {
         height: 100%;
-        width: 100%;
+        width: 150rpx;
       }
     }
 
-    .rightGoodsInfo {
+    .name {
+      flex: 40%;
+      font-size: 26rpx;
+      overflow: hidden;
+      margin: 0 5px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .cap {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      margin: 0 10px 0 10px;
-      height: 100%;
-      flex: 1;
-
-      .name {
-        font-size: 26rpx;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-      }
-
-      .cap {
-        display: flex;
-        justify-content: space-between;
-        .price {
-          font-size: 28rpx;
-          color: #e4393c;
-        }
+      align-items: flex-end;
+      .price {
+        font-size: 28rpx;
+        color: #e4393c;
       }
     }
+  }
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 }

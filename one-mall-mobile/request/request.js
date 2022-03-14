@@ -3,11 +3,15 @@ const BASE_URL = 'http://10.23.79.240:7777/';
 class HLORequest {
   request(options) {
     return new Promise((resolve, reject) => {
+      uni.showLoading({
+        title: '加载中'
+      });
       uni.request({
         url: BASE_URL + options.url,
         method: options.method || 'GET',
         data: options.data || {},
         success: (res) => {
+          uni.hideLoading();
           if (res.statusCode !== 200) {
             return uni.showToast({
               title: res.data,
@@ -21,6 +25,7 @@ class HLORequest {
           uni.showToast({
             title: '请求接口失败！'
           });
+          uni.hideLoading();
           reject(err);
         }
       });

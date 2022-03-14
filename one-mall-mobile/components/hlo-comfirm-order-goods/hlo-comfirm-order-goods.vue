@@ -25,7 +25,9 @@
         <text class="price">{{ totalPrice }}</text>
       </view>
       <view class="submitBtn">
-        <button type="default" size="mini">提交订单</button>
+        <button type="default" size="mini" @click="submitOrder">
+          提交订单
+        </button>
       </view>
     </view>
   </view>
@@ -39,8 +41,18 @@ export default {
       required: true
     }
   },
+  emits: ['submitOrder'],
   data() {
     return {};
+  },
+  methods: {
+    submitOrder() {
+      this.$emit('submitOrder', {
+        goods_id: this.goods.id,
+        count: this.goodsCount,
+        total_amount: this.totalPrice
+      });
+    }
   },
   computed: {
     totalPrice() {

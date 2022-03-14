@@ -10,13 +10,13 @@ const mutations = {
 };
 
 const actions = {
-  async getOrder(ctx, id) {
+  async getOrder(ctx, { userId, status }) {
     const result = await uni.hloRequest.get({
-      url: `order/${id}`
+      url: `order?userId=${userId}&status=${status}`
     });
-    console.log(result);
     ctx.commit('setOrder', result);
-  }
+  },
+  async addOrder(ctx) {}
 };
 
 const getters = {};

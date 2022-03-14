@@ -41,9 +41,6 @@ const actions = {
       url: `user/${res.id}`
     });
 
-    uni.showToast({
-      title: '登陆成功~'
-    });
     context.commit('setUserInfo', res);
     context.commit('setAddress', address);
   },
