@@ -56,7 +56,6 @@
 <script>
 export default {
   name: 'hlo-register',
-  emits: ['changeStatus'],
   methods: {
     async register() {
       try {
@@ -74,7 +73,9 @@ export default {
       }
     },
     goToLogin() {
-      this.$emit('changeStatus');
+      uni.redirectTo({
+        url:'../login/login'
+      })
     }
   },
   onReady() {
@@ -111,8 +112,12 @@ export default {
             },
             {
               minLength: 6,
-              maxLength: 20,
+              maxLength: 18,
               errorMessage: '密码长度在 {minLength} 到 {maxLength} 个字符'
+            },
+            {
+              pattern:/^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[\(\)])+$)([^(0-9a-zA-Z)]|[\(\)]|[a-z]|[A-Z]|[0-9])+$/,
+              errorMessage:'密码必须包含大小写字母/数字/符号任意两者组合'
             }
           ]
         },
@@ -138,9 +143,9 @@ export default {
               errorMessage: '请输入手机号码'
             },
             {
-              minLength: 11,
-              maxLength: 11,
-              errorMessage: '手机号码长度在为11个字符'
+              // pattern:"^\S+?@\S+?\.\S+?$",
+              pattern:/^[1]([3-9])[0-9]{9}$/,
+              errorMessage:'手机号码格式不正确'
             }
           ]
         }

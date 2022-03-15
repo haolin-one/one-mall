@@ -1,5 +1,5 @@
-.login {
-  height: 100%;
+.register {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,19 +7,26 @@
   background-position: 40rpx 0;
   background-size: 80%;
   background-repeat: no-repeat;
-  .loginForm {
+  .goToLogin {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30rpx;
+    font-weight: 600;
+  }
+  .registerForm {
     width: 80%;
     .formItem {
       display: flex;
       border-bottom: 1px solid #2979ff;
       font-size: 36rpx;
       .label {
+        display: block;
+        width: 80px;
         margin-bottom: 10px;
         font-weight: 600;
       }
       .input {
         margin-bottom: 10px;
-        padding-left: 20px;
       }
     }
     button {

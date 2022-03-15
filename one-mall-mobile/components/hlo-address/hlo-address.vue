@@ -6,10 +6,10 @@
           <uni-icons type="location"></uni-icons>
         </view>
         <view class="receiptInfo">
-          <text class="addressInfo">{{ address }}</text>
+          <text class="addressInfo">{{ addressInfo }}</text>
           <view class="receiverInfo">
-            <text class="receiver">{{ receiverInfo.name }}</text>
-            <text class="phone">{{ receiverInfo.phone_number }}</text>
+            <text class="receiver">{{ receiverInfo.userName }}</text>
+            <text class="phone">{{ receiverInfo.telNumber }}</text>
           </view>
         </view>
       </view>
@@ -22,30 +22,26 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'hlo-address',
   data() {
-    return {};
+    return {
+      receiverInfo:this.$store.getters.address
+    };
   },
   methods: {
     chooseAddress() {
       uni.chooseAddress({
         success: (res) => {
-          this.receiverInfo = res;
+          this.receiverInfo = res
         }
       });
     }
   },
-  created() {
-    console.log(this.address);
-  },
   computed: {
-    ...mapGetters({
-      receiverInfo: 'address'
-    }),
-    address() {
+    addressInfo() {
       return (
-        this.receiverInfo.province +
-        this.receiverInfo.city +
-        this.receiverInfo.region +
-        this.receiverInfo.detail_address
+        this.receiverInfo.provinceName +
+        this.receiverInfo.cityName +
+        this.receiverInfo.countyName +
+        this.receiverInfo.detailInfo
       );
     }
   }

@@ -49,12 +49,17 @@ export default {
         uni.showToast({
           title: '登陆成功~'
         });
+        uni.switchTab({
+          url:'../../pages/my/my'
+        })
       } catch (e) {
         console.log(e);
       }
     },
     goToRegister() {
-      this.$emit('changeStatus');
+      uni.redirectTo({
+        url:'../register/register'
+      })
     }
   },
   data() {
