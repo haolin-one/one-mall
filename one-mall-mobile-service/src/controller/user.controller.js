@@ -8,7 +8,7 @@ class userController {
   }
   register(ctx) {
     const userInfo = ctx.request.body;
-    const result = service.register(userInfo);
+    service.register(userInfo);
     ctx.body = '注册成功~';
   }
   async getAddress(ctx) {

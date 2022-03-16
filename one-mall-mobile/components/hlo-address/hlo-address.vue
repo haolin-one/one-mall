@@ -18,19 +18,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 export default {
   name: 'hlo-address',
   data() {
     return {
-      receiverInfo:this.$store.getters.address
+      receiverInfo: this.$store.getters.address
     };
   },
   methods: {
     chooseAddress() {
       uni.chooseAddress({
         success: (res) => {
-          this.receiverInfo = res
+          this.receiverInfo = res;
         }
       });
     }

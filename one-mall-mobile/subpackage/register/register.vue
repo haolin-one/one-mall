@@ -74,8 +74,8 @@ export default {
     },
     goToLogin() {
       uni.redirectTo({
-        url:'../login/login'
-      })
+        url: '../login/login'
+      });
     }
   },
   onReady() {
@@ -116,8 +116,9 @@ export default {
               errorMessage: '密码长度在 {minLength} 到 {maxLength} 个字符'
             },
             {
-              pattern:/^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[\(\)])+$)([^(0-9a-zA-Z)]|[\(\)]|[a-z]|[A-Z]|[0-9])+$/,
-              errorMessage:'密码必须包含大小写字母/数字/符号任意两者组合'
+              pattern:
+                /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[\(\)])+$)([^(0-9a-zA-Z)]|[\(\)]|[a-z]|[A-Z]|[0-9])+$/,
+              errorMessage: '密码必须包含大小写字母/数字/符号任意两者组合'
             }
           ]
         },
@@ -144,8 +145,8 @@ export default {
             },
             {
               // pattern:"^\S+?@\S+?\.\S+?$",
-              pattern:/^[1]([3-9])[0-9]{9}$/,
-              errorMessage:'手机号码格式不正确'
+              pattern: /^[1]([3-9])[0-9]{9}$/,
+              errorMessage: '手机号码格式不正确'
             }
           ]
         }

@@ -43,23 +43,23 @@ export default {
     ...mapActions(['user/login', 'cart/getCart']),
     async login() {
       try {
-        const result = await this.$refs.loginForm.validate();
+        await this.$refs.loginForm.validate();
         await this['user/login'](this.formData);
         this['cart/getCart'](this.$store.getters.userId);
         uni.showToast({
           title: '登陆成功~'
         });
         uni.switchTab({
-          url:'../../pages/my/my'
-        })
+          url: '../../pages/my/my'
+        });
       } catch (e) {
         console.log(e);
       }
     },
     goToRegister() {
       uni.redirectTo({
-        url:'../register/register'
-      })
+        url: '../register/register'
+      });
     }
   },
   data() {

@@ -1,22 +1,23 @@
 module.exports = {
-  root: true,
   env: {
+    browser: true,
+    commonjs: true,
+    es2021: true,
     node: true
   },
   extends: [
-    'plugin:vue/recommended',
+    'plugin:vue/essential',
     'eslint:recommended',
     'plugin:prettier/recommended'
   ],
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module'
+    ecmaVersion: 'latest'
+  },
+  plugins: ['vue'],
+  rules: {
+    'vue/multi-word-component-names': 'off'
   },
   globals: {
     uni: true
-  },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }
 };
