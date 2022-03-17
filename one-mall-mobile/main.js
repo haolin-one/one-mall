@@ -18,15 +18,15 @@ app.$mount();
 // #endif
 
 // #ifdef VUE3
-import { createSSRApp } from 'vue';
-import App from './App.vue';
+// import { createSSRApp } from 'vue';
+// import App from './App.vue';
 
-Vue.prototype.hloRequest = hloRequest;
+// Vue.prototype.hloRequest = hloRequest;
 
-export function createApp() {
-  const app = createSSRApp(App);
-  return {
-    app
-  };
-}
+// export function createApp() {
+//   const app = createSSRApp(App);
+//   return {
+//     app
+//   };
+// }
 // #endif

@@ -8,4 +8,5 @@ const getters = {
   address: (state) => state.user.address,
   order: (state) => state.order.order
 };
+
 export default getters;
