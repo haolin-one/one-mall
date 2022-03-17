@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: 'hlo-address',
   data() {
@@ -26,10 +27,12 @@ export default {
     };
   },
   methods: {
+    ...mapMutations('user', ['setAddress']),
     chooseAddress() {
       uni.chooseAddress({
         success: (res) => {
           this.receiverInfo = res;
+          this.setAddress(this.receiverInfo);
         }
       });
     }

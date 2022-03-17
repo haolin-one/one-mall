@@ -33,7 +33,7 @@
           <uni-icons type="chat" size="30"></uni-icons>
           待评价
         </view>
-        <view @click="gotoOrderList">
+        <view @click="gotoOrderList(-1)">
           <uni-icons type="calendar" size="30"></uni-icons>
           全部订单
         </view>

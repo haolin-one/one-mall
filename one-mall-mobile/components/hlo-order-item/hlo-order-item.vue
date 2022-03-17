@@ -1,7 +1,7 @@
 <template>
   <view class="hlo-order-item">
     <uni-card>
-      <view class="goodsInfo">
+      <view class="goodsInfo" @click="gotoOrderDetail">
         <view class="goodsPic">
           <image :src="goods.pic" mode="aspectFit"></image>
         </view>
@@ -10,8 +10,13 @@
         </view>
         <view class="cap">
           <text class="price">￥{{ goods.price }}</text>
-          <text class="count">x 1</text>
+          <text class="count">x {{ goods.goods_count }}</text>
         </view>
+      </view>
+      <view class="totalAmount">
+        <text class="totalAmountInfo">实付款</text>
+        ￥
+        <text class="totalAmountInfo">{{ goods.total_amount }}</text>
       </view>
       <view class="footer">
         <view v-if="goods.status === 0">
@@ -39,15 +44,13 @@ export default {
       required: true
     }
   },
-  data() {
-    return {};
-  },
-  computed: {
-    totalPrice() {
-      return (this.goods.price * this.goods.count).toFixed(2);
-    },
-    goodsCount() {
-      return this.goods.count;
+  methods: {
+    gotoOrderDetail() {
+      uni.navigateTo({
+        url:
+          '../../subpackage/orderDetail/orderDetail?goods=' +
+          JSON.stringify(this.goods)
+      });
     }
   }
 };

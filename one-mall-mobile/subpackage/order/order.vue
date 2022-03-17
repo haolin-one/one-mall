@@ -22,7 +22,13 @@ export default {
   },
   methods: {
     ...mapActions(['addOrder']),
-    submitOrder() {}
+    submitOrder(goodsInfo) {
+      this.addOrder({
+        ...goodsInfo,
+        ...this.$store.getters.address,
+        userId: this.$store.getters.userId
+      });
+    }
   }
 };
 </script>

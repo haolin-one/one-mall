@@ -16,7 +16,15 @@ const actions = {
     });
     ctx.commit('setOrder', result);
   },
-  async addOrder(ctx) {}
+  async addOrder(ctx, orderInfo) {
+    const result = await uni.hloRequest.post({
+      url: 'order',
+      data: orderInfo
+    });
+    uni.showToast({
+      title: result
+    });
+  }
 };
 
 const getters = {};

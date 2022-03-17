@@ -1,11 +1,34 @@
-.hlo-order-item {
+.orderDetail {
+  uni-card {
+    margin: 0;
+    padding: 0;
+  }
+  .address {
+    display: flex;
+    .icon {
+      margin-right: 10px;
+    }
+    .receiptInfo {
+      display: flex;
+      flex-direction: column;
+      .addressInfo {
+        color: #000000;
+        font-weight: 600;
+      }
+      .receiverInfo {
+        font-size: 24rpx;
+        .receiver {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
   .goodsInfo {
     display: flex;
     justify-content: space-around;
     height: 200rpx;
     width: 100%;
     box-sizing: content-box;
-    padding: 10px;
 
     .goodsPic {
       image {
@@ -36,27 +59,26 @@
       }
     }
   }
-  .totalAmount {
+  .otherInfo {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 10px;
-    .totalAmountInfo {
-      font-size: 28rpx;
-      font-weight: 600;
-      color: #000000;
-    }
+    justify-content: space-between;
+    margin-top: 5px;
   }
   .footer {
     width: 100%;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: flex-end;
-    padding: 0 10px;
+    height: 70px;
+    align-items: center;
+    background-color: #ffffff;
     button {
-      border: 1px solid #087dd8;
-      background-color: #ffffff;
-      border-radius: 30px;
+      margin-right: 10px;
       color: #087dd8;
+      background-color: #ffffff;
+      border: 1px solid #087dd8;
+      border-radius: 30px;
     }
   }
 }

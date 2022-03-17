@@ -23,7 +23,7 @@ const mutations = {
   },
 
   setAddress(state, result) {
-    state.address = result[0];
+    state.address = result;
   },
 
   removeAddress(state) {
@@ -42,7 +42,7 @@ const actions = {
     });
 
     context.commit('setUserInfo', res);
-    context.commit('setAddress', address);
+    context.commit('setAddress', address[0]);
   },
 
   logout(context) {
