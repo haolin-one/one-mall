@@ -40,8 +40,8 @@ class HLORequest {
   delete(options) {
     return this.request({ ...options, method: 'DELETE' });
   }
-  patch(options) {
-    return this.request({ ...options, method: 'PATCH' });
+  put(options) {
+    return this.request({ ...options, method: 'PUT' });
   }
 }
 

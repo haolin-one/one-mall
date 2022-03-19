@@ -9,10 +9,10 @@ const mutations = {
   removeCart(state) {
     state.cart = [];
   },
-  updateCart(state, goods) {
+  addCart(state, goods) {
     state.cart = [...state.cart, goods];
     uni.hloRequest.post({
-      url: `cart`,
+      url: `cart/addGoods`,
       data: goods
     });
   }
@@ -20,25 +20,34 @@ const mutations = {
 
 const actions = {
   async getCart(ctx, id) {
-    const result = await uni.hloRequest.post({
+    const result = await uni.hloRequest.get({
       url: `cart/${id}`
     });
     ctx.commit('setCart', result);
   },
+
   updateCart(ctx, goods) {
-    const result = ctx.state.cart.find((item) => item.id === goods.id);
-    if (result) {
-      uni.showToast({
-        icon: 'error',
-        title: '商品已在购物车'
-      });
-      return;
-    } else {
+    let isExist = false;
+    ctx.state.cart.forEach((item) => {
+      if (item.id === goods.id) {
+        isExist = true;
+        item.count += goods.count;
+        uni.hloRequest.post({
+          url: `cart/addSameGoods`,
+          data: item
+        });
+        uni.showToast({
+          title: '已添加到购物车'
+        });
+        return;
+      }
+    });
+    if (!isExist) {
       uni.showToast({
         title: '已添加到购物车'
       });
+      ctx.commit('addCart', goods);
     }
-    ctx.commit('updateCart', goods);
   }
 };
 

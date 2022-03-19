@@ -1,0 +1,13 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
+  button {
+    border: 1px solid #087dd8;
+    background-color: #ffffff;
+    border-radius: 30px;
+    color: #087dd8;
+  }
+}

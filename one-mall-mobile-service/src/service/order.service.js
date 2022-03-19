@@ -4,13 +4,13 @@ class orderService {
   async getOrder(userId, status) {
     let statement;
     if (status === '-1') {
-      statement = `SELECT o.*,i.*,g.*,g.id as goodsID
+      statement = `SELECT o.*,i.*,g.*,g.id as goodsID,o.id as ordersID,i.id as itemID
                       FROM orders o
                       INNER JOIN order_item i ON o.order_sn = i.order_sn
                       INNER JOIN goods g ON i.goods_id = g.id
                       WHERE user_id = ${userId}`;
     } else {
-      statement = `SELECT o.*,i.*,g.*,g.id as goodsID
+      statement = `SELECT o.*,i.*,g.*,g.id as goodsID,o.id as ordersID,i.id as itemID
                       FROM orders o
                       INNER JOIN order_item i ON o.order_sn = i.order_sn
                       INNER JOIN goods g ON i.goods_id = g.id

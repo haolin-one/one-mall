@@ -22,6 +22,11 @@ class cartService {
     ]);
     return result[0];
   }
+  async updateCart({ c_id, count }) {
+    const statement = `UPDATE cart SET count = ${count} WHERE id = ${c_id}`;
+    const result = await connection.execute(statement);
+    return result[0];
+  }
 }
 
 module.exports = new cartService();

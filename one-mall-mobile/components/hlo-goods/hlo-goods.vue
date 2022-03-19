@@ -3,7 +3,7 @@
     <view class="leftGoodsInfo">
       <image :src="goods.pic"></image>
     </view>
-    <view v-if="status === 'list'" class="rightGoodsInfo">
+    <view class="rightGoodsInfo">
       <text class="name">{{ goods.description }}</text>
       <text class="price">￥{{ goods.price }}</text>
     </view>
@@ -16,9 +16,6 @@ export default {
   props: {
     goods: {
       default: {}
-    },
-    status: {
-      required: true
     }
   },
   data() {

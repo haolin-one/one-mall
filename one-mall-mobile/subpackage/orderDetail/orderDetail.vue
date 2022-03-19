@@ -15,7 +15,7 @@
       </view>
     </uni-card>
     <uni-card>
-      <view class="goodsInfo">
+      <view class="goodsInfo" @click="gotoDetail(goods.goodsID)">
         <view class="goodsPic">
           <image :src="goods.pic" mode="aspectFit"></image>
         </view>
@@ -44,20 +44,10 @@
         </view>
       </view>
     </uni-card>
-    <view class="footer">
-      <view v-if="goods.status === 0">
-        <button type="default" size="mini">去付款</button>
-      </view>
-      <view v-if="goods.status === 1">
-        <button type="default" size="mini">修改地址</button>
-      </view>
-      <view v-if="goods.status === 2">
-        <button type="default" size="mini">确认收货</button>
-      </view>
-      <view v-if="goods.status === 3">
-        <button type="default" size="mini">去评价</button>
-      </view>
-    </view>
+    <hlo-order-footer
+      class="detailFooter"
+      :status="goods.status"
+    ></hlo-order-footer>
   </view>
 </template>
 
@@ -74,7 +64,13 @@ export default {
       goods: {}
     };
   },
-  methods: {},
+  methods: {
+    gotoDetail(id) {
+      uni.navigateTo({
+        url: `../goodsDetail/goodsDetail?id=` + id
+      });
+    }
+  },
   computed: {
     addressInfo() {
       return (
