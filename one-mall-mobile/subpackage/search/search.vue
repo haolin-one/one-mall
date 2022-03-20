@@ -15,14 +15,16 @@
       >
     </view>
     <view v-if="suggestList.length" class="suggestBox">
-      <view
-        class="suggessItem"
-        v-for="item in suggestList"
-        :key="item.id"
-        @click="search(item.name)"
-      >
-        <view class="goodsName">{{ item.name }}</view>
-      </view>
+      <uni-list>
+        <view
+          class="suggessItem"
+          v-for="item in suggestList"
+          :key="item.id"
+          @click="search(item.name)"
+        >
+          <uni-list-item :title="item.name" class="goodsName"></uni-list-item>
+        </view>
+      </uni-list>
     </view>
     <view v-if="!suggestList.length && histories.length" class="historySearch">
       <view class="historySearchTitle">

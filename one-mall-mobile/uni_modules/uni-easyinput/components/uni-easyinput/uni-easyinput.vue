@@ -19,7 +19,6 @@
         'border-radius':styles.boderRadius,
         'overflow':styles.overflow,
         'border-color': inputBorder && msg ? '#dd524d' : styles.borderColor,
-        'background-color': disabled ? styles.disableColor : ''
       }"
     >
       <uni-icons
@@ -531,7 +530,6 @@ $uni-border-1: #dcdfe6 !default;
 
 .is-disabled {
   border-color: red;
-  background-color: #f7f6f6;
   color: #d5d5d5;
   .uni-easyinput__placeholder-class {
     color: #d5d5d5;

@@ -45,6 +45,17 @@ const actions = {
     context.commit('setAddress', address[0]);
   },
 
+  async editUserAction(ctx, user) {
+    const res = await uni.hloRequest.post({
+      url: 'user/editUserInfo',
+      data: user
+    });
+    uni.showToast({
+      title: res
+    });
+    ctx.commit('setUserInfo', { ...user });
+  },
+
   logout(context) {
     context.commit('removeToken');
     context.commit('removeUserInfo');

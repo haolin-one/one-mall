@@ -15,7 +15,7 @@ class HLORequest {
           if (res.statusCode !== 200) {
             return uni.showToast({
               title: res.data,
-              icon: 'error'
+              icon: 'none'
             });
           }
           resolve(res.data); //成功,将数据返回

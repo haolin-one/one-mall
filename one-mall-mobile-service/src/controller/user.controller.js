@@ -16,6 +16,10 @@ class userController {
     const result = await service.getAddress(id);
     ctx.body = result;
   }
+  async editUserInfo(ctx) {
+    await service.editUserInfo(ctx.request.body);
+    ctx.body = '修改成功~';
+  }
 }
 
 module.exports = new userController();

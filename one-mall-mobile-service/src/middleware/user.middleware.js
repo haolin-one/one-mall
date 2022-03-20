@@ -50,6 +50,32 @@ const verifyUser = async (ctx, next) => {
   await next();
 };
 
+// 验证修改
+const verifyEditUser = async (ctx, next) => {
+  const { username, phone, id } = ctx.request.body;
+
+  const isNotChange = await service.getUserById(id);
+
+  if (!username || !phone) {
+    const error = new Error(errorTypes.USERNAME_PHONE_PASSWORD_IS_NOT_NULL);
+    return ctx.app.emit('error', error, ctx);
+  }
+
+  const usernameExist = await service.getUserByUsername(username);
+  if (usernameExist.length && isNotChange[0].username !== username) {
+    const error = new Error(errorTypes.USERNAME_IS_EXIST);
+    return ctx.app.emit('error', error, ctx);
+  }
+
+  const phoneExist = await service.getUserByPhone(phone);
+  if (phoneExist.length && isNotChange[0].phone !== phone) {
+    const error = new Error(errorTypes.PHONE_IS_EXIST);
+    return ctx.app.emit('error', error, ctx);
+  }
+
+  await next();
+};
+
 // 密码加密
 const handlePassword = async (ctx, next) => {
   const { password } = ctx.request.body;
@@ -60,5 +86,6 @@ const handlePassword = async (ctx, next) => {
 module.exports = {
   verifyLogin,
   verifyUser,
-  handlePassword
+  handlePassword,
+  verifyEditUser
 };

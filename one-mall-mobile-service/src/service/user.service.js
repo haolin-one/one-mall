@@ -54,18 +54,38 @@ class userService {
     return result;
   }
   async getUserByUsername(username) {
-    const statement = `SELECT * FROM user WHERE username = ?`;
+    const statement = `SELECT username FROM user WHERE username = ?`;
     const result = await connection.execute(statement, [username]);
     return result[0];
   }
   async getUserByPhone(phone) {
-    const statement = `SELECT * FROM user WHERE phone = ?`;
+    const statement = `SELECT phone FROM user WHERE phone = ?`;
     const result = await connection.execute(statement, [phone]);
+    return result[0];
+  }
+  async getUserById(id) {
+    const statement = `SELECT username,phone FROM user WHERE id = ${id}`;
+    const result = await connection.execute(statement);
     return result[0];
   }
   async getAddress(id) {
     const statement = `SELECT * FROM useraddress WHERE user_id = ?`;
     const result = await connection.execute(statement, [id]);
+    return result[0];
+  }
+  async editUserInfo(user) {
+    const { id, username, nickname, personalized_signature, phone } = user;
+    const statement = `UPDATE user SET username=?, nickname = ?,
+                       personalized_signature=?, phone=?
+                       WHERE id = ?`;
+    const result = await connection.execute(statement, [
+      username,
+      nickname,
+      personalized_signature,
+      phone,
+      id
+    ]);
+    console.log(result);
     return result[0];
   }
 }

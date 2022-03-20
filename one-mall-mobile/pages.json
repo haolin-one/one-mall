@@ -57,7 +57,7 @@
         {
           "path": "order/order",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "确认订单",
             "enablePullDownRefresh": false
           }
         },
@@ -71,28 +71,35 @@
         {
           "path": "orderList/orderList",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "订单列表",
             "enablePullDownRefresh": false
           }
         },
         {
           "path": "login/login",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "登录",
             "enablePullDownRefresh": false
           }
         },
         {
           "path": "register/register",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "注册",
             "enablePullDownRefresh": false
           }
         },
         {
           "path": "orderDetail/orderDetail",
           "style": {
-            "navigationBarTitleText": "",
+            "navigationBarTitleText": "商品详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "settingPassword/settingPassword",
+          "style": {
+            "navigationBarTitleText": "密码管理",
             "enablePullDownRefresh": false
           }
         }
