@@ -27,7 +27,7 @@
       </uni-forms>
       <button type="default" @click="login">登录</button>
       <view class="navigate">
-        <navigator>忘记密码?</navigator>
+        <navigator url="../forgetPassword/forgetPassword">忘记密码?</navigator>
         <text @click="goToRegister">注册</text>
       </view>
     </view>

@@ -10,23 +10,24 @@
           >请设置密码。你可以用绑定的账号+密码登录，比如手机号+密码登录。</text
         >
       </uni-forms-item>
-      <uni-forms-item label="用户名">
+      <uni-forms-item label="用户名" name="username">
         <uni-easyinput
-          disabled="true"
-          v-model="userInfo.username"
+          type="text"
+          v-model="formData.username"
+          placeholder="填写用户名"
         ></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item label="原密码" name="oldPassword">
+      <uni-forms-item label="手机号码" name="phone">
         <uni-easyinput
-          type="password"
-          v-model="formData.oldPassword"
-          placeholder="填写原密码"
+          type="text"
+          v-model="formData.phone"
+          placeholder="填写手机号码"
         ></uni-easyinput>
       </uni-forms-item>
-      <uni-forms-item label="新密码" name="newPassword">
+      <uni-forms-item label="新密码" name="password">
         <uni-easyinput
           type="password"
-          v-model="formData.newPassword"
+          v-model="formData.password"
           placeholder="填写新密码"
         ></uni-easyinput>
       </uni-forms-item>
@@ -53,12 +54,34 @@ export default {
   data() {
     return {
       formData: {
-        oldPassword: '',
-        newPassword: '',
+        username: '',
+        phone: '',
+        password: '',
         confirmPassword: ''
       },
       rules: {
-        newPassword: {
+        username: {
+          rules: [
+            {
+              required: true,
+              errorMessage: '请输入用户名'
+            }
+          ]
+        },
+        phone: {
+          rules: [
+            {
+              required: true,
+              errorMessage: '请输入手机号码'
+            },
+            {
+              // pattern:"^\S+?@\S+?\.\S+?$",
+              pattern: /^[1]([3-9])[0-9]{9}$/,
+              errorMessage: '手机号码格式不正确'
+            }
+          ]
+        },
+        password: {
           rules: [
             {
               required: true,
@@ -84,7 +107,7 @@ export default {
             },
             {
               validateFunction: (rule, value, data, callback) => {
-                if (value !== this.formData.newPassword) {
+                if (value !== this.formData.password) {
                   callback('两次密码不一致');
                 }
               }
@@ -98,23 +121,16 @@ export default {
     // 需要在onReady中设置规则
     this.$refs.settingPasswordForm.setRules(this.rules);
   },
-  computed: {
-    ...mapGetters(['userInfo'])
-  },
   methods: {
     async editPassword() {
       try {
         await this.$refs.settingPasswordForm.validate();
         const res = await uni.hloRequest.post({
-          url: 'user/editPassword',
-          data: {
-            id: this.userInfo.id,
-            oldPassword: this.formData.oldPassword,
-            newPassword: this.formData.newPassword
-          }
+          url: 'user/forgetPassword',
+          data: this.formData
         });
-        uni.switchTab({
-          url: '../../pages/my/my'
+        uni.redirectTo({
+          url: '../login/login'
         });
         uni.showToast({
           title: res

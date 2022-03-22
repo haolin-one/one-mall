@@ -83,9 +83,34 @@ const handlePassword = async (ctx, next) => {
   await next();
 };
 
+// 验证原密码
+const verifyEditPassword = async (ctx, next) => {
+  const { id, oldPassword, newPassword } = ctx.request.body;
+  const result = await service.getUserById(id);
+  if (result[0].password === md5password(oldPassword)) {
+    ctx.request.body.newPassword = md5password(newPassword);
+    await next();
+  } else {
+    return (ctx.body = '原密码不正确!');
+  }
+};
+
+// 验证用户名和手机号码
+const verifyForgetPassword = async (ctx, next) => {
+  const { username, phone } = ctx.request.body;
+  const result = await service.getUserUP(username, phone);
+  if (!result.length) {
+    const error = new Error(errorTypes.USERNAME_OR_PHONE_IS_NOT_TRUE);
+    return ctx.app.emit('error', error, ctx);
+  }
+  await next();
+};
+
 module.exports = {
   verifyLogin,
   verifyUser,
   handlePassword,
-  verifyEditUser
+  verifyEditUser,
+  verifyEditPassword,
+  verifyForgetPassword
 };

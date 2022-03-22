@@ -102,6 +102,13 @@
             "navigationBarTitleText": "密码管理",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "forgetPassword/forgetPassword",
+          "style": {
+            "navigationBarTitleText": "忘记密码",
+            "enablePullDownRefresh": false
+          }
         }
       ]
     }

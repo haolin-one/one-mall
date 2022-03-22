@@ -37,7 +37,7 @@ const actions = {
       url: 'user',
       data
     });
-    const address = await uni.hloRequest.post({
+    const address = await uni.hloRequest.get({
       url: `user/${res.id}`
     });
 

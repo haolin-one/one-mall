@@ -5,6 +5,7 @@ const USERNAME_PHONE_PASSWORD_IS_NOT_NULL =
 const ACCOUNT_IS_NOT_NULL = 'account_is_not_null';
 const ACCOUNT_IS_NOT_EXIST = 'account_is_not_exist';
 const PASSWORD_IS_NOT_TRUE = 'password_is_not_true';
+const USERNAME_OR_PHONE_IS_NOT_TRUE = 'username_or_phone_is_not_true';
 
 module.exports = {
   USERNAME_IS_EXIST,
@@ -12,5 +13,6 @@ module.exports = {
   USERNAME_PHONE_PASSWORD_IS_NOT_NULL,
   ACCOUNT_IS_NOT_NULL,
   ACCOUNT_IS_NOT_EXIST,
-  PASSWORD_IS_NOT_TRUE
+  PASSWORD_IS_NOT_TRUE,
+  USERNAME_OR_PHONE_IS_NOT_TRUE
 };

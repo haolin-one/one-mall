@@ -4,8 +4,7 @@ const state = {
 
 const mutations = {
   setOrder(state, result) {
-    state.order = result;
-    console.log(state.order);
+    state.order = result.reverse();
   }
 };
 

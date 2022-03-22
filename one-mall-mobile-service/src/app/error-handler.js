@@ -27,6 +27,10 @@ const errorHandler = (error, ctx) => {
       status = 400;
       message = '密码不正确!';
       break;
+    case errorTypes.USERNAME_OR_PHONE_IS_NOT_TRUE:
+      status = 400;
+      message = '用户名或手机号码不正确!';
+      break;
     default:
       status = 401;
       message = 'NOT FOUND';
