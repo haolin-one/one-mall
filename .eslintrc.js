@@ -6,7 +6,7 @@ module.exports = {
     node: true
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     'eslint:recommended',
     'plugin:prettier/recommended'
   ],
@@ -15,7 +15,8 @@ module.exports = {
   },
   plugins: ['vue'],
   rules: {
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    'vue/no-multiple-template-root': 'off'
   },
   globals: {
     uni: true

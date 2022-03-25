@@ -41,16 +41,15 @@
     </uni-card>
     <uni-card padding="0" title="我的服务">
       <uni-list>
-        <uni-list-item :border="false" title="地址管理" link></uni-list-item>
         <uni-list-item
           :border="false"
           title="密码管理"
           link
           to="../../subpackage/settingPassword/settingPassword"
         ></uni-list-item>
-        <uni-list-item :border="false" title="意见反馈" link></uni-list-item>
+        <!--        <uni-list-item :border="false" title="意见反馈" link></uni-list-item>
         <uni-list-item :border="false" title="联系客服" link></uni-list-item>
-        <uni-list-item :border="false" title="关于我们" link></uni-list-item>
+        <uni-list-item :border="false" title="关于我们" link></uni-list-item> -->
       </uni-list>
     </uni-card>
   </view>
