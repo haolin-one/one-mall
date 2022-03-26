@@ -7,12 +7,12 @@ class HLORequest {
     this.interceptors = config.interceptors;
 
     // 添加对应实例自己的拦截器
-    this.hloRequest.interceptors.request.use(
+    this.hloRequest.interceptors?.request.use(
       this.interceptors?.requestInterceptor,
       this.interceptors?.requestInterceptorCatch
     );
 
-    this.hloRequest.interceptors.response.use(
+    this.hloRequest.interceptors?.response.use(
       this.interceptors?.responseInterceptor,
       this.interceptors?.responseInterceptorCatch
     );
@@ -27,7 +27,7 @@ class HLORequest {
       }
     );
 
-    this.instance.interceptors.response.use(
+    this.hloRequest.interceptors.response.use(
       (res) => {
         const data = res.data;
         if (data.returnCode === '-1001') {

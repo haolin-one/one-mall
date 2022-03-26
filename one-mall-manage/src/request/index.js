@@ -2,7 +2,7 @@ import HLORequest from './request';
 import { BASE_URL, TIME_OUT } from './config';
 
 const hloAxios = new HLORequest({
-  BASE_URL: BASE_URL,
+  baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
