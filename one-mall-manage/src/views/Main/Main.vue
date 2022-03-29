@@ -44,10 +44,10 @@ const handleFoldChange = (isFold) => {
 }
 
 .page-content {
-  height: calc(100% - 48px);
+  // height: calc(100% - 48px);
 
   .page-info {
-    height: 100%;
+    // height: 100%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
