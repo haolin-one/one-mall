@@ -8,8 +8,7 @@ const connections = mysql.createPool({
   database: config.MYSQL_DATABASE,
   user: config.MYSQL_USER,
   password: config.MYSQL_PASSWORD,
-  dateStrings: true,
-  timezone: true
+  dateStrings: true
 });
 
 connections.getConnection((err, conn) => {

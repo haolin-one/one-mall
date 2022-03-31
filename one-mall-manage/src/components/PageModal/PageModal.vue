@@ -46,8 +46,6 @@ watch(
   (newValue) => {
     for (const item of props.modalConfig.formItems) {
       formData.value[`${item.field}`] = newValue[`${item.field}`];
-      console.log('defaultInfo:', props.defaultInfo);
-      console.log('formData:', formData.value);
     }
   }
 );

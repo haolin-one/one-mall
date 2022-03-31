@@ -36,13 +36,18 @@
           >
             编辑
           </el-button>
-          <el-button
-            size="small"
-            type="danger"
-            plain
-            @click="handleDeleteClick(scope.row)"
-            >删除</el-button
+          <el-popconfirm
+            confirm-button-text="确定"
+            cancel-button-text="取消"
+            :icon="InfoFilled"
+            icon-color="red"
+            @confirm="handleDeleteClick(scope.row)"
+            title="确定永久删除该数据吗?"
           >
+            <template #reference>
+              <el-button size="small" type="danger" plain>删除</el-button>
+            </template>
+          </el-popconfirm>
         </div>
       </template>
 

@@ -1,18 +1,14 @@
 export const modalConfig = {
-  labelWidth: '120px',
-  itemStyle: {
-    padding: '10px 30px'
-  },
   formItems: [
     {
       field: 'name',
       type: 'input',
-      label: '分类名称',
-      placeholder: '分类名称'
+      label: '角色名称',
+      placeholder: '角色名称'
     }
   ],
   colLayout: {
-    xl: 11, // >1920px
+    xl: 24,
     lg: 24,
     md: 24,
     sm: 24,

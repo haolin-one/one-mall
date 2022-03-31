@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import {
   deletePageData,
   getPageListData,
@@ -99,6 +100,11 @@ const pageModule = {
 
       await deletePageData(pageUrl);
 
+      ElMessage({
+        message: '删除成功~',
+        type: 'success'
+      });
+
       dispatch('getPageListAction', {
         pageName,
         queryInfo: {
@@ -114,6 +120,11 @@ const pageModule = {
 
       await createPageData(pageUrl, newData);
 
+      ElMessage({
+        message: '添加成功~',
+        type: 'success'
+      });
+
       dispatch('getPageListAction', {
         pageName,
         queryInfo: {
@@ -126,7 +137,14 @@ const pageModule = {
     async updatePageDataAction({ dispatch }, payload) {
       const { pageName, updateData, id } = payload;
       const pageUrl = `/${pageName}/${id}`;
+
       await updatePageData(pageUrl, updateData);
+
+      ElMessage({
+        message: '修改成功~',
+        type: 'success'
+      });
+
       dispatch('getPageListAction', {
         pageName,
         queryInfo: {

@@ -13,13 +13,55 @@ class adminService {
     const result2 = await connections.execute(statement2);
     return { list: result[0], ...result2[0][0] };
   }
+  async createAdmin(admin) {
+    const {
+      name = '',
+      username = '',
+      password = '',
+      phone = '',
+      gender = '',
+      email = '',
+      role_id = ''
+    } = admin;
+    const statement = `INSERT INTO admin (name, username,password, phone, gender, email, role_id)
+                      VALUES (?,?,?,?,?,?,?)`;
+    await connections.execute(statement, [
+      name,
+      username,
+      password,
+      phone,
+      gender,
+      email,
+      role_id
+    ]);
+    return;
+  }
   async updateAdmin(id, admin) {
-    const { name, username } = admin;
-    const statement = `UPDATE admin SET name = ?,username=? WHERE id = ?`;
-    const result = await connections.execute(statement, [name, username, id]);
-    if (result) {
-      return;
-    }
+    const {
+      name = '',
+      username = '',
+      phone = '',
+      gender = '',
+      email = '',
+      role_id = ''
+    } = admin;
+
+    const statement = `UPDATE admin SET name = ?,username=?,phone=?,gender=?,email=?,role_id=? WHERE id = ?`;
+    await connections.execute(statement, [
+      name,
+      username,
+      phone,
+      gender,
+      email,
+      role_id,
+      id
+    ]);
+    return;
+  }
+  async deleteAdmin(id) {
+    const statement = `DELETE FROM admin WHERE id = ?`;
+    await connections.execute(statement, [id]);
+    return;
   }
 }
 
