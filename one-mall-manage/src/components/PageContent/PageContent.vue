@@ -26,6 +26,15 @@
         {{ scope.row.gender === '1' ? '男' : '女' }}
       </template>
 
+      <template #img="scope">
+        <el-image
+          style="width: 60px; height: 60px"
+          :src="scope.row.pic"
+          :preview-src-list="[scope.row.pic]"
+        >
+        </el-image>
+      </template>
+
       <template #handle="scope">
         <div class="handle-btns">
           <el-button
@@ -39,7 +48,6 @@
           <el-popconfirm
             confirm-button-text="确定"
             cancel-button-text="取消"
-            :icon="InfoFilled"
             icon-color="red"
             @confirm="handleDeleteClick(scope.row)"
             title="确定永久删除该数据吗?"
@@ -52,11 +60,11 @@
       </template>
 
       <!-- 动态插槽 -->
-      <template v-for="item in otherPropSlots" #[item.slotName]="scope">
+      <!-- <template v-for="item in otherPropSlots" #[item.slotName]="scope">
         <template v-if="item.slotName">
           <slot :name="item.slotName" :row="scope.row"></slot>
         </template>
-      </template>
+      </template> -->
     </hlo-table>
   </div>
 </template>

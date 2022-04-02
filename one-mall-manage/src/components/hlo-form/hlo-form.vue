@@ -27,6 +27,13 @@
                   v-model="formData[`${item.field}`]"
                 ></el-input>
               </template>
+              <template v-else-if="item.type === 'textarea'">
+                <el-input
+                  type="textarea"
+                  v-model="formData[`${item.field}`]"
+                  :placeholder="item.placeholder"
+                ></el-input>
+              </template>
               <template v-else-if="item.type === 'select'">
                 <el-select
                   style="width: 100%"
@@ -71,14 +78,15 @@
               </template>
               <template v-else-if="item.type === 'upload'">
                 <el-upload
-                  class="avatar-uploader"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :show-file-list="false"
+                  class="picture-uploader"
+                  name="avatar"
+                  action="http://120.77.30.174:8000/static"
                   :on-success="handleAvatarSuccess"
                   :before-upload="beforeAvatarUpload"
+                  :http-request="upload"
                 >
-                  <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-                  <el-icon v-else class="avatar-uploader-icon"
+                  <img v-if="imageUrl" :src="imageUrl" class="picture" />
+                  <el-icon v-else class="picture-uploader-icon"
                     ><Plus
                   /></el-icon>
                 </el-upload>
@@ -97,6 +105,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { ElMessage } from 'element-plus';
+import hloAxios from '@/request';
 
 const props = defineProps({
   modelValue: {
@@ -147,8 +156,16 @@ watch(
 
 const imageUrl = ref('');
 
+const upload = async (param) => {
+  const formData = new FormData();
+  formData.append('avatar', param.file);
+  await hloAxios.post({
+    url: param.action,
+    data: formData
+  });
+};
+
 const handleAvatarSuccess = (response, uploadFile) => {
-  console.log(uploadFile);
   imageUrl.value = URL.createObjectURL(uploadFile.raw);
 };
 

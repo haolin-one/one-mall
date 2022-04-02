@@ -4,13 +4,16 @@
       <span v-if="!collapse" class="title">Vue3 + Koa后台管理系统</span>
     </div>
     <el-menu
-      :default-active="defaultAction"
+      default-active="home"
       class="el-menu-vertical"
       background-color="#0c2135"
       text-color="#b7bdc3"
       active-text-color="#0a60bd"
       :collapse="collapse"
     >
+      <el-menu-item index="home" @click="handleMenuItemClick('home', '')">
+        <template #title> 首页 </template>
+      </el-menu-item>
       <div v-for="item in userMenus" :key="item.id">
         <el-sub-menu v-if="item.level === 0" :index="item.id + ''">
           <template #title>
@@ -36,7 +39,7 @@
 
 <script setup>
 import { getMenusById } from '@/api/menu';
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 defineProps({
@@ -47,7 +50,7 @@ const router = useRouter();
 
 const userMenus = await getMenusById(1);
 
-const defaultAction = ref(userMenus.id + '');
+// const defaultAction = ref(userMenus.id + '');
 
 const handleMenuItemClick = (parentName, childrenName) => {
   router.push(`/main/${parentName}/${childrenName}`);

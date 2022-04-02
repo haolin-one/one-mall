@@ -12,6 +12,13 @@ module.exports = defineConfig({
           '^/api': ''
         },
         changeOrigin: true
+      },
+      '^/static': {
+        target: 'http://120.77.30.174:8000',
+        pathRewrite: {
+          '^/static': ''
+        },
+        changeOrigin: true
       }
     }
   },

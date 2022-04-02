@@ -42,12 +42,12 @@ export const modalConfig = {
       type: 'input',
       label: '邮箱',
       placeholder: '邮箱'
+    },
+    {
+      field: 'avatar_url',
+      type: 'upload',
+      label: '头像'
     }
-    // {
-    //   field: 'avatar_url',
-    //   type: 'upload',
-    //   label: '头像'
-    // }
   ],
   colLayout: {
     xl: 11, // >1920px
