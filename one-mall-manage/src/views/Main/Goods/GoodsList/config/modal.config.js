@@ -8,7 +8,7 @@ export const modalConfig = {
     },
     {
       field: 'price',
-      type: 'input',
+      type: 'number',
       label: '商品价格',
       placeholder: '商品价格'
     },
@@ -17,6 +17,11 @@ export const modalConfig = {
       type: 'textarea',
       label: '商品描述',
       placeholder: '商品描述'
+    },
+    {
+      field: 'picture',
+      type: 'upload',
+      label: '商品图片'
     }
   ],
   colLayout: {

@@ -28,10 +28,14 @@ export const contentTableConfig = {
       minWidth: '120'
     },
     {
-      prop: 'createAt',
-      label: '创建时间',
-      minWidth: '100'
+      prop: 'birthday',
+      label: '生日'
     },
+    // {
+    //   prop: 'createAt',
+    //   label: '创建时间',
+    //   minWidth: '100'
+    // },
     // {
     //   prop: 'updateAt',
     //   label: '更新时间',

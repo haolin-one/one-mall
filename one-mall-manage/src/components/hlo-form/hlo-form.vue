@@ -34,6 +34,13 @@
                   :placeholder="item.placeholder"
                 ></el-input>
               </template>
+              <template v-else-if="item.type === 'number'">
+                <el-input-number
+                  v-model="formData[`${item.field}`]"
+                  :min="0"
+                  :precision="2"
+                ></el-input-number>
+              </template>
               <template v-else-if="item.type === 'select'">
                 <el-select
                   style="width: 100%"
@@ -73,16 +80,16 @@
                 <el-date-picker
                   style="width: 100%"
                   v-bind:="item.otherOptions"
+                  value-format="YYYY-MM-DD"
                   v-model="formData[`${item.field}`]"
                 ></el-date-picker>
               </template>
               <template v-else-if="item.type === 'upload'">
                 <el-upload
                   class="picture-uploader"
-                  name="avatar"
                   action="http://120.77.30.174:8000/static"
-                  :on-success="handleAvatarSuccess"
-                  :before-upload="beforeAvatarUpload"
+                  :on-success="handlePictureSuccess"
+                  :before-upload="beforePictureUpload"
                   :http-request="upload"
                 >
                   <img v-if="imageUrl" :src="imageUrl" class="picture" />
@@ -154,27 +161,29 @@ watch(
   }
 );
 
-const imageUrl = ref('');
+const imageUrl = ref(formData.value['picture']);
 
 const upload = async (param) => {
-  const formData = new FormData();
-  formData.append('avatar', param.file);
-  await hloAxios.post({
+  const file = new FormData();
+  file.append('picture', param.file);
+  const result = await hloAxios.post({
     url: param.action,
-    data: formData
+    data: file
   });
+  const uploadPicture = result.path.split('upload/')[1];
+  imageUrl.value = `http://120.77.30.174:8000/upload/${uploadPicture}`;
 };
 
-const handleAvatarSuccess = (response, uploadFile) => {
-  imageUrl.value = URL.createObjectURL(uploadFile.raw);
+const handlePictureSuccess = () => {
+  formData.value['picture'] = imageUrl.value;
 };
 
-const beforeAvatarUpload = (rawFile) => {
-  if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!');
+const beforePictureUpload = (rawFile) => {
+  if (rawFile.type !== 'image/jpeg' && rawFile.type !== 'image/png') {
+    ElMessage.error('请上传jpg或png格式的图片');
     return false;
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!');
+    ElMessage.error('请上传图片大小小于4M的图片!');
     return false;
   }
   return true;

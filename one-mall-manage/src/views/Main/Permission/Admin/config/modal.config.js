@@ -44,13 +44,14 @@ export const modalConfig = {
       placeholder: '邮箱'
     },
     {
-      field: 'avatar_url',
-      type: 'upload',
-      label: '头像'
+      field: 'birthday',
+      type: 'datepicker',
+      label: '生日',
+      placeholder: '生日'
     }
   ],
   colLayout: {
-    xl: 11, // >1920px
+    xl: 24, // >1920px
     lg: 24,
     md: 24,
     sm: 24,

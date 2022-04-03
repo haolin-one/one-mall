@@ -28,11 +28,13 @@
 
       <template #img="scope">
         <el-image
+          v-if="scope.row.picture"
           style="width: 60px; height: 60px"
-          :src="scope.row.pic"
-          :preview-src-list="[scope.row.pic]"
+          :src="scope.row.picture"
+          :preview-src-list="[scope.row.picture]"
         >
         </el-image>
+        <text v-else>无</text>
       </template>
 
       <template #handle="scope">

@@ -1,7 +1,7 @@
 export const contentTableConfig = {
   propList: [
     {
-      prop: 'pic',
+      prop: 'picture',
       label: '商品图片',
       slotName: 'img'
     },
@@ -11,7 +11,7 @@ export const contentTableConfig = {
     },
     {
       prop: 'price',
-      label: '商品价格'
+      label: '商品价格(单位:￥)'
     },
     {
       prop: 'goodsCate',

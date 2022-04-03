@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
     <page-search
-      :searchFormConfig="searchFormConfig"
+      :searchFormConfig="searchConfigComputed"
       @queryBtnClick="handleQueryClick"
       @resetBtnClick="handleResetClick"
     ></page-search>
@@ -71,17 +71,21 @@ const roleList = computed(() =>
   store.getters['pageModule/pageListData']('role')
 );
 
-const modalConfigComputed = computed(() => {
-  const rolementItem = modalConfig.formItems.find(
-    (item) => item.field === 'role_id'
-  );
+const configComputed = (config) =>
+  computed(() => {
+    const rolementItem = config.formItems.find(
+      (item) => item.field === 'role_id'
+    );
 
-  rolementItem.options = roleList.value.map((item) => {
-    return { title: item.name, value: item.id };
+    rolementItem.options = roleList.value.map((item) => {
+      return { title: item.name, value: item.id };
+    });
+
+    return config;
   });
 
-  return modalConfig;
-});
+const modalConfigComputed = configComputed(modalConfig);
+const searchConfigComputed = configComputed(searchFormConfig);
 </script>
 
 <style lang="less" scoped></style>

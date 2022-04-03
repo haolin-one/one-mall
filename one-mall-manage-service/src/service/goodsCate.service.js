@@ -1,7 +1,9 @@
 const connection = require('../app/database');
 class goodsCateService {
   async getGoodsCateList(name = '', size, offset) {
-    const statement = `SELECT * FROM goods_cate WHERE name like '%${name}%' limit ?,?`;
+    const statement = `SELECT g1.*,IFNULL(g2.name,'该分类为一级分类') as parentCate FROM goods_cate g1
+                        LEFT JOIN goods_cate g2 ON g1.parent_id = g2.id
+                        WHERE g1.name like '%${name}%' limit ?,?`;
     const statement2 = `SELECT count(*) as totalCount FROM goods_cate WHERE name like '%${name}%'`;
     const result = await connection.execute(statement, [offset, size]);
     const result2 = await connection.execute(statement2);

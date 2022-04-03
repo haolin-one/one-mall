@@ -7,9 +7,13 @@ export const contentTableConfig = {
       minWidth: '300'
     },
     {
-      prop: 'pic',
+      prop: 'picture',
       label: '分类图片',
       slotName: 'img'
+    },
+    {
+      prop: 'parentCate',
+      label: '父分类'
     },
     { label: '操作', minWidth: '180', slotName: 'handle' }
   ],
