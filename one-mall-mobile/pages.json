@@ -92,7 +92,7 @@
         {
           "path": "orderDetail/orderDetail",
           "style": {
-            "navigationBarTitleText": "商品详情",
+            "navigationBarTitleText": "订单详情",
             "enablePullDownRefresh": false
           }
         },

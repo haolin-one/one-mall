@@ -1,7 +1,7 @@
 <template>
   <view class="goodsDetail">
     <view class="goodsInfo">
-      <image :src="goodsDetail.pic"></image>
+      <image :src="goodsDetail.picture"></image>
       <text class="price">￥{{ goodsDetail.price }}</text>
       <text class="description">{{ goodsDetail.description }}</text>
     </view>
@@ -48,7 +48,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions('cart', ['updateCart']),
+    ...mapActions('cart', ['getCart','updateCart']),
     goodsNavRightButtonClick(index) {
       this.clickIndex = index;
       this.$refs.popup.open();
@@ -67,12 +67,13 @@ export default {
           select_status: 1,
           user_id: this.userId
         });
+        this.getCart(this.userId)
         this.$refs.popup.close();
       } else if (this.clickIndex === 1) {
         uni.navigateTo({
           url:
             '../../subpackage/order/order?goods=' +
-            JSON.stringify(this.goodsDetail)
+            JSON.stringify([this.goodsDetail])
         });
       }
     }

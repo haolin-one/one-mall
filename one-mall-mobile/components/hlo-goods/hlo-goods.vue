@@ -1,7 +1,7 @@
 <template>
   <view class="hloGoods">
     <view class="leftGoodsInfo">
-      <image :src="goods.pic"></image>
+      <image :src="goods.picture"></image>
     </view>
     <view class="rightGoodsInfo">
       <text class="name">{{ goods.description }}</text>

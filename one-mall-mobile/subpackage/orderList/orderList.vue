@@ -1,7 +1,7 @@
 <template>
   <view class="orderList">
     <view v-for="order in orderList" :key="order.id">
-      <hlo-order-item :goods="order"></hlo-order-item>
+      <hlo-order-item :goodsInfo="order"></hlo-order-item>
     </view>
   </view>
 </template>

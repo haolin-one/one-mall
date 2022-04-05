@@ -16,6 +16,12 @@ class cartController {
     const result = await service.updateCart({ c_id, count });
     ctx.body = result;
   }
+  async changeSelectCart(ctx) {
+    const { id } = ctx.params;
+    const { status } = ctx.request.body;
+    await service.changeSelectCart(id, status);
+    ctx.body = '';
+  }
 }
 
 module.exports = new cartController();

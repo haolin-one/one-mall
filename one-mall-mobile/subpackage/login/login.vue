@@ -66,7 +66,7 @@ export default {
     return {
       formData: {
         account: 'coderone',
-        password: '123456'
+        password: 'admin1'
       },
       rules: {
         account: {

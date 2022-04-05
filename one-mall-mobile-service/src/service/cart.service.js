@@ -27,6 +27,11 @@ class cartService {
     const result = await connection.execute(statement);
     return result[0];
   }
+  async changeSelectCart(c_id, status) {
+    const statement = `UPDATE cart SET select_status = ${status} WHERE id = ${c_id}`;
+    await connection.execute(statement);
+    return;
+  }
 }
 
 module.exports = new cartService();

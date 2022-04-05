@@ -10,7 +10,7 @@ class GoodsCateService {
   async getGoodsChildCate(parent_id) {
     const statement = `
       SELECT
-      c.id,c.parent_id,c.img_url,c.name,c.level,c.show_status,c.sort,c.goods_unit,c.goods_count
+      c.id,c.parent_id,c.picture,c.name,c.level,c.show_status,c.sort,c.goods_unit,c.goods_count
       FROM goods_cate  c
       WHERE c.parent_id = ?
       OR c.parent_id in (SELECT c.id FROM goods_cate c WHERE c.parent_id = ?)

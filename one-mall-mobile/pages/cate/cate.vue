@@ -25,7 +25,7 @@
                 class="levelThreeItem"
                 v-if="cateLevel3.parent_id === cateLevel2.id"
               >
-                <image :src="cateLevel3.img_url"></image>
+                <image :src="cateLevel3.picture"></image>
                 <text>{{ cateLevel3.name }}</text>
               </view>
             </block>
