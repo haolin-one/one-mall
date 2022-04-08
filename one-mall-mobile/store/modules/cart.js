@@ -21,27 +21,24 @@ const actions = {
     });
     ctx.commit('setCart', result);
   },
-  
-  async changeSelectCart(ctx,{c_id,status}){
-    status = status === 1 ? 0 : 1
+
+  async changeSelectCart(ctx, { c_id, status }) {
+    status = status === 1 ? 0 : 1;
     await uni.hloRequest.post({
-      url:`cart/changeSelectCart/${c_id}`,
-      data:{status:status}
-    })
+      url: `cart/changeSelectCart/${c_id}`,
+      data: { status: status }
+    });
   },
 
   async updateCart(ctx, goods) {
     let isExist = false;
-    ctx.state.cart.forEach(async(item) => {
+    ctx.state.cart.forEach(async (item) => {
       if (item.id === goods.id) {
         isExist = true;
         item.count += goods.count;
         await uni.hloRequest.post({
           url: `cart/addSameGoods`,
           data: item
-        });
-        uni.showToast({
-          title: '已添加到购物车'
         });
         return;
       }
@@ -72,7 +69,7 @@ const getters = {
   totalPrice(state) {
     let price = 0;
     state.cart.forEach((item) => {
-      if(item.select_status){
+      if (item.select_status) {
         price += item.count * item.price;
       }
     });

@@ -10,7 +10,11 @@
             <text class="name">{{ goods.description }}</text>
             <view class="cap">
               <text class="price">￥{{ goods.price }}</text>
-              <uni-number-box v-model="goods.count" :min="1" :max="999"></uni-number-box>
+              <uni-number-box
+                v-model="goods.count"
+                :min="1"
+                :max="999"
+              ></uni-number-box>
             </view>
           </view>
         </view>
@@ -32,53 +36,53 @@
 </template>
 
 <script>
-  export default {
-    name: 'hlo-comfirm-order-goods',
-    props: {
-      goodsInfo: {
-        required: true
-      }
-    },
-    emits: ['submitOrder'],
-    data() {
-      return {};
-    },
-    methods: {
-      submitOrder() {
-        this.$emit('submitOrder', {
-          goods_id: this.goodsIds,
-          count: this.goodsCount,
-          total_amount: this.totalPrice
-        });
-      }
-    },
-    computed: {
-      totalPrice() {
-        let price = 0;
-        console.log(this.goodsInfo)
-        this.goodsInfo.forEach(item => {
-          price += item.price * item.count
-        })
-        return price.toFixed(2);
-      },
-      goodsCount() {
-        let count = 0;
-        this.goodsInfo.forEach(item => {
-          count += item.count
-        })
-        return count;
-      },
-      goodsIds(){
-        const ids = [];
-        this.goodsInfo.forEach(item => {
-          ids.push(item.id)
-        })
-        return ids
-      }
+export default {
+  name: 'hlo-comfirm-order-goods',
+  props: {
+    goodsInfo: {
+      required: true
     }
-  };
+  },
+  emits: ['submitOrder'],
+  data() {
+    return {};
+  },
+  methods: {
+    submitOrder() {
+      this.$emit('submitOrder', {
+        goods_id: this.goodsIds,
+        count: this.goodsCount,
+        total_amount: this.totalPrice
+      });
+    }
+  },
+  computed: {
+    totalPrice() {
+      let price = 0;
+      console.log(this.goodsInfo);
+      this.goodsInfo.forEach((item) => {
+        price += item.price * item.count;
+      });
+      return price.toFixed(2);
+    },
+    goodsCount() {
+      let count = 0;
+      this.goodsInfo.forEach((item) => {
+        count += item.count;
+      });
+      return count;
+    },
+    goodsIds() {
+      const ids = [];
+      this.goodsInfo.forEach((item) => {
+        ids.push(item.id);
+      });
+      return ids;
+    }
+  }
+};
 </script>
 
 <style lang="scss">
-  @import './style.scss';
+@import './style.scss';
 </style>

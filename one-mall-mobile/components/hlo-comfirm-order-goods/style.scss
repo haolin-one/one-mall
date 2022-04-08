@@ -1,4 +1,4 @@
-.hlo-confirm-order-goods{
+.hlo-confirm-order-goods {
   .footer {
     position: fixed;
     bottom: 0;
@@ -40,17 +40,17 @@
     width: 100%;
     box-sizing: content-box;
     padding: 10px;
-  
+
     .leftGoodsInfo {
       width: 200rpx;
       height: 100%;
-  
+
       image {
         height: 100%;
         width: 100%;
       }
     }
-  
+
     .rightGoodsInfo {
       display: flex;
       flex-direction: column;
@@ -58,7 +58,7 @@
       margin: 0 10px 0 10px;
       height: 100%;
       flex: 1;
-  
+
       .name {
         font-size: 26rpx;
         overflow: hidden;
@@ -67,7 +67,7 @@
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
       }
-  
+
       .cap {
         display: flex;
         justify-content: space-between;

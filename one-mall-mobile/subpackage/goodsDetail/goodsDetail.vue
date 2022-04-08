@@ -48,7 +48,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions('cart', ['getCart','updateCart']),
+    ...mapActions('cart', ['getCart', 'updateCart']),
     goodsNavRightButtonClick(index) {
       this.clickIndex = index;
       this.$refs.popup.open();
@@ -67,7 +67,7 @@ export default {
           select_status: 1,
           user_id: this.userId
         });
-        this.getCart(this.userId)
+        this.getCart(this.userId);
         this.$refs.popup.close();
       } else if (this.clickIndex === 1) {
         uni.navigateTo({

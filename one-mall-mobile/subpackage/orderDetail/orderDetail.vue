@@ -59,7 +59,7 @@ export default {
   name: 'hlo-address',
   onLoad(options) {
     this.orderItem = JSON.parse(options.goods).orderItem;
-    this.orderInfo=JSON.parse(options.goods).orderInfo
+    this.orderInfo = JSON.parse(options.goods).orderInfo;
   },
   data() {
     return {
