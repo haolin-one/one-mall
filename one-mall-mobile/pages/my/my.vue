@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapState,mapGetters} from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 export default {
   onShow() {
     if (!this.userInfo.id) {
@@ -94,5 +94,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './style.scss'
+@import './style.scss';
 </style>

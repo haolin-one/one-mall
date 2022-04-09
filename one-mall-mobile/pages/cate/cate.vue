@@ -21,7 +21,7 @@
           <view class="levelThree">
             <block v-for="cateLevel3 in childCateList" :key="cateLevel3.id">
               <view
-                @click="cate3ItemClick(cateLevel3.name)"
+                @click="cate3ItemClick(cateLevel3.id)"
                 class="levelThreeItem"
                 v-if="cateLevel3.parent_id === cateLevel2.id"
               >
@@ -60,9 +60,9 @@ export default {
       });
       this.childCateList = res;
     },
-    async cate3ItemClick(name) {
+    async cate3ItemClick(id) {
       uni.navigateTo({
-        url: '../../subpackage/goodsList/goodsList?query=' + name
+        url: '../../subpackage/goodsList/goodsList?query=' + id
       });
     }
   }

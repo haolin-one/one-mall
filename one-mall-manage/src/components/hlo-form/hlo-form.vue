@@ -98,6 +98,12 @@
                   /></el-icon>
                 </el-upload>
               </template>
+              <template v-else-if="item.type === 'treeSelect'">
+                <el-tree-select
+                  v-model="formData[`${item.field}`]"
+                  :data="item.options"
+                />
+              </template>
             </el-form-item>
           </el-col>
         </template>
@@ -183,7 +189,7 @@ const beforePictureUpload = (rawFile) => {
     ElMessage.error('请上传jpg或png格式的图片');
     return false;
   } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('请上传图片大小小于4M的图片!');
+    ElMessage.error('请上传图片大小小于2M的图片!');
     return false;
   }
   return true;

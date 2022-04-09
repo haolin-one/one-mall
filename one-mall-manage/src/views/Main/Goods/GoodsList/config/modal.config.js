@@ -19,6 +19,12 @@ export const modalConfig = {
       placeholder: '商品描述'
     },
     {
+      field: 'goods_cate_id',
+      type: 'treeSelect',
+      label: '商品分类',
+      options: []
+    },
+    {
       field: 'picture',
       type: 'upload',
       label: '商品图片'

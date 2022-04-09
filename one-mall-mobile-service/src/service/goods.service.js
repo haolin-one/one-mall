@@ -2,8 +2,9 @@ const connection = require('../app/database');
 
 class GoodsService {
   async qSearch(queryInfo) {
-    const statement = `SELECT id,name,description,picture,price FROM goods WHERE description like "%${queryInfo}%"`;
-    const result = await connection.execute(statement);
+    const statement = `SELECT id,name,description,picture,price FROM goods
+                       WHERE description like "%${queryInfo}%" OR goods_cate_id = ?`;
+    const result = await connection.execute(statement, [queryInfo]);
     return result[0];
   }
   async goodsDetail(id) {

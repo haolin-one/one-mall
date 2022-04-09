@@ -2,8 +2,7 @@ const service = require('../service/goodsCate.service');
 
 class goodsCateController {
   async getGoodsCateList(ctx) {
-    const { name, size, offset } = ctx.request.body;
-    const result = await service.getGoodsCateList(name, size, offset);
+    const result = await service.getGoodsCateList(ctx.request.body);
     ctx.body = result;
   }
 

@@ -23,7 +23,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useStore } from 'vuex';
+import { getPageListData } from '@/api/page';
 import { searchFormConfig } from './config/search.config';
 import { contentTableConfig } from './config/content.config';
 import { modalConfig } from './config/modal.config';
@@ -56,20 +56,7 @@ const handleUpdateData = (item) => {
 };
 
 // 获取角色列表
-const store = useStore();
-
-const getPageData = (queryInfo = {}) => {
-  store.dispatch('pageModule/getPageListAction', {
-    pageName: 'role',
-    queryInfo
-  });
-};
-
-getPageData();
-
-const roleList = computed(() =>
-  store.getters['pageModule/pageListData']('role')
-);
+const { list: roleList } = await getPageListData('/role/list');
 
 const configComputed = (config) =>
   computed(() => {
@@ -77,7 +64,7 @@ const configComputed = (config) =>
       (item) => item.field === 'role_id'
     );
 
-    rolementItem.options = roleList.value.map((item) => {
+    rolementItem.options = roleList.map((item) => {
       return { title: item.name, value: item.id };
     });
 

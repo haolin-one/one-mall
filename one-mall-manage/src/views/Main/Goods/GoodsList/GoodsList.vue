@@ -1,7 +1,7 @@
 <template>
   <div class="goods-list">
     <page-search
-      :searchFormConfig="searchFormConfig"
+      :searchFormConfig="searchConfigComputed"
       @resetBtnClick="handleResetClick"
       @queryBtnClick="handleQueryClick"
     ></page-search>
@@ -15,17 +15,19 @@
     <page-modal
       pageName="goods"
       ref="pageModalRef"
-      :modalConfig="modalConfig"
+      :modalConfig="modalConfigComputed"
       :defaultInfo="defaultInfo"
     ></page-modal>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { getPageListData } from '@/api/page';
 import { searchFormConfig } from './config/search.config';
 import { contentTableConfig } from './config/content.config';
 import { modalConfig } from './config/modal.config';
+import { tranListToTreeData } from '@/utils/tranListToTreeData';
 
 const pageContentRef = ref();
 const pageModalRef = ref();
@@ -49,6 +51,29 @@ const handleUpdateData = (item) => {
   defaultInfo.value = { ...item };
   pageModalRef.value.dialogVisible = true;
 };
+
+// 获取分类列表
+const { list: goodsCateList } = await getPageListData('goodsCate/list');
+
+let treeListData;
+
+treeListData = ref(tranListToTreeData(goodsCateList, 0));
+
+const configComputed = (config) =>
+  computed(() => {
+    const goodsCateItem = config.formItems.find(
+      (item) => item.field === 'goods_cate_id'
+    );
+
+    goodsCateItem.options = treeListData.value.map((item) => {
+      return item;
+    });
+
+    return config;
+  });
+
+const modalConfigComputed = configComputed(modalConfig);
+const searchConfigComputed = configComputed(searchFormConfig);
 </script>
 
 <style lang="less" scoped></style>

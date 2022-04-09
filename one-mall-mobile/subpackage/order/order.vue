@@ -29,8 +29,8 @@ export default {
         userId: this.$store.getters.userId
       });
       uni.switchTab({
-        url:'../../pages/my/my'
-      })
+        url: '../../pages/my/my'
+      });
     }
   }
 };

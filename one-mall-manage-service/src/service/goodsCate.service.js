@@ -1,6 +1,8 @@
 const connection = require('../app/database');
 class goodsCateService {
-  async getGoodsCateList(name = '', size, offset) {
+  async getGoodsCateList(goodsCate) {
+    const { name = '', size = 9999, offset = 0 } = goodsCate;
+
     const statement = `SELECT g1.*,IFNULL(g2.name,'该分类为一级分类') as parentCate FROM goods_cate g1
                         LEFT JOIN goods_cate g2 ON g1.parent_id = g2.id
                         WHERE g1.name like '%${name}%' limit ?,?`;
