@@ -3,7 +3,7 @@
     <view v-for="order in orderList" :key="order.orderInfo.id">
       <view class="orderItem">
         <uni-card>
-          <view @click="gotoOrderDetail(order.orderItem,order.orderInfo)">
+          <view @click="gotoOrderDetail(order.orderItem, order.orderInfo)">
             <block v-for="goods in order.orderItem" :key="goods.id">
               <view class="goodsInfo">
                 <view class="goodsPic">
@@ -18,7 +18,7 @@
                 </view>
               </view>
             </block>
-          </view>   
+          </view>
           <view class="totalAmount">
             <text class="totalAmountInfo">实付款</text>
             ￥
@@ -43,7 +43,7 @@ export default {
     return {};
   },
   methods: {
-    gotoOrderDetail(orderItem,orderInfo) {
+    gotoOrderDetail(orderItem, orderInfo) {
       uni.navigateTo({
         url:
           '../../subpackage/orderDetail/orderDetail?goods=' +

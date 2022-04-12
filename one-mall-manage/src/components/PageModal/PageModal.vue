@@ -1,8 +1,7 @@
 <template>
   <div class="page-modal">
     <el-dialog v-model="dialogVisible" center destroy-on-close>
-      <hlo-form v-model="formData" v-bind="modalConfig"></hlo-form>
-      <slot></slot>
+      <hlo-form v-model="formData" v-bind="modalConfig"> </hlo-form>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>

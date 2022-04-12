@@ -29,6 +29,8 @@ declare global {
   const ElSwitch: typeof import('element-plus/es')['ElSwitch']
   const ElTable: typeof import('element-plus/es')['ElTable']
   const ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+  const ElTimeline: typeof import('element-plus/es')['ElTimeline']
+  const ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
   const ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
   const ElUpload: typeof import('element-plus/es')['ElUpload']
 }

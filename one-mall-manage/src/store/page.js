@@ -20,8 +20,8 @@ const pageModule = {
       menuCount: 0,
       goodsCateList: [],
       goodsCateCount: 0,
-      departmentList: [],
-      departmentCount: 0
+      orderList: [],
+      orderCount: 0
     };
   },
   mutations: {
@@ -55,11 +55,11 @@ const pageModule = {
     changeGoodsCateCount(state, goodsCateCount) {
       state.goodsCateCount = goodsCateCount;
     },
-    changeDepartmentList(state, departmentList) {
-      state.departmentList = departmentList;
+    changeOrderList(state, orderList) {
+      state.orderList = orderList;
     },
-    changeDepartmentCount(state, departmentCount) {
-      state.departmentCount = departmentCount;
+    changeOrderCount(state, orderCount) {
+      state.orderCount = orderCount;
     }
   },
   getters: {

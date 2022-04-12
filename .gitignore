@@ -6,6 +6,7 @@ unpackage
 # local env files
 .env.local
 .env.*.local
+.env
 
 # vue component import
 auto-imports.d.ts

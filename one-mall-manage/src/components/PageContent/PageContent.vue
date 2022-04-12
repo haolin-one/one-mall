@@ -26,6 +26,66 @@
         {{ scope.row.gender === '1' ? '男' : '女' }}
       </template>
 
+      <!-- 订单的插槽start -->
+      <template #money="scope"> ￥{{ scope.row.total_amount }} </template>
+
+      <template #order_address="scope">
+        {{
+          scope.row.provinceName +
+          scope.row.cityName +
+          scope.row.countyName +
+          scope.row.detailInfo
+        }}
+      </template>
+
+      <template #order_status="scope">
+        <p v-if="scope.row.order_status === 0">待付款</p>
+        <p v-if="scope.row.order_status === 1">待发货</p>
+        <p v-if="scope.row.order_status === 2">待收货</p>
+        <p v-if="scope.row.order_status === 3">待评价</p>
+        <p v-if="scope.row.order_status === 4">已完成</p>
+        <p v-if="scope.row.order_status === 5">已关闭</p>
+      </template>
+
+      <template #order_handle="scope">
+        <el-button size="small" type="primary" plain> 查看订单 </el-button>
+        <el-button
+          v-if="scope.row.order_status === 1"
+          size="small"
+          type="success"
+          plain
+          @click="handleorderShipClick(scope.row)"
+        >
+          订单发货
+        </el-button>
+        <el-button
+          v-else-if="
+            scope.row.order_status === 2 ||
+            scope.row.order_status === 3 ||
+            scope.row.order_status === 4
+          "
+          size="small"
+          type="success"
+          plain
+          @click="handleTrackClick(scope.row)"
+        >
+          订单跟踪
+        </el-button>
+        <el-popconfirm
+          v-else-if="scope.row.order_status === 5"
+          confirm-button-text="确定"
+          cancel-button-text="取消"
+          icon-color="red"
+          @confirm="handleDeleteClick(scope.row)"
+          title="确定永久删除该数据吗?"
+        >
+          <template #reference>
+            <el-button size="small" type="danger" plain> 删除订单 </el-button>
+          </template>
+        </el-popconfirm>
+      </template>
+      <!-- 订单的插槽end -->
+
       <template #img="scope">
         <el-image
           v-if="scope.row.picture"
@@ -87,9 +147,22 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['newBtnClick', 'updateBtnClick']);
+const emit = defineEmits([
+  'newBtnClick',
+  'updateBtnClick',
+  'orderShipBtnClick',
+  'trackBtnClick'
+]);
 
 const store = useStore();
+
+// const otherPropSlots = props.contentTableConfig?.propList.filter((item) => {
+//   if (item.slotName === 'status') return false;
+//   if (item.slotName === 'createAt') return false;
+//   if (item.slotName === 'updateAt') return false;
+//   if (item.slotName === 'handle') return false;
+//   return true;
+// });
 
 // 双向绑定pageInfo
 const pageInfo = ref({ currentPage: 1, pageSize: 7 });
@@ -131,6 +204,16 @@ const handleUpdateClick = (item) => {
 
 const handleNewClick = () => {
   emit('newBtnClick');
+};
+
+// 订单发货
+const handleorderShipClick = (item) => {
+  emit('orderShipBtnClick', item);
+};
+
+// 订单跟踪
+const handleTrackClick = (item) => {
+  emit('trackBtnClick', item);
 };
 
 defineExpose({ getPageData });
