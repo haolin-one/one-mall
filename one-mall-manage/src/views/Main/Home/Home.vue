@@ -1,5 +1,7 @@
 <template>
-  <div>首页</div>
+  <div>
+    <page-echarts></page-echarts>
+  </div>
 </template>
 
 <script setup></script>

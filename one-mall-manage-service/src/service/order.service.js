@@ -44,6 +44,12 @@ class orderService {
     await connection.execute(statement, [id]);
     return;
   }
+
+  async getOrderDetail(order_sn) {
+    const statement = `SELECT * FROM order_item WHERE order_sn = ?`;
+    const result = await connection.execute(statement, [order_sn]);
+    return result[0];
+  }
 }
 
 module.exports = new orderService();

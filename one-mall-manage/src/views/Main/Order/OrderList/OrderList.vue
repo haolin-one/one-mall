@@ -74,14 +74,14 @@ const handleTrackClick = (item) => {
     },
     {
       content: '卖家已发货,等待买家收货',
-      timestamp: item.delivery_time,
+      timestamp: item.delivery_time ? item.delivery_time : '订单正在运输中...',
       type: item.delivery_time ? 'success' : 'info',
       size: 'large',
       icon: item.delivery_time ? Check : Minus
     },
     {
       content: '订单完成,买家已收货',
-      timestamp: item.receive_time,
+      timestamp: item.receive_time ? item.receive_time : '等待买家收货...',
       type: item.receive_time ? 'success' : 'info',
       size: 'large',
       icon: item.receive_time ? Check : Minus

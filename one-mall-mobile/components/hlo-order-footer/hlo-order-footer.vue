@@ -1,16 +1,16 @@
 <template>
   <view class="hlo-order-footer">
     <view class="footer">
-      <view v-if="status === 0">
+      <view v-if="orderInfo.order_status === 0">
         <button type="default" size="mini">去付款</button>
       </view>
-      <view v-if="status === 1">
-        <button type="default" size="mini">修改地址</button>
+      <view v-if="orderInfo.order_status === 1">
+        <button type="default" size="mini" @click="updateAddress">修改地址</button>
       </view>
-      <view v-if="status === 2">
-        <button type="default" size="mini">确认收货</button>
+      <view v-if="orderInfo.order_status === 2">
+        <button type="default" size="mini" @click="confirmReceive">确认收货</button>
       </view>
-      <view v-if="status === 3">
+      <view v-if="orderInfo.order_status === 3">
         <button type="default" size="mini">去评价</button>
       </view>
     </view>
@@ -21,9 +21,17 @@
 export default {
   name: 'hlo-order-footer',
   props: {
-    status: {
-      required: true
+    orderInfo:{
+      required:true
     }
+  },
+  methods:{
+    updateAddress(){
+      uni.navigateTo({
+        url:"../../subpackage/updateAddress/updateAddress?orderInfo="+JSON.stringify(this.orderInfo)
+      })
+    },
+    confirmReceive(){}
   }
 };
 </script>

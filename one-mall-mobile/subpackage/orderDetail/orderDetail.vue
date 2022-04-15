@@ -1,19 +1,6 @@
 <template>
   <view class="orderDetail">
-    <uni-card title="收货信息">
-      <view class="address">
-        <view class="icon">
-          <uni-icons type="location"></uni-icons>
-        </view>
-        <view class="receiptInfo">
-          <text class="addressInfo">{{ addressInfo }}</text>
-          <view class="receiverInfo">
-            <text class="receiver">{{ orderInfo.userName }}</text>
-            <text class="phone">{{ orderInfo.telNumber }}</text>
-          </view>
-        </view>
-      </view>
-    </uni-card>
+    <hlo-address :receiverInfo="orderInfo"></hlo-address>
     <uni-card>
       <block v-for="goods in orderItem" :key="goods.id">
         <view class="goodsInfo" @click="gotoDetail(goods.goodsID)">
@@ -42,13 +29,13 @@
       <view class="otherInfo">
         <view class="title"> 创建时间 </view>
         <view class="content">
-          {{ orderInfo.create_time }}
+          {{ orderInfo.createAt }}
         </view>
       </view>
     </uni-card>
     <hlo-order-footer
       class="detailFooter"
-      :status="orderInfo.status"
+      :orderInfo="orderInfo"
     ></hlo-order-footer>
   </view>
 </template>
@@ -74,16 +61,6 @@ export default {
       });
     }
   },
-  computed: {
-    addressInfo() {
-      return (
-        this.orderInfo.provinceName +
-        this.orderInfo.cityName +
-        this.orderInfo.countyName +
-        this.orderInfo.detailInfo
-      );
-    }
-  }
 };
 </script>
 

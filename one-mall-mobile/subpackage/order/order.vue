@@ -1,6 +1,6 @@
 <template>
   <view class="order">
-    <hlo-address></hlo-address>
+    <hlo-address :receiverInfo="receiverInfo"></hlo-address>
     <hlo-comfirm-order-goods
       :goodsInfo="goodsInfo"
       @submitOrder="submitOrder"
@@ -32,6 +32,11 @@ export default {
         url: '../../pages/my/my'
       });
     }
+  },
+  computed:{
+    receiverInfo() {
+    				return this.$store.getters.address
+    			}
   }
 };
 </script>

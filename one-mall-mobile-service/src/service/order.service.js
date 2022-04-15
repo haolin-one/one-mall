@@ -13,7 +13,7 @@ class orderService {
                       FROM orders o
                       INNER JOIN order_item i ON o.order_sn = i.order_sn
                       INNER JOIN goods g ON i.goods_id = g.id
-                      WHERE user_id = ${userId} AND status = ${status}
+                      WHERE user_id = ${userId} AND order_status = ${status}
                       GROUP BY i.order_sn`;
     }
     const result = await connection.execute(statement);

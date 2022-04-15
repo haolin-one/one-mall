@@ -48,7 +48,14 @@
       </template>
 
       <template #order_handle="scope">
-        <el-button size="small" type="primary" plain> 查看订单 </el-button>
+        <el-button
+          size="small"
+          type="primary"
+          plain
+          @click="detailOrder(scope.row)"
+        >
+          查看订单
+        </el-button>
         <el-button
           v-if="scope.row.order_status === 1"
           size="small"
@@ -134,6 +141,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 // import { usePermission } from '@/hooks/usePermission';
 
 const props = defineProps({
@@ -155,6 +163,7 @@ const emit = defineEmits([
 ]);
 
 const store = useStore();
+const router = useRouter();
 
 // const otherPropSlots = props.contentTableConfig?.propList.filter((item) => {
 //   if (item.slotName === 'status') return false;
@@ -214,6 +223,14 @@ const handleorderShipClick = (item) => {
 // 订单跟踪
 const handleTrackClick = (item) => {
   emit('trackBtnClick', item);
+};
+
+// 查看订单
+const detailOrder = async (item) => {
+  router.push({
+    path: '/main/order/orderDetail',
+    query: { item: JSON.stringify(item) }
+  });
 };
 
 defineExpose({ getPageData });

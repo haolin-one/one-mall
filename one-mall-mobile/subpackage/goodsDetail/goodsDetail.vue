@@ -1,7 +1,7 @@
 <template>
   <view class="goodsDetail">
     <view class="goodsInfo">
-      <image :src="goodsDetail.picture"></image>
+      <image class="picture" mode="aspectFill" :src="goodsDetail.picture"></image>
       <text class="price">￥{{ goodsDetail.price }}</text>
       <text class="description">{{ goodsDetail.description }}</text>
     </view>

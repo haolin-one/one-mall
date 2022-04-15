@@ -21,10 +21,10 @@
 import { mapMutations } from 'vuex';
 export default {
   name: 'hlo-address',
-  data() {
-    return {
-      receiverInfo: this.$store.getters.address
-    };
+  props:{
+    receiverInfo:{
+      required:true
+    }
   },
   methods: {
     ...mapMutations('user', ['setAddress']),

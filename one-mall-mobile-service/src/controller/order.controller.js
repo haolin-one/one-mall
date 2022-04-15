@@ -2,8 +2,8 @@ const service = require('../service/order.service');
 
 class orderController {
   async getOrder(ctx) {
-    const { userId, status } = ctx.query;
-    const result = await service.getOrder(userId, status);
+    const { userId, order_status } = ctx.query;
+    const result = await service.getOrder(userId, order_status);
     ctx.body = result;
   }
   async addOrder(ctx) {

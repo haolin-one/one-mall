@@ -15,6 +15,11 @@ class orderController {
     await service.deleteOrder(id);
     ctx.body = `删除成功~`;
   }
+  async getOrderDetail(ctx) {
+    const { order_sn } = ctx.params;
+    const result = await service.getOrderDetail(order_sn);
+    ctx.body = result;
+  }
 }
 
 module.exports = new orderController();

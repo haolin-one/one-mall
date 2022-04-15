@@ -76,7 +76,7 @@ export default {
     },
     gotoOrderList(status) {
       uni.navigateTo({
-        url: `../../subpackage/orderList/orderList?userId=${this.userId}&status=${status}`
+        url: `../../subpackage/orderList/orderList?userId=${this.userId}&order_status=${status}`
       });
     }
   },

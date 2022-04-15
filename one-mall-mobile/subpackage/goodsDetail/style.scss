@@ -2,8 +2,9 @@
   background-color: #ffffff;
   .goodsInfo {
     padding: 10px;
-    image {
-      height: 40vh;
+    .picture {
+      height: 60vh;
+      overflow: hidden;
       width: 100%;
     }
     .price {

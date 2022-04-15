@@ -110,7 +110,16 @@
             "enablePullDownRefresh": false
           }
         }
-      ]
+          ,{
+                    "path" : "updateAddress/updateAddress",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
     }
   ],
   "globalStyle": {
