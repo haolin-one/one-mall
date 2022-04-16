@@ -1,7 +1,7 @@
 import * as echarts from 'echarts';
 
+// 实例化echarts实例
 export default function (el) {
-  // 实例化echarts实例
   const echartInstance = echarts.init(el);
 
   const setOptions = (options) => {

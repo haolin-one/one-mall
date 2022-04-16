@@ -33,10 +33,10 @@ export default {
       });
     }
   },
-  computed:{
+  computed: {
     receiverInfo() {
-    				return this.$store.getters.address
-    			}
+      return this.$store.getters.address;
+    }
   }
 };
 </script>

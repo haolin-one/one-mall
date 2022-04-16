@@ -21,9 +21,9 @@
 import { mapMutations } from 'vuex';
 export default {
   name: 'hlo-address',
-  props:{
-    receiverInfo:{
-      required:true
+  props: {
+    receiverInfo: {
+      required: true
     }
   },
   methods: {

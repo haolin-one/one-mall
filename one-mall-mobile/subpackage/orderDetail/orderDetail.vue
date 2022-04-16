@@ -60,7 +60,7 @@ export default {
         url: `../goodsDetail/goodsDetail?id=` + id
       });
     }
-  },
+  }
 };
 </script>
 

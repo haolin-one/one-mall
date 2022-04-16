@@ -109,17 +109,15 @@
             "navigationBarTitleText": "忘记密码",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "updateAddress/updateAddress",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
         }
-          ,{
-                    "path" : "updateAddress/updateAddress",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+      ]
     }
   ],
   "globalStyle": {

@@ -5,19 +5,17 @@
 </template>
 
 <script>
-  export default {
-    onLoad(payload) {
-      console.log(JSON.parse(payload.orderInfo))
-      this.orderInfo = JSON.parse(payload.orderInfo)
-    },
-    data(){
-      return {
-        orderInfo:{}
-      }
-    }
+export default {
+  onLoad(payload) {
+    console.log(JSON.parse(payload.orderInfo));
+    this.orderInfo = JSON.parse(payload.orderInfo);
+  },
+  data() {
+    return {
+      orderInfo: {}
+    };
   }
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
