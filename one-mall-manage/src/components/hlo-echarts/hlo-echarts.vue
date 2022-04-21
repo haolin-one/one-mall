@@ -1,6 +1,8 @@
 <template>
   <div class="hlo-echarts">
-    <div ref="echartsDivRef" :style="{ width: width, height: height }"></div>
+    <el-card>
+      <div ref="echartsDivRef" :style="{ width: width, height: height }"></div>
+    </el-card>
   </div>
 </template>
 

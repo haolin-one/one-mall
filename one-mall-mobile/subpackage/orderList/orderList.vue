@@ -34,13 +34,16 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   onLoad(options) {
+    this.query=options
     this.$store.dispatch('getOrder', options);
   },
   data() {
-    return {};
+    return {
+      query:{}
+    };
   },
   methods: {
     gotoOrderDetail(orderItem, orderInfo) {
@@ -58,6 +61,9 @@ export default {
     ...mapGetters({
       orderList: 'order'
     })
+  },
+  onReachBottom() {
+    this.$store.dispatch('getOrder', {...this.query,offset:this.query.size*(this.query.offset++)});
   }
 };
 </script>

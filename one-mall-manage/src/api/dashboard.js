@@ -11,3 +11,9 @@ export function getCateSale() {
     url: '/dashboard/getCateSale'
   });
 }
+
+export function getMonthSale() {
+  return hloAxios.get({
+    url: '/dashboard/getMonthSale'
+  });
+}

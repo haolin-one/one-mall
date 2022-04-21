@@ -9,6 +9,10 @@ class dashboardController {
     const result = await service.getCateSale();
     ctx.body = result;
   }
+  async getMonthSale(ctx) {
+    const result = await service.getMonthSale();
+    ctx.body = result;
+  }
 }
 
 module.exports = new dashboardController();

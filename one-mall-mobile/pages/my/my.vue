@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters,mapMutations } from 'vuex';
 export default {
   onShow() {
     if (!this.userInfo.id) {
@@ -69,14 +69,18 @@ export default {
     return {};
   },
   methods: {
+    ...mapMutations(['clearOrder']),
     editUserInfo() {
       uni.navigateTo({
         url: '../../subpackage/settingUserInfo/settingUserInfo'
       });
     },
     gotoOrderList(status) {
+      const size = 10;
+      const offset = 0;
+      this.clearOrder()
       uni.navigateTo({
-        url: `../../subpackage/orderList/orderList?userId=${this.userId}&order_status=${status}`
+        url: `../../subpackage/orderList/orderList?userId=${this.userId}&order_status=${status}&size=${size}&offset=${offset}`,
       });
     }
   },

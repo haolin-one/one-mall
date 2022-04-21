@@ -37,23 +37,25 @@ const detailInfo = [
   '光彩大道368号 重庆大学城市科技学院'
 ];
 const addOrder = async (orderInfo) => {
-  const index = Math.floor(Math.random() * (6 - 0)) + 0; //不含最大值，含最小值
+  const index = 6;
   const {
     userId = 10,
+    createAt = '2021-11-11 18:40:39',
     userName = '王浩林',
-    telNumber = '19924688888',
-    goods_id = [48],
+    telNumber = 19924688888,
+    goods_id = [50],
     count = 1,
-    total_amount = 2399,
+    total_amount = 1499,
     remark = ''
   } = orderInfo;
   const orderSn = new Date().getTime() + userId.toString();
-  const statement = `INSERT INTO orders (user_id,order_sn,userName,telNumber,
+  const statement = `INSERT INTO orders (user_id,order_sn,createAt,userName,telNumber,
                         provinceName,cityName,countyName,detailInfo,total_amount)
-                        VALUES (?,?,?,?,?,?,?,?,?)`;
+                        VALUES (?,?,?,?,?,?,?,?,?,?)`;
   await connection.execute(statement, [
     userId,
     orderSn,
+    createAt,
     userName,
     telNumber,
     provinceName[index],
@@ -69,7 +71,13 @@ const addOrder = async (orderInfo) => {
   });
 };
 
-for (let i = 0; i < 100; i++) {
-  console.log(i);
+let i = 0;
+setInterval(() => {
+  console.log(i++);
   addOrder({});
-}
+}, 50);
+
+// for (let i = 0; i < 100; i++) {
+//   console.log(i);
+//   addOrder({});
+// }

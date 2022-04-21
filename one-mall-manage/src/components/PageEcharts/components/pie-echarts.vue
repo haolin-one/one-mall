@@ -1,12 +1,6 @@
 <template>
   <div class="pie-echarts">
-    <el-card>
-      <hlo-echarts
-        :options="options"
-        :width="width"
-        :height="height"
-      ></hlo-echarts>
-    </el-card>
+    <hlo-echarts :options="options"></hlo-echarts>
   </div>
 </template>
 
@@ -20,7 +14,7 @@ const data = res.map((item) => {
 
 const options = {
   title: {
-    text: '商品各分类销售量占比',
+    text: '商品分类销售量Top5',
     left: 'center'
   },
   tooltip: {
@@ -38,7 +32,7 @@ const options = {
   },
   series: [
     {
-      name: '销售量及占比',
+      name: '销售量及占比Top5',
       type: 'pie',
       radius: [20, 140],
       roseType: 'area',

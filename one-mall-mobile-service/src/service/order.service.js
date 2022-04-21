@@ -1,22 +1,24 @@
 const connection = require('../app/database');
 
 class orderService {
-  async getOrder(userId, status) {
+  async getOrder(order) {
+    const { userId, order_status, size, offset } = order;
     let statement;
-    if (status === '-1') {
+    if (order_status === '-1') {
       statement = `SELECT o.*,i.*,o.id as ordersID,i.id as itemID
                       FROM orders o
                       INNER JOIN order_item i ON o.order_sn = i.order_sn
-                      WHERE user_id = ${userId} GROUP BY i.order_sn`;
+                      WHERE user_id = ${userId} GROUP BY i.order_sn
+                      ORDER BY o.createAt DESC LIMIT ?,?`;
     } else {
       statement = `SELECT o.*,i.*,g.*,g.id as goodsID,o.id as ordersID,i.id as itemID
                       FROM orders o
                       INNER JOIN order_item i ON o.order_sn = i.order_sn
                       INNER JOIN goods g ON i.goods_id = g.id
-                      WHERE user_id = ${userId} AND order_status = ${status}
-                      GROUP BY i.order_sn`;
+                      WHERE user_id = ${userId} AND order_status = ${order_status}
+                      GROUP BY i.order_sn ORDER BY o.createAt DESC LIMIT ?,?`;
     }
-    const result = await connection.execute(statement);
+    const result = await connection.execute(statement, [offset, size]);
     const statement2 = `SELECT o.*,i.*,g.*,g.id as goodsID,o.id as ordersID,i.id as itemID
                         FROM order_item i
                         INNER JOIN orders o ON o.order_sn = i.order_sn
@@ -65,6 +67,31 @@ class orderService {
     goods_id.forEach(async (item) => {
       await connection.execute(statement1, [item, count, orderSn, remark]);
     });
+  }
+
+  async updateAddress(address) {
+    const {
+      userName,
+      telNumber,
+      provinceName,
+      cityName,
+      countyName,
+      detailInfo,
+      id
+    } = address;
+    const statement = `UPDATE orders SET userName=?,telNumber=?,
+                      provinceName=?,cityName=?,countyName=?,detailInfo=?
+                      WHERE id = ?`;
+    await connection.execute(statement, [
+      userName,
+      telNumber,
+      provinceName,
+      cityName,
+      countyName,
+      detailInfo,
+      id
+    ]);
+    return;
   }
 }
 

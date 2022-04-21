@@ -1,12 +1,6 @@
 <template>
   <div class="map-echarts">
-    <el-card>
-      <hlo-echarts
-        :width="width"
-        :height="hight"
-        :options="options"
-      ></hlo-echarts
-    ></el-card>
+    <hlo-echarts :options="options"></hlo-echarts>
   </div>
 </template>
 
@@ -18,7 +12,7 @@ import { getCitySale } from '@/api/dashboard';
 
 const result = await getCitySale();
 const data = result.map((item) => {
-  return { name: item.cityName, value: item.value * 10 };
+  return { name: item.cityName, value: item.value };
 });
 
 console.log(data);
@@ -92,7 +86,7 @@ const options = {
         value: 2
       },
       symbolSize: function (val) {
-        return val[2] / 10;
+        return val[2] / 5;
       },
       label: {
         formatter: '{b}',
@@ -122,7 +116,7 @@ const options = {
         value: 2
       },
       symbolSize: function (val) {
-        return val[2] / 10;
+        return val[2] / 5;
       },
       showEffectOn: 'emphasis',
       rippleEffect: {

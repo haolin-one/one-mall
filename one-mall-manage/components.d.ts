@@ -41,12 +41,14 @@ declare module 'vue' {
     HloEcharts: typeof import('./src/components/hlo-echarts/hlo-echarts.vue')['default']
     HloForm: typeof import('./src/components/hlo-form/hlo-form.vue')['default']
     HloTable: typeof import('./src/components/hlo-table/hlo-table.vue')['default']
+    MapEcharts: typeof import('./src/components/PageEcharts/components/map-echarts.vue')['default']
     NavHeader: typeof import('./src/components/NavHeader/NavHeader.vue')['default']
     NavMenu: typeof import('./src/components/NavMenu/NavMenu.vue')['default']
     PageContent: typeof import('./src/components/PageContent/PageContent.vue')['default']
     PageEcharts: typeof import('./src/components/PageEcharts/PageEcharts.vue')['default']
     PageModal: typeof import('./src/components/PageModal/PageModal.vue')['default']
     PageSearch: typeof import('./src/components/PageSearch/PageSearch.vue')['default']
+    PieEcharts: typeof import('./src/components/PageEcharts/components/pie-echarts.vue')['default']
   }
 }
 

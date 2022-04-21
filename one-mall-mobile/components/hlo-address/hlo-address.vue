@@ -24,17 +24,21 @@ export default {
   props: {
     receiverInfo: {
       required: true
+    },
+    update:{
+      default:true
     }
   },
   methods: {
     ...mapMutations('user', ['setAddress']),
     chooseAddress() {
-      uni.chooseAddress({
-        success: (res) => {
-          this.receiverInfo = res;
-          this.setAddress(this.receiverInfo);
-        }
-      });
+      if(this.update){
+        uni.chooseAddress({
+          success: (res) => {
+            this.setAddress(res);
+          }
+        });
+      }
     }
   },
   computed: {
