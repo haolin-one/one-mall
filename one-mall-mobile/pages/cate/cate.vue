@@ -51,6 +51,10 @@ export default {
       url: 'goodsCate'
     });
     this.parentCateList = res;
+    const res2 = await uni.hloRequest.get({
+      url: `goodsCate/1`
+    });
+    this.childCateList = res2;
   },
   methods: {
     async clickParentCate(parent_id, index) {

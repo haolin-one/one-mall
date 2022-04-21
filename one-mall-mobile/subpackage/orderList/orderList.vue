@@ -37,12 +37,12 @@
 import { mapGetters } from 'vuex';
 export default {
   onLoad(options) {
-    this.query=options
+    this.query = options;
     this.$store.dispatch('getOrder', options);
   },
   data() {
     return {
-      query:{}
+      query: {}
     };
   },
   methods: {
@@ -63,7 +63,10 @@ export default {
     })
   },
   onReachBottom() {
-    this.$store.dispatch('getOrder', {...this.query,offset:this.query.size*(this.query.offset++)});
+    this.$store.dispatch('getOrder', {
+      ...this.query,
+      offset: this.query.size * this.query.offset++
+    });
   }
 };
 </script>

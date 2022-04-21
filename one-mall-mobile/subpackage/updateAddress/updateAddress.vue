@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
+import { mapActions } from 'vuex';
 export default {
   onLoad(payload) {
     this.orderInfo = JSON.parse(payload.orderInfo);
@@ -16,26 +16,26 @@ export default {
       orderInfo: {}
     };
   },
-  methods:{
+  methods: {
     ...mapActions(['updateAddress']),
-    updateBtnClick(){
+    updateBtnClick() {
       uni.chooseAddress({
-        success:(res)=> {
-          this.updateAddress({...res,id:this.orderInfo.ordersID})
+        success: (res) => {
+          this.updateAddress({ ...res, id: this.orderInfo.ordersID });
         }
-      })
+      });
       uni.switchTab({
-        url:'../../pages/my/my'
-      })
+        url: '../../pages/my/my'
+      });
     }
   }
 };
 </script>
 
 <style lang="scss">
-  .update-address{
-    .updateBtn{
-      width: 90%;
-    }
+.update-address {
+  .updateBtn {
+    width: 90%;
   }
+}
 </style>

@@ -9,6 +9,7 @@
       <text class="price">￥{{ goodsDetail.price }}</text>
       <text class="description">{{ goodsDetail.description }}</text>
     </view>
+    <image class="priceDescript" src="../../static/priceDescript.jpg"></image>
     <hlo-goods-nav
       @goodsNavRightButtonClick="goodsNavRightButtonClick"
       @goodsNavLeftButtonClick="goodsNavLeftButtonClick"

@@ -1,17 +1,22 @@
 <template>
   <view class="my">
     <uni-card @click="editUserInfo">
-      <view class="user">
-        <view class="userInfo">
-          <image
-            class="avatar"
-            src="../../static/tabBar/cart-active.png"
-            mode="aspectFit"
-          ></image>
-          <view class="userInfoRight">
-            <text class="nickname">{{ nickname }}</text>
-            <text class="signature">{{ signature }}</text>
+      <view class="editUserInfo">
+        <view class="user">
+          <view class="userInfo">
+            <image
+              class="avatar"
+              src="../../static/tabBar/cart-active.png"
+              mode="aspectFit"
+            ></image>
+            <view class="userInfoRight">
+              <text class="nickname">{{ nickname }}</text>
+              <text class="signature">{{ signature }}</text>
+            </view>
           </view>
+        </view>
+        <view class="icons">
+          <uni-icons type="gear"></uni-icons>
         </view>
       </view>
     </uni-card>
@@ -56,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters,mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
   onShow() {
     if (!this.userInfo.id) {
@@ -78,9 +83,9 @@ export default {
     gotoOrderList(status) {
       const size = 10;
       const offset = 0;
-      this.clearOrder()
+      this.clearOrder();
       uni.navigateTo({
-        url: `../../subpackage/orderList/orderList?userId=${this.userId}&order_status=${status}&size=${size}&offset=${offset}`,
+        url: `../../subpackage/orderList/orderList?userId=${this.userId}&order_status=${status}&size=${size}&offset=${offset}`
       });
     }
   },

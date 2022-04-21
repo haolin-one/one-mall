@@ -25,14 +25,14 @@ export default {
     receiverInfo: {
       required: true
     },
-    update:{
-      default:true
+    update: {
+      default: true
     }
   },
   methods: {
     ...mapMutations('user', ['setAddress']),
     chooseAddress() {
-      if(this.update){
+      if (this.update) {
         uni.chooseAddress({
           success: (res) => {
             this.setAddress(res);

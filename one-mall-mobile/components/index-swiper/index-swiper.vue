@@ -27,7 +27,7 @@ export default {
   },
   async created() {
     const res = await uni.hloRequest.get({
-      url: 'banner'
+      url: 'home/banner'
     });
     this.banners = res;
   }

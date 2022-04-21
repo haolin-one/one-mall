@@ -69,7 +69,7 @@ class userService {
   }
 
   async getUserById(id) {
-    const statement = `SELECT password FROM user WHERE id = ${id}`;
+    const statement = `SELECT username,phone,password FROM user WHERE id = ${id}`;
     const result = await connection.execute(statement);
     return result[0];
   }
@@ -81,18 +81,16 @@ class userService {
   }
 
   async editUserInfo(user) {
-    const { id, username, nickname, personalized_signature, phone } = user;
-    const statement = `UPDATE user SET username=?, nickname = ?,
+    const { id, nickname, personalized_signature, phone } = user;
+    const statement = `UPDATE user SET nickname = ?,
                        personalized_signature=?, phone=?
                        WHERE id = ?`;
     const result = await connection.execute(statement, [
-      username,
       nickname,
       personalized_signature,
       phone,
       id
     ]);
-    console.log(result);
     return result[0];
   }
 
