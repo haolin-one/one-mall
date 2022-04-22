@@ -42,8 +42,7 @@ class orderService {
       cityName,
       countyName,
       detailInfo,
-      goods_id,
-      count,
+      goodsItem,
       total_amount,
       remark = ''
     } = orderInfo;
@@ -64,8 +63,13 @@ class orderService {
     ]);
     const statement1 = `INSERT INTO order_item (goods_id,goods_count,order_sn,remark)
                         VALUES (?,?,?,?)`;
-    goods_id.forEach(async (item) => {
-      await connection.execute(statement1, [item, count, orderSn, remark]);
+    goodsItem.forEach(async (item) => {
+      await connection.execute(statement1, [
+        item.goods_id,
+        item.goods_count,
+        orderSn,
+        remark
+      ]);
     });
   }
 

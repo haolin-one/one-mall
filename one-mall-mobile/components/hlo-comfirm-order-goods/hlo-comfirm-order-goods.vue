@@ -22,7 +22,7 @@
     </block>
     <view class="footer">
       <view class="orderInfo">
-        <text class="count">共{{ goodsCount }}件</text>
+        <text class="count">共{{ goodsTotalCount }}件</text>
         合计:￥
         <text class="price">{{ totalPrice }}</text>
       </view>
@@ -50,8 +50,8 @@ export default {
   methods: {
     submitOrder() {
       this.$emit('submitOrder', {
-        goods_id: this.goodsIds,
-        count: this.goodsCount,
+        goodsItem: this.goodsItem,
+        totalCount: this.goodsTotalCount,
         total_amount: this.totalPrice
       });
     }
@@ -65,19 +65,19 @@ export default {
       });
       return price.toFixed(2);
     },
-    goodsCount() {
+    goodsTotalCount() {
       let count = 0;
       this.goodsInfo.forEach((item) => {
         count += item.count;
       });
       return count;
     },
-    goodsIds() {
-      const ids = [];
+    goodsItem() {
+      const items = [];
       this.goodsInfo.forEach((item) => {
-        ids.push(item.id);
+        items.push({goods_id:item.id,goods_count:item.count});
       });
-      return ids;
+      return items;
     }
   }
 };
