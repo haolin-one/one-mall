@@ -75,7 +75,7 @@ export default {
     goodsItem() {
       const items = [];
       this.goodsInfo.forEach((item) => {
-        items.push({goods_id:item.id,goods_count:item.count});
+        items.push({ goods_id: item.id, goods_count: item.count });
       });
       return items;
     }

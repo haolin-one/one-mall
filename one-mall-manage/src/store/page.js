@@ -21,7 +21,9 @@ const pageModule = {
       goodsCateList: [],
       goodsCateCount: 0,
       orderList: [],
-      orderCount: 0
+      orderCount: 0,
+      bannerList: [],
+      bannerCount: 0
     };
   },
   mutations: {
@@ -60,6 +62,12 @@ const pageModule = {
     },
     changeOrderCount(state, orderCount) {
       state.orderCount = orderCount;
+    },
+    changeBannerList(state, bannerList) {
+      state.bannerList = bannerList;
+    },
+    changeBannerCount(state, bannerCount) {
+      state.bannerCount = bannerCount;
     }
   },
   getters: {

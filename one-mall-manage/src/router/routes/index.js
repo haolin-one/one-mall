@@ -7,6 +7,7 @@ import OrderDetail from './Order/OrderDetail';
 import admin from './Permission/Admin';
 import role from './Permission/Role';
 import menu from './Permission/Menu';
+import Banner from './Marketing/Banner';
 
 export const allRoutes = [
   goodsList,
@@ -17,5 +18,6 @@ export const allRoutes = [
   admin,
   role,
   menu,
-  OrderDetail
+  OrderDetail,
+  Banner
 ];
