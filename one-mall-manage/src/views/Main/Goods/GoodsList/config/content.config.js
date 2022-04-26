@@ -22,6 +22,10 @@ export const contentTableConfig = {
       label: '商品描述'
     },
     {
+      label: '启动状态',
+      slotName: 'usable'
+    },
+    {
       label: '操作',
       slotName: 'handle'
     }

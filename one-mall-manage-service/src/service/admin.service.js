@@ -55,9 +55,10 @@ class adminService {
       gender = '',
       email = '',
       role_id = '',
-      birthday = ''
+      birthday = '',
+      usable
     } = admin;
-    const statement = `UPDATE admin SET name = ?,username=?,phone=?,gender=?,email=?,role_id=?,birthday=? WHERE id = ?`;
+    const statement = `UPDATE admin SET name = ?,username=?,phone=?,gender=?,email=?,role_id=?,birthday=?,usable=? WHERE id = ?`;
     await connections.execute(statement, [
       name,
       username,
@@ -66,6 +67,7 @@ class adminService {
       email,
       role_id,
       birthday,
+      usable,
       id
     ]);
     return;

@@ -46,7 +46,8 @@ class orderService {
   }
 
   async getOrderDetail(order_sn) {
-    const statement = `SELECT * FROM order_item WHERE order_sn = ?`;
+    const statement = `SELECT * FROM order_item LEFT JOIN goods AS g ON order_item.goods_id = g.id
+                       WHERE order_sn = ?`;
     const result = await connection.execute(statement, [order_sn]);
     return result[0];
   }

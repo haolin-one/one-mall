@@ -94,6 +94,8 @@ const pageModule = {
       // 3.将数据存储到state中
       const { list, totalCount } = pageResult;
 
+      console.log(pageResult);
+
       const changePageName =
         pageName.slice(0, 1).toUpperCase() + pageName.slice(1);
 

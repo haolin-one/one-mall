@@ -11,6 +11,11 @@ export const modalConfig = {
       field: 'picture',
       type: 'upload',
       label: '轮播图图片'
+    },
+    {
+      field: 'goods_id',
+      type: 'input',
+      label: '关联商品id'
     }
   ],
   colLayout: {}

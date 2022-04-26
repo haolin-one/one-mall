@@ -8,9 +8,9 @@
       :duration="1000"
     >
       <block v-for="banner in banners" :key="banner.id">
-        <swiper-item>
+        <swiper-item @click="gotoGoodsDetail(banner.goods_id)">
           <view class="swiper-item">
-            <image :src="banner.img_url"></image>
+            <image :src="banner.picture"></image>
           </view>
         </swiper-item>
       </block>
@@ -30,6 +30,13 @@ export default {
       url: 'home/banner'
     });
     this.banners = res;
+  },
+  methods:{
+    gotoGoodsDetail(id){
+      uni.navigateTo({
+        url:'../../subpackage/goodsDetail/goodsDetail?id='+id
+      })
+    }
   }
 };
 </script>

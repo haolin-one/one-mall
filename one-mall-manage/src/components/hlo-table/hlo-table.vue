@@ -1,6 +1,6 @@
 <template>
   <div class="hlo-table">
-    <div class="header">
+    <div class="header" v-show="showHeader">
       <slot name="header">
         <div class="title">{{ title }}</div>
         <div class="handler">
@@ -91,6 +91,10 @@ const props = defineProps({
     default: () => ({})
   },
   showFooter: {
+    type: Boolean,
+    default: true
+  },
+  showHeader: {
     type: Boolean,
     default: true
   }

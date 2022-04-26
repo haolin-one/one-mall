@@ -3,7 +3,8 @@ const connection = require('../app//database');
 class bannerService {
   async getBannerList(banner) {
     const { title = '', size, offset } = banner;
-    const statement = `SELECT * FROM banner WHERE title like '%${title}%' LIMIT ?,?`;
+    const statement = `SELECT b.*,g.description FROM banner b LEFT JOIN goods g ON g.id = b.goods_id
+                      WHERE b.title like '%${title}%' LIMIT ?,?`;
     const result = await connection.execute(statement, [offset, size]);
     const statement2 = `SELECT COUNT(*) as totalCount FROM banner WHERE title like '%${title}%'`;
     const result2 = await connection.execute(statement2);

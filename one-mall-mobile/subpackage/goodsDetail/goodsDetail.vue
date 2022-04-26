@@ -1,5 +1,5 @@
 <template>
-  <view class="goodsDetail">
+  <view class="goodsDetail" v-if="goodsDetail.usable === 1">
     <view class="goodsInfo">
       <image
         class="picture"
@@ -26,6 +26,9 @@
       </view>
       <button type="default" @click="confirmBuy">确认</button>
     </uni-popup>
+  </view>
+  <view v-else-if="goodsDetail.usable === 0">
+    该商品已下架
   </view>
 </template>
 

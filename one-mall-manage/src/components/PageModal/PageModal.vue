@@ -57,7 +57,11 @@ const handleConfirmClick = () => {
     // 编辑
     store.dispatch('pageModule/updatePageDataAction', {
       pageName: props.pageName,
-      updateData: { ...formData.value, ...props.otherInfo },
+      updateData: {
+        ...props.defaultInfo,
+        ...formData.value,
+        ...props.otherInfo
+      },
       id: props.defaultInfo.id
     });
   } else {

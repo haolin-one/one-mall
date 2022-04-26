@@ -31,6 +31,11 @@ export const contentTableConfig = {
       prop: 'birthday',
       label: '生日'
     },
+    {
+      prop: 'usable',
+      label: '启动状态',
+      slotName: 'usable'
+    },
     // {
     //   prop: 'createAt',
     //   label: '创建时间',
@@ -41,7 +46,7 @@ export const contentTableConfig = {
     //   label: '更新时间',
     //   minWidth: '100'
     // },
-    { label: '操作', minWidth: '100', slotName: 'handle' }
+    { label: '操作', minWidth: '120', slotName: 'handle' }
   ],
   showIndexColumn: true
 };

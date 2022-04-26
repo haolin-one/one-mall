@@ -10,6 +10,10 @@ export const contentTableConfig = {
       slotName: 'img'
     },
     {
+      prop: 'description',
+      label: '关联商品'
+    },
+    {
       label: '操作',
       slotName: 'handle'
     }

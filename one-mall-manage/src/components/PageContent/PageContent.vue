@@ -12,14 +12,20 @@
       </template>
 
       <!-- 列里的插槽 -->
-      <template #status="scope">
-        <el-button
-          size="small"
-          plain
-          :type="scope.row.enable ? 'success' : 'danger'"
-        >
-          {{ scope.row.enable ? '启用' : '禁用' }}
-        </el-button>
+      <template #usable="scope">
+        <el-switch
+          v-model="scope.row.usable"
+          inline-prompt
+          :width="50"
+          size="large"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+          active-text="启用"
+          inactive-text="冻结"
+          :active-value="1"
+          :inactive-value="0"
+          @click="changeStatus(scope.row)"
+        />
       </template>
 
       <template #gender="scope">
@@ -229,7 +235,16 @@ const handleTrackClick = (item) => {
 const detailOrder = async (item) => {
   router.push({
     path: '/main/order/orderDetail',
+    name: 'orderDetail',
     query: { item: JSON.stringify(item) }
+  });
+};
+
+const changeStatus = async (item) => {
+  store.dispatch('pageModule/updatePageDataAction', {
+    pageName: props.pageName,
+    updateData: item,
+    id: item.id
   });
 };
 

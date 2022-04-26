@@ -1,7 +1,7 @@
 <template>
   <div class="nav-menu">
-    <div class="logo">
-      <span v-if="!collapse" class="title">Vue3 + Koa后台管理系统</span>
+    <div class="logo" v-if="!collapse && mode !== 'horizontal'">
+      <span class="title">Vue3 + Koa后台管理系统</span>
     </div>
     <el-menu
       default-active="home"
@@ -10,10 +10,16 @@
       text-color="#b7bdc3"
       active-text-color="#0a60bd"
       :collapse="collapse"
+      :mode="mode"
     >
-      <el-menu-item index="home" @click="handleMenuItemClick('home', '')">
-        <template #title> 首页 </template>
+      <el-menu-item
+        class="home"
+        index="home"
+        @click="handleMenuItemClick('home', '')"
+      >
+        首页
       </el-menu-item>
+
       <div v-for="item in userMenus" :key="item.id">
         <el-sub-menu v-if="item.level === 0" :index="item.id + ''">
           <template #title>
@@ -43,7 +49,10 @@ import { getMenusById } from '@/api/menu';
 import { useRouter } from 'vue-router';
 
 defineProps({
-  collapse: Boolean
+  collapse: Boolean,
+  mode: {
+    default: 'vertical'
+  }
 });
 
 const router = useRouter();

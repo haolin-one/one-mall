@@ -17,14 +17,15 @@ class goodsService {
     return { list: result[0], ...result2[0][0] };
   }
   async updateGoodsList(goodsId, goods) {
-    const { name, price, description, picture, goods_cate_id } = goods;
-    const statement = `UPDATE goods SET name = ?, price = ?, description = ?, picture = ?, goods_cate_id = ? WHERE id = ?`;
+    const { name, price, description, picture, goods_cate_id, usable } = goods;
+    const statement = `UPDATE goods SET name = ?, price = ?, description = ?, picture = ?, goods_cate_id = ?, usable = ? WHERE id = ?`;
     await connection.execute(statement, [
       name,
       price,
       description,
       picture,
       goods_cate_id,
+      usable,
       goodsId
     ]);
     return;
