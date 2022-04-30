@@ -97,6 +97,32 @@ class orderService {
     ]);
     return;
   }
+
+  async confirmReceive(id) {
+    const statement = `UPDATE orders SET order_status = 3 WHERE id = ?`;
+    await connection.execute(statement, [id]);
+    return;
+  }
+
+  async confirmComment(order) {
+    const { order_sn } = order[0];
+    console.log(order_sn);
+    const statement = `UPDATE orders SET order_status = 4 WHERE order_sn = ?`;
+    const statement2 = `UPDATE order_item SET correspond = ?, logistics = ?,
+                      manner = ? WHERE id = ?`;
+    await connection.execute(statement, [order_sn]);
+    order.forEach(async (item) => {
+      const { correspond, logistics, manner, itemID } = item;
+      console.log(correspond, logistics, manner);
+      await connection.execute(statement2, [
+        correspond,
+        logistics,
+        manner,
+        itemID
+      ]);
+    });
+    return;
+  }
 }
 
 module.exports = new orderService();

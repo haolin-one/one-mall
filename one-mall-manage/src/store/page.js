@@ -120,10 +120,10 @@ const pageModule = {
 
       const pageUrl = `/${pageName}/${id}`;
 
-      await deletePageData(pageUrl);
+      const res = await deletePageData(pageUrl);
 
-      ElMessage({
-        message: '删除成功~',
+      ElNotification({
+        message: res,
         type: 'success'
       });
 
@@ -140,10 +140,10 @@ const pageModule = {
       const { pageName, newData } = payload;
       const pageUrl = `/${pageName}`;
 
-      await createPageData(pageUrl, newData);
+      const res = await createPageData(pageUrl, newData);
 
-      ElMessage({
-        message: '添加成功~',
+      ElNotification({
+        message: res,
         type: 'success'
       });
 
@@ -160,10 +160,10 @@ const pageModule = {
       const { pageName, updateData, id } = payload;
       const pageUrl = `/${pageName}/${id}`;
 
-      await updatePageData(pageUrl, updateData);
+      const res = await updatePageData(pageUrl, updateData);
 
-      ElMessage({
-        message: '修改成功~',
+      ElNotification({
+        message: res,
         type: 'success'
       });
 

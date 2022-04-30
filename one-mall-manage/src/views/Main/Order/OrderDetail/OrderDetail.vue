@@ -1,10 +1,11 @@
 <template>
   <div class="OrderDetail">
     <div class="steps">
-      <el-steps :space="200" :active="1" finish-status="success">
-        <el-step title="Done" />
-        <el-step title="Processing" />
-        <el-step title="Step 3" />
+      <el-steps align-center :active="stepActive" finish-status="success">
+        <el-step title="提交订单" :description="orderInfo.createAt" />
+        <el-step title="平台发货" :description="orderInfo.delivery_time" />
+        <el-step title="买家收货" :description="orderInfo.receive_time" />
+        <el-step title="完成评价" :description="orderInfo.comment_time" />
       </el-steps>
     </div>
     <div class="baseInfo">
@@ -57,7 +58,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 import hloAxios from '@/request/index';
@@ -67,7 +68,6 @@ import { contentTableConfig } from './config/content.config';
 const route = useRoute();
 
 const orderInfo = JSON.parse(route.query.item);
-console.log(orderInfo);
 
 const orderItem = ref();
 
@@ -79,7 +79,17 @@ const getOrderItem = async () => {
 
 await getOrderItem();
 
-console.log(orderItem.value);
+const stepActive = computed(() => {
+  if (orderInfo.delivery_time) {
+    return 2;
+  } else if (orderInfo.receive_time) {
+    return 3;
+  } else if (orderInfo.comment_time) {
+    return 4;
+  } else {
+    return 1;
+  }
+});
 </script>
 
 <style lang="less" scoped>

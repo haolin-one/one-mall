@@ -180,7 +180,7 @@ const router = useRouter();
 // });
 
 // 双向绑定pageInfo
-const pageInfo = ref({ currentPage: 1, pageSize: 7 });
+const pageInfo = ref({ currentPage: 1, pageSize: 10 });
 watch(pageInfo, () => getPageData());
 
 const getPageData = (queryInfo = {}) => {

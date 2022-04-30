@@ -20,13 +20,13 @@
             </block>
           </view>
           <view class="totalAmount">
-            <text class="totalAmountInfo">实付款</text>
+            <text class="totalAmountInfo">实付款:</text>
             ￥
             <text class="totalAmountInfo">{{
               order.orderInfo.total_amount
             }}</text>
           </view>
-          <hlo-order-footer :orderInfo="order.orderInfo"></hlo-order-footer>
+          <hlo-order-footer :orderItem="order.orderItem" :orderInfo="order.orderInfo"></hlo-order-footer>
         </uni-card>
       </view>
     </view>

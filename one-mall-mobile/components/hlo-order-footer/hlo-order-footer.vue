@@ -15,7 +15,10 @@
         </button>
       </view>
       <view v-if="orderInfo.order_status === 3">
-        <button type="default" size="mini">去评价</button>
+        <button type="default" size="mini" @click="gotoComment">去评价</button>
+      </view>
+      <view v-if="orderInfo.order_status === 4">
+        <button type="default" size="mini">已完成</button>
       </view>
     </view>
   </view>
@@ -27,6 +30,9 @@ export default {
   props: {
     orderInfo: {
       required: true
+    },
+    orderItem:{
+      required:true
     }
   },
   methods: {
@@ -37,7 +43,26 @@ export default {
           JSON.stringify(this.orderInfo)
       });
     },
-    confirmReceive() {}
+    confirmReceive() {
+      uni.showModal({
+        title:'确认收到货了吗',
+        content:'为保证你的售后权益，请收到商品确认无误后再确认收货',
+        success:()=> {
+          uni.hloRequest.post({
+            url:'order/confirmReceive',
+            data:{id:this.orderInfo.ordersID}
+          })
+          uni.redirectTo({
+            url:'../../subpackage/receiveSuccess/receiveSuccess?orderItem='+JSON.stringify(this.orderItem)
+          })
+        }
+      })
+    },
+    gotoComment(){
+      uni.navigateTo({
+        url:'../../subpackage/comment/comment?orderItem='+JSON.stringify(this.orderItem)
+      })
+    }
   }
 };
 </script>

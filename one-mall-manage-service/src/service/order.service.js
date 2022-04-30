@@ -7,7 +7,8 @@ class orderService {
     const statement = `SELECT o.*,u.username FROM orders o
                       LEFT JOIN user u ON o.user_id = u.id
                       WHERE o.order_sn like '%${order_sn}%'
-                      AND o.order_status like '%${order_status}%' LIMIT ?,?`;
+                      AND o.order_status like '%${order_status}%'
+                      ORDER BY createAt DESC LIMIT ?,?`;
     const result = await connection.execute(statement, [offset, size]);
     const statement2 = `SELECT COUNT(*) as totalCount FROM orders WHERE order_sn like '%${order_sn}%' AND order_status like '%${order_status}%'`;
     const result2 = await connection.execute(statement2);
@@ -23,7 +24,6 @@ class orderService {
   }
 
   async updateOrder(id, order) {
-    console.log(order);
     const { delivery_company = '', delivery_sn = '' } = order;
     const order_status = 2;
     const delivery_time = dayjs().format('YYYY-MM-DD HH:mm:ss');

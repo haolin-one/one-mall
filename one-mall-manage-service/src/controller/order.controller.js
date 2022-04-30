@@ -9,7 +9,7 @@ class orderController {
   async updateOrder(ctx) {
     const { id } = ctx.params;
     await service.updateOrder(id, ctx.request.body);
-    ctx.body = `修改成功~`;
+    ctx.body = `发货成功~`;
   }
 
   async deleteOrder(ctx) {

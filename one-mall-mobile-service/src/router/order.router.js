@@ -3,7 +3,9 @@ const router = require('koa-router');
 const {
   getOrder,
   addOrder,
-  updateAddress
+  updateAddress,
+  confirmReceive,
+  confirmComment
 } = require('../controller/order.controller');
 
 const orderRouter = new router({ prefix: '/order' });
@@ -11,5 +13,7 @@ const orderRouter = new router({ prefix: '/order' });
 orderRouter.get('/', getOrder);
 orderRouter.post('/', addOrder);
 orderRouter.post('/updateAddress', updateAddress);
+orderRouter.post('/confirmReceive', confirmReceive);
+orderRouter.post('/confirmComment', confirmComment);
 
 module.exports = orderRouter;
