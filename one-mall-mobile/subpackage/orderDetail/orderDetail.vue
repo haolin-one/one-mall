@@ -15,22 +15,37 @@
             <text class="count">x {{ goods.goods_count }}</text>
           </view>
         </view>
-        <view class="otherInfo"  v-if="goods.remark">
+        <view class="otherInfo" v-if="goods.remark">
           <view class="title"> 备注信息 </view>
           <view class="content"> {{ goods.remark }} </view>
         </view>
         <view class="rateStart" v-if="goods.correspond">
           <view class="otherInfo">
             <text>描述相符</text>
-            <uni-rate v-model="goods.correspond" :readonly="true" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.correspond"
+              :readonly="true"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
           <view class="otherInfo">
             <text>物流速度</text>
-            <uni-rate v-model="goods.logistics" :readonly="true" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.logistics"
+              :readonly="true"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
           <view class="otherInfo">
             <text>客服服务</text>
-            <uni-rate v-model="goods.manner" :readonly="true" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.manner"
+              :readonly="true"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
         </view>
       </block>
@@ -59,36 +74,37 @@
         </view>
       </view>
     </uni-card>
-    <hlo-order-footer class="detailFooter" :orderInfo="orderInfo"></hlo-order-footer>
+    <hlo-order-footer
+      class="detailFooter"
+      :orderInfo="orderInfo"
+    ></hlo-order-footer>
   </view>
 </template>
 
 <script>
-  import {
-    mapMutations
-  } from 'vuex';
-  export default {
-    name: 'hlo-address',
-    onLoad(options) {
-      this.orderItem = JSON.parse(options.goods).orderItem;
-      this.orderInfo = JSON.parse(options.goods).orderInfo;
-    },
-    data() {
-      return {
-        orderItem: [],
-        orderInfo: {}
-      };
-    },
-    methods: {
-      gotoDetail(id) {
-        uni.navigateTo({
-          url: `../goodsDetail/goodsDetail?id=` + id
-        });
-      }
+import { mapMutations } from 'vuex';
+export default {
+  name: 'hlo-address',
+  onLoad(options) {
+    this.orderItem = JSON.parse(options.goods).orderItem;
+    this.orderInfo = JSON.parse(options.goods).orderInfo;
+  },
+  data() {
+    return {
+      orderItem: [],
+      orderInfo: {}
+    };
+  },
+  methods: {
+    gotoDetail(id) {
+      uni.navigateTo({
+        url: `../goodsDetail/goodsDetail?id=` + id
+      });
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss">
-  @import './style.scss';
+@import './style.scss';
 </style>

@@ -27,9 +27,7 @@
       <button type="default" @click="confirmBuy">确认</button>
     </uni-popup>
   </view>
-  <view v-else-if="goodsDetail.usable === 0">
-    该商品已下架
-  </view>
+  <view v-else-if="goodsDetail.usable === 0"> 该商品已下架 </view>
 </template>
 
 <script>
@@ -58,15 +56,15 @@ export default {
   methods: {
     ...mapActions('cart', ['getCart', 'updateCart']),
     goodsNavRightButtonClick(index) {
-      if(!this.userId){
+      if (!this.userId) {
         uni.navigateTo({
-          url:'../login/login'
-        })
+          url: '../login/login'
+        });
         uni.showToast({
-          title:'请先登录~',
-          icon:'none'
-        })
-      }else{
+          title: '请先登录~',
+          icon: 'none'
+        });
+      } else {
         this.clickIndex = index;
         this.$refs.popup.open();
       }

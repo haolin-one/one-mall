@@ -17,15 +17,27 @@
         <view class="rateStart">
           <view class="correspond">
             <text>描述相符</text>
-            <uni-rate v-model="goods.correspond" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.correspond"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
           <view class="logistics">
             <text>物流速度</text>
-            <uni-rate v-model="goods.logistics" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.logistics"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
           <view class="manner">
             <text>客服服务</text>
-            <uni-rate v-model="goods.manner" color="#bbb" active-color="#087dd8" />
+            <uni-rate
+              v-model="goods.manner"
+              color="#bbb"
+              active-color="#087dd8"
+            />
           </view>
         </view>
       </block>
@@ -35,29 +47,29 @@
 </template>
 
 <script>
-  export default {
-    onLoad(payload) {
-      this.orderItem=JSON.parse(payload.orderItem)
-    },
-    data() {
-      return {
-        orderItem:[]
-      };
-    },
-    methods:{
-      async confirmComment(){
-        await uni.hloRequest.post({
-          url:'order/confirmComment',
-          data:this.orderItem
-        })
-        uni.switchTab({
-          url:'../../pages/my/my'
-        })
-      }
+export default {
+  onLoad(payload) {
+    this.orderItem = JSON.parse(payload.orderItem);
+  },
+  data() {
+    return {
+      orderItem: []
+    };
+  },
+  methods: {
+    async confirmComment() {
+      await uni.hloRequest.post({
+        url: 'order/confirmComment',
+        data: this.orderItem
+      });
+      uni.switchTab({
+        url: '../../pages/my/my'
+      });
     }
   }
+};
 </script>
 
 <style lang="scss">
-@import './style.scss'
+@import './style.scss';
 </style>

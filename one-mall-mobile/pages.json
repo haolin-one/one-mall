@@ -116,26 +116,22 @@
             "navigationBarTitleText": "",
             "enablePullDownRefresh": false
           }
+        },
+        {
+          "path": "receiveSuccess/receiveSuccess",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "comment/comment",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
         }
-          ,{
-                    "path" : "receiveSuccess/receiveSuccess",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "comment/comment",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+      ]
     }
   ],
   "globalStyle": {

@@ -26,7 +26,10 @@
               order.orderInfo.total_amount
             }}</text>
           </view>
-          <hlo-order-footer :orderItem="order.orderItem" :orderInfo="order.orderInfo"></hlo-order-footer>
+          <hlo-order-footer
+            :orderItem="order.orderItem"
+            :orderInfo="order.orderInfo"
+          ></hlo-order-footer>
         </uni-card>
       </view>
     </view>

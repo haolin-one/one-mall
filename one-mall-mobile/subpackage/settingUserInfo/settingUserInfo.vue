@@ -117,7 +117,7 @@ export default {
       uni.showModal({
         content: '确定退出?',
         success: (res) => {
-          if(res.confirm){
+          if (res.confirm) {
             uni.switchTab({
               url: '/pages/index/index'
             });

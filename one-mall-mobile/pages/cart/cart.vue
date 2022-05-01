@@ -50,10 +50,10 @@
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
   onShow() {
-    if(!this.userId){
+    if (!this.userId) {
       uni.redirectTo({
-        url:'../../subpackage/login/login'
-      })
+        url: '../../subpackage/login/login'
+      });
     }
   },
   methods: {

@@ -31,8 +31,8 @@ export default {
     orderInfo: {
       required: true
     },
-    orderItem:{
-      required:true
+    orderItem: {
+      required: true
     }
   },
   methods: {
@@ -45,23 +45,27 @@ export default {
     },
     confirmReceive() {
       uni.showModal({
-        title:'确认收到货了吗',
-        content:'为保证你的售后权益，请收到商品确认无误后再确认收货',
-        success:()=> {
+        title: '确认收到货了吗',
+        content: '为保证你的售后权益，请收到商品确认无误后再确认收货',
+        success: () => {
           uni.hloRequest.post({
-            url:'order/confirmReceive',
-            data:{id:this.orderInfo.ordersID}
-          })
+            url: 'order/confirmReceive',
+            data: { id: this.orderInfo.ordersID }
+          });
           uni.redirectTo({
-            url:'../../subpackage/receiveSuccess/receiveSuccess?orderItem='+JSON.stringify(this.orderItem)
-          })
+            url:
+              '../../subpackage/receiveSuccess/receiveSuccess?orderItem=' +
+              JSON.stringify(this.orderItem)
+          });
         }
-      })
+      });
     },
-    gotoComment(){
+    gotoComment() {
       uni.navigateTo({
-        url:'../../subpackage/comment/comment?orderItem='+JSON.stringify(this.orderItem)
-      })
+        url:
+          '../../subpackage/comment/comment?orderItem=' +
+          JSON.stringify(this.orderItem)
+      });
     }
   }
 };

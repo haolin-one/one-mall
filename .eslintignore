@@ -1,15 +1,32 @@
-/dist/*
-.local
-.output.js
-/node_modules/**
+.DS_Store
+node_modules
+dist
+unpackage
+uni_modules
 
-*/uni_modules
+public
 
-one-mall-static
+# local env files
+.env.local
+.env.*.local
+.env
 
-*/unpackage
+# vue component import
+auto-imports.d.ts
+components.d.ts
 
-**/*.svg
-**/*.sh
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-/public/*
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.hbuilderx

@@ -31,11 +31,11 @@ export default {
     });
     this.banners = res;
   },
-  methods:{
-    gotoGoodsDetail(id){
+  methods: {
+    gotoGoodsDetail(id) {
       uni.navigateTo({
-        url:'../../subpackage/goodsDetail/goodsDetail?id='+id
-      })
+        url: '../../subpackage/goodsDetail/goodsDetail?id=' + id
+      });
     }
   }
 };

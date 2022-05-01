@@ -16,47 +16,47 @@
 </template>
 
 <script>
-  export default {
-    onLoad(payload) {
-      console.log(JSON.parse(payload.orderItem))
-      this.orderItem=JSON.parse(payload.orderItem)
+export default {
+  onLoad(payload) {
+    console.log(JSON.parse(payload.orderItem));
+    this.orderItem = JSON.parse(payload.orderItem);
+  },
+  data() {
+    return {
+      orderItem: []
+    };
+  },
+  methods: {
+    gotoIndex() {
+      uni.switchTab({
+        url: '../../pages/index/index'
+      });
     },
-    data() {
-      return {
-        orderItem:[]
-      };
-    },
-    methods:{
-      gotoIndex(){
-        uni.switchTab({
-          url:'../../pages/index/index'
-        })
-      },
-      gotoComment(){
-        uni.navigateTo({
-          url:'../comment/comment?orderItem='+JSON.stringify(this.orderItem)
-        })
-      }
+    gotoComment() {
+      uni.navigateTo({
+        url: '../comment/comment?orderItem=' + JSON.stringify(this.orderItem)
+      });
     }
   }
+};
 </script>
 
 <style lang="scss">
-.receiveSuccess{
+.receiveSuccess {
   width: 100vw;
   height: 100vh;
-  .text{
+  .text {
     padding: 20px 0;
     text-align: center;
-    text{
+    text {
       font-weight: 600;
       margin-left: 3px;
     }
   }
-  .btnGroup{
+  .btnGroup {
     display: flex;
     justify-content: space-around;
-    button{
+    button {
       border: 1px solid #087dd8;
       border-radius: 30px;
       overflow: hidden;

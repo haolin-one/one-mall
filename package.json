@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write .",
-    "lint": "eslint --fix one-mall-mobile one-mall-mobile-service",
+    "lint": "eslint --fix .",
     "prepare": "husky install",
     "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1"
