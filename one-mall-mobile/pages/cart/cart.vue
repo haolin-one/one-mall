@@ -1,7 +1,6 @@
 <template>
   <view class="cart">
-    <view v-if="!userId">请先登录!</view>
-    <view v-else>
+    <view>
       <view class="goodsList" v-for="goods in cart" :key="goods.id">
         <view class="goodsInfo">
           <view class="leftGoodsInfo">
@@ -50,6 +49,13 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
+  onShow() {
+    if(!this.userId){
+      uni.redirectTo({
+        url:'../../subpackage/login/login'
+      })
+    }
+  },
   methods: {
     ...mapActions('cart', ['getCart', 'updateCart', 'changeSelectCart']),
     gotoDetail(id) {

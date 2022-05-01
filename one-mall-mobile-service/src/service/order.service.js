@@ -44,7 +44,7 @@ class orderService {
       detailInfo,
       goodsItem,
       total_amount,
-      remark = ''
+      remark
     } = orderInfo;
     const orderSn = new Date().getTime() + userId;
     const statement = `INSERT INTO orders (user_id,order_sn,userName,telNumber,

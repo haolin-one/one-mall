@@ -15,6 +15,10 @@
             <text class="count">x {{ goods.goods_count }}</text>
           </view>
         </view>
+        <view class="otherInfo"  v-if="goods.remark">
+          <view class="title"> 备注信息 </view>
+          <view class="content"> {{ goods.remark }} </view>
+        </view>
         <view class="rateStart" v-if="goods.correspond">
           <view class="otherInfo">
             <text>描述相符</text>

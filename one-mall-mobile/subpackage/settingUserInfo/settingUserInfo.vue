@@ -116,12 +116,14 @@ export default {
     signOut() {
       uni.showModal({
         content: '确定退出?',
-        success: () => {
-          uni.switchTab({
-            url: '/pages/index/index'
-          });
-          this.logout();
-          this.removeCart();
+        success: (res) => {
+          if(res.confirm){
+            uni.switchTab({
+              url: '/pages/index/index'
+            });
+            this.logout();
+            this.removeCart();
+          }
         }
       });
     },

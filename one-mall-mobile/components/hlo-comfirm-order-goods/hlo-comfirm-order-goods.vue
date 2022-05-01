@@ -10,13 +10,12 @@
             <text class="name">{{ goods.description }}</text>
             <view class="cap">
               <text class="price">￥{{ goods.price }}</text>
-              <uni-number-box
-                v-model="goods.count"
-                :min="1"
-                :max="999"
-              ></uni-number-box>
+              <uni-number-box v-model="goods.count" :min="1" :max="999"></uni-number-box>
             </view>
           </view>
+        </view>
+        <view class="remark" @click="writeMark">
+          <uni-easyinput v-model="remark" type="input" placeholder="备注信息,选填"></uni-easyinput>
         </view>
       </uni-card>
     </block>
@@ -36,53 +35,59 @@
 </template>
 
 <script>
-export default {
-  name: 'hlo-comfirm-order-goods',
-  props: {
-    goodsInfo: {
-      required: true
-    }
-  },
-  emits: ['submitOrder'],
-  data() {
-    return {};
-  },
-  methods: {
-    submitOrder() {
-      this.$emit('submitOrder', {
-        goodsItem: this.goodsItem,
-        totalCount: this.goodsTotalCount,
-        total_amount: this.totalPrice
-      });
-    }
-  },
-  computed: {
-    totalPrice() {
-      let price = 0;
-      console.log(this.goodsInfo);
-      this.goodsInfo.forEach((item) => {
-        price += item.price * item.count;
-      });
-      return price.toFixed(2);
+  export default {
+    name: 'hlo-comfirm-order-goods',
+    props: {
+      goodsInfo: {
+        required: true
+      }
     },
-    goodsTotalCount() {
-      let count = 0;
-      this.goodsInfo.forEach((item) => {
-        count += item.count;
-      });
-      return count;
+    emits: ['submitOrder'],
+    data() {
+      return {
+        remark:''
+      };
     },
-    goodsItem() {
-      const items = [];
-      this.goodsInfo.forEach((item) => {
-        items.push({ goods_id: item.id, goods_count: item.count });
-      });
-      return items;
+    methods: {
+      submitOrder() {
+        this.$emit('submitOrder', {
+          goodsItem: this.goodsItem,
+          remark:this.remark,
+          totalCount: this.goodsTotalCount,
+          total_amount: this.totalPrice
+        });
+      },
+    },
+    computed: {
+      totalPrice() {
+        let price = 0;
+        console.log(this.goodsInfo);
+        this.goodsInfo.forEach((item) => {
+          price += item.price * item.count;
+        });
+        return price.toFixed(2);
+      },
+      goodsTotalCount() {
+        let count = 0;
+        this.goodsInfo.forEach((item) => {
+          count += item.count;
+        });
+        return count;
+      },
+      goodsItem() {
+        const items = [];
+        this.goodsInfo.forEach((item) => {
+          items.push({
+            goods_id: item.id,
+            goods_count: item.count
+          });
+        });
+        return items;
+      }
     }
-  }
-};
+  };
 </script>
 
 <style lang="scss">
-@import './style.scss';
+  @import './style.scss';
 </style>

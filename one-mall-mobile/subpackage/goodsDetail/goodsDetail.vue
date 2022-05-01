@@ -58,8 +58,18 @@ export default {
   methods: {
     ...mapActions('cart', ['getCart', 'updateCart']),
     goodsNavRightButtonClick(index) {
-      this.clickIndex = index;
-      this.$refs.popup.open();
+      if(!this.userId){
+        uni.navigateTo({
+          url:'../login/login'
+        })
+        uni.showToast({
+          title:'请先登录~',
+          icon:'none'
+        })
+      }else{
+        this.clickIndex = index;
+        this.$refs.popup.open();
+      }
     },
     goodsNavLeftButtonClick(index) {
       if (index === 2) {
