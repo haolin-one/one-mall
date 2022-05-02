@@ -50,7 +50,7 @@ export default {
           title: '登陆成功~'
         });
         uni.switchTab({
-          url: '../../pages/my/my'
+          url: '../../pages/index/index'
         });
       } catch (e) {
         console.log(e);

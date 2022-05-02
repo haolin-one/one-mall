@@ -31,6 +31,10 @@ const errorHandler = (error, ctx) => {
       status = 400;
       message = '用户名或手机号码不正确!';
       break;
+    case errorTypes.STOCK_IS_NOT_ENOUGH:
+      status = 400;
+      message = '库存不足~';
+      break;
     default:
       status = 401;
       message = 'NOT FOUND';

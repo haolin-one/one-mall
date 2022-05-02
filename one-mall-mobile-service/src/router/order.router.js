@@ -8,10 +8,12 @@ const {
   confirmComment
 } = require('../controller/order.controller');
 
+const { verifyStock } = require('../middleware/order.middleware');
+
 const orderRouter = new router({ prefix: '/order' });
 
 orderRouter.get('/', getOrder);
-orderRouter.post('/', addOrder);
+orderRouter.post('/', verifyStock, addOrder);
 orderRouter.post('/updateAddress', updateAddress);
 orderRouter.post('/confirmReceive', confirmReceive);
 orderRouter.post('/confirmComment', confirmComment);

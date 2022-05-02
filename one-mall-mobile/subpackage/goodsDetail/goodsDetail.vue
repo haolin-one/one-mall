@@ -21,8 +21,11 @@
         <uni-number-box
           v-model="goodsDetail.count"
           :min="1"
-          :max="999"
+          :max="goodsDetail.stock"
         ></uni-number-box>
+      </view>
+      <view class="stock">
+        <text>库存：{{ goodsDetail.stock }}</text>
       </view>
       <button type="default" @click="confirmBuy">确认</button>
     </uni-popup>
@@ -86,6 +89,7 @@ export default {
         this.getCart(this.userId);
         this.$refs.popup.close();
       } else if (this.clickIndex === 1) {
+        this.$refs.popup.close();
         uni.navigateTo({
           url:
             '../../subpackage/order/order?goods=' +

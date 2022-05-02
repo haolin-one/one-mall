@@ -22,15 +22,20 @@ export default {
   },
   methods: {
     ...mapActions(['addOrder']),
-    submitOrder(goodsInfo) {
-      this.addOrder({
+    async submitOrder(goodsInfo) {
+      const result = await this.addOrder({
         ...goodsInfo,
         ...this.$store.getters.address,
         userId: this.$store.getters.userId
       });
-      uni.switchTab({
-        url: '../../pages/my/my'
-      });
+      if (result) {
+        uni.redirectTo({
+          url: '../buySuccess/buySuccess'
+        });
+        uni.showToast({
+          title: result
+        });
+      }
     }
   },
   computed: {

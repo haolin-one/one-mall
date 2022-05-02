@@ -19,15 +19,20 @@
             <text class="name" @click="gotoDetail(goods.id)">{{
               goods.description
             }}</text>
-            <view class="cap">
-              <text class="price">￥{{ goods.price }}</text>
-              <uni-number-box
-                @change="bindChange($event, goods)"
-                v-model="goods.count"
-                :min="1"
-                :max="999"
-              >
-              </uni-number-box>
+            <view class="otherInfo">
+              <view class="stock">
+                <text>库存：{{ goods.stock }}</text>
+              </view>
+              <view class="cap">
+                <text class="price">￥{{ goods.price }}</text>
+                <uni-number-box
+                  @change="bindChange($event, goods)"
+                  v-model="goods.count"
+                  :min="1"
+                  :max="goods.stock"
+                >
+                </uni-number-box>
+              </view>
             </view>
           </view>
         </view>

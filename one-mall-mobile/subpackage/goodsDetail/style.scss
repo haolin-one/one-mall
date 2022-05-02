@@ -33,5 +33,12 @@
       display: flex;
       justify-content: space-between;
     }
+    .stock {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 24rpx;
+      color: #707070;
+      padding: 5px;
+    }
   }
 }

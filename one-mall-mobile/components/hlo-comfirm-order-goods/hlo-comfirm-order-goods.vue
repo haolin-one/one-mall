@@ -13,7 +13,7 @@
               <uni-number-box
                 v-model="goods.count"
                 :min="1"
-                :max="999"
+                :max="goods.stock"
               ></uni-number-box>
             </view>
           </view>
@@ -69,7 +69,6 @@ export default {
   computed: {
     totalPrice() {
       let price = 0;
-      console.log(this.goodsInfo);
       this.goodsInfo.forEach((item) => {
         price += item.price * item.count;
       });

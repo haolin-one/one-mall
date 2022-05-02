@@ -63,13 +63,17 @@ class orderService {
     ]);
     const statement1 = `INSERT INTO order_item (goods_id,goods_count,order_sn,remark)
                         VALUES (?,?,?,?)`;
+    const statement2 = `UPDATE goods SET stock = ? WHERE id = ?`;
     goodsItem.forEach(async (item) => {
+      const { goods_id, goods_count, goods_stock } = item;
+      const stock = goods_stock - goods_count;
       await connection.execute(statement1, [
-        item.goods_id,
-        item.goods_count,
+        goods_id,
+        goods_count,
         orderSn,
         remark
       ]);
+      await connection.execute(statement2, [stock, goods_id]);
     });
   }
 

@@ -23,9 +23,7 @@ const actions = {
       url: 'order',
       data: orderInfo
     });
-    uni.showToast({
-      title: result
-    });
+    return result;
   },
   async updateAddress(ctx, address) {
     const result = await uni.hloRequest.post({
