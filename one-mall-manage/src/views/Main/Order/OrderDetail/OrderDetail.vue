@@ -80,12 +80,12 @@ const getOrderItem = async () => {
 await getOrderItem();
 
 const stepActive = computed(() => {
-  if (orderInfo.delivery_time) {
-    return 2;
+  if (orderInfo.comment_time) {
+    return 4;
   } else if (orderInfo.receive_time) {
     return 3;
-  } else if (orderInfo.comment_time) {
-    return 4;
+  } else if (orderInfo.delivery_time) {
+    return 2;
   } else {
     return 1;
   }

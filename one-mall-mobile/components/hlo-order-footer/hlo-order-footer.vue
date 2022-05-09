@@ -47,8 +47,8 @@ export default {
       uni.showModal({
         title: '确认收到货了吗',
         content: '为保证你的售后权益，请收到商品确认无误后再确认收货',
-        success: () => {
-          uni.hloRequest.post({
+        success: async () => {
+          const res = await uni.hloRequest.post({
             url: 'order/confirmReceive',
             data: { id: this.orderInfo.ordersID }
           });
@@ -57,6 +57,10 @@ export default {
               '../../subpackage/receiveSuccess/receiveSuccess?orderItem=' +
               JSON.stringify(this.orderItem)
           });
+          uni.showToast({
+            title:res,
+            icon:'none'
+          })
         }
       });
     },

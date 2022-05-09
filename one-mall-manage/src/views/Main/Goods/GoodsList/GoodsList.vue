@@ -65,9 +65,7 @@ const configComputed = (config) =>
       (item) => item.field === 'goods_cate_id'
     );
 
-    goodsCateItem.options = treeListData.value.map((item) => {
-      return item;
-    });
+    goodsCateItem.options = treeListData.value;
 
     return config;
   });

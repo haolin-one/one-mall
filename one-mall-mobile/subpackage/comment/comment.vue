@@ -58,13 +58,17 @@ export default {
   },
   methods: {
     async confirmComment() {
-      await uni.hloRequest.post({
+      const res = await uni.hloRequest.post({
         url: 'order/confirmComment',
         data: this.orderItem
       });
       uni.switchTab({
         url: '../../pages/my/my'
       });
+      uni.showToast({
+        title:res,
+        icon:'none'
+      })
     }
   }
 };

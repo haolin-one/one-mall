@@ -44,8 +44,11 @@
 </template>
 
 <script setup>
-import { getMenusById } from '@/api/menu';
+// import { getMenusById } from '@/api/menu';
+// import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { sessionCache } from '@/utils/cache';
+// import { useStore } from 'vuex';
 
 defineProps({
   collapse: Boolean,
@@ -55,8 +58,11 @@ defineProps({
 });
 
 const router = useRouter();
+// const store = useStore();
 
-const userMenus = await getMenusById(1);
+// const userMenus = await getMenusById(1);
+// const userMenus = computed(() => store.getters['adminModule/adminMenusList']);
+const userMenus = sessionCache.getItem('menus');
 
 const handleMenuItemClick = (parentName, childrenName) => {
   router.push(`/main/${parentName}/${childrenName}`);

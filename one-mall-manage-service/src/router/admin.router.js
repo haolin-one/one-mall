@@ -4,11 +4,13 @@ const {
   getAdminList,
   updateAdmin,
   createAdmin,
-  deleteAdmin
+  deleteAdmin,
+  login
 } = require('../controller/admin.controller');
 
 const adminRouter = new Router({ prefix: '/admin' });
 
+adminRouter.post('/login', login);
 adminRouter.post('/list', getAdminList);
 adminRouter.post('/', createAdmin);
 adminRouter.patch('/:id', updateAdmin);

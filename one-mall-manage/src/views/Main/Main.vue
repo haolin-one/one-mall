@@ -50,7 +50,6 @@ let width = ref(document.documentElement.clientWidth);
 
 window.addEventListener('resize', () => {
   width.value = document.documentElement.clientWidth;
-  console.log(width.value);
 });
 </script>
 

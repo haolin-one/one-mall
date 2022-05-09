@@ -62,7 +62,7 @@
         </view>
       </view>
       <view class="otherInfo">
-        <view class="title"> 创建时间 </view>
+        <view class="title"> 下单时间 </view>
         <view class="content">
           {{ orderInfo.createAt }}
         </view>
@@ -71,6 +71,18 @@
         <view class="title"> 发货时间 </view>
         <view class="content">
           {{ orderInfo.delivery_time }}
+        </view>
+      </view>
+      <view class="otherInfo" v-if="orderInfo.receive_time">
+        <view class="title"> 收货时间 </view>
+        <view class="content">
+          {{ orderInfo.receive_time }}
+        </view>
+      </view>
+      <view class="otherInfo" v-if="orderInfo.comment_time">
+        <view class="title"> 评价时间 </view>
+        <view class="content">
+          {{ orderInfo.comment_time }}
         </view>
       </view>
     </uni-card>

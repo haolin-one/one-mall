@@ -39,7 +39,6 @@
                 <el-input-number
                   v-model="formData[`${item.field}`]"
                   :min="0"
-                  :precision="2"
                 ></el-input-number>
               </template>
               <template v-else-if="item.type === 'select'">

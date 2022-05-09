@@ -30,6 +30,10 @@
         <navigator url="../forgetPassword/forgetPassword">忘记密码?</navigator>
         <text @click="goToRegister">注册</text>
       </view>
+<!--      <view class="wechatLogin">
+        <uni-icons @click="wechatLogin" type="weixin" size="35" color="#1cd66c"></uni-icons>
+        <text class="wechatText">微信登陆</text>
+      </view> -->
     </view>
   </view>
 </template>
@@ -55,6 +59,21 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    async wechatLogin(){
+      uni.getUserProfile({
+        desc:'测试',
+        success:function(res){
+          console.log(res)
+        }
+      })
+      uni.login({
+        provider:'weixin',
+        // onlyAuthorize:false,
+        success:function(loginRes){
+          console.log(loginRes)
+        }
+      })
     },
     goToRegister() {
       uni.redirectTo({

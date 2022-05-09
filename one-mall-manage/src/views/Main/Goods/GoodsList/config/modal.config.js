@@ -28,6 +28,11 @@ export const modalConfig = {
       field: 'picture',
       type: 'upload',
       label: '商品图片'
+    },
+    {
+      field: 'stock',
+      type: 'number',
+      label: '库存'
     }
   ],
   colLayout: {

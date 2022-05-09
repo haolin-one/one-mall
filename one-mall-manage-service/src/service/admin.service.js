@@ -72,10 +72,18 @@ class adminService {
     ]);
     return;
   }
+
   async deleteAdmin(id) {
     const statement = `DELETE FROM admin WHERE id = ?`;
     await connections.execute(statement, [id]);
     return;
+  }
+
+  async login(admin) {
+    const { username } = admin;
+    const statement = `SELECT * FROM admin WHERE username = ?`;
+    const result = await connections.execute(statement, [username]);
+    return result[0][0];
   }
 }
 

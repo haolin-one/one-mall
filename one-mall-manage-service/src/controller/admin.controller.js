@@ -19,6 +19,10 @@ class adminController {
     await service.deleteAdmin(id);
     ctx.body = `删除成功~`;
   }
+  async login(ctx) {
+    const result = await service.login(ctx.request.body);
+    ctx.body = result;
+  }
 }
 
 module.exports = new adminController();

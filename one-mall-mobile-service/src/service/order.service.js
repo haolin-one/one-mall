@@ -1,4 +1,5 @@
 const connection = require('../app/database');
+const dayjs = require('dayjs');
 
 class orderService {
   async getOrder(order) {
@@ -103,18 +104,19 @@ class orderService {
   }
 
   async confirmReceive(id) {
-    const statement = `UPDATE orders SET order_status = 3 WHERE id = ?`;
-    await connection.execute(statement, [id]);
+    const receive_time = dayjs().format('YYYY-MM-DD HH:mm:ss');
+    const statement = `UPDATE orders SET order_status = 3,receive_time = ? WHERE id = ?`;
+    await connection.execute(statement, [receive_time, id]);
     return;
   }
 
   async confirmComment(order) {
     const { order_sn } = order[0];
-    console.log(order_sn);
-    const statement = `UPDATE orders SET order_status = 4 WHERE order_sn = ?`;
+    const comment_time = dayjs().format('YYYY-MM-DD HH:mm:ss');
+    const statement = `UPDATE orders SET order_status = 4, comment_time = ? WHERE order_sn = ?`;
     const statement2 = `UPDATE order_item SET correspond = ?, logistics = ?,
                       manner = ? WHERE id = ?`;
-    await connection.execute(statement, [order_sn]);
+    await connection.execute(statement, [comment_time, order_sn]);
     order.forEach(async (item) => {
       const { correspond, logistics, manner, itemID } = item;
       console.log(correspond, logistics, manner);

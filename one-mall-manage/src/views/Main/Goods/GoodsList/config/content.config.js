@@ -7,7 +7,8 @@ export const contentTableConfig = {
     },
     {
       prop: 'name',
-      label: '商品名称'
+      label: '商品名称',
+      width: '180'
     },
     {
       prop: 'price',
@@ -20,6 +21,11 @@ export const contentTableConfig = {
     {
       prop: 'description',
       label: '商品描述'
+    },
+    {
+      prop: 'stock',
+      label: '库存',
+      width: '80'
     },
     {
       label: '启动状态',

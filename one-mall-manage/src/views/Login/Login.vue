@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <transition name="el-zoom-in-center">
-      <div v-show="show" class="login-form">
+      <div class="login-form">
         <h2 class="title">ONE-MALL 后台管理系统</h2>
         <el-form :model="loginForm">
           <el-form-item>
@@ -31,41 +31,35 @@
   </div>
 </template>
 
-<script>
-import { mapActions } from 'vuex';
-export default {
-  created() {
-    setTimeout(() => {
-      this.show = true;
-    }, 10);
-  },
-  data() {
-    return {
-      show: false,
-      loginForm: {
-        username: 'admin',
-        password: 'admin'
-      }
-    };
-  },
-  methods: {
-    ...mapActions(['admin/login']),
-    async handleLogin() {
-      const result = await this['admin/login'](this.loginForm);
-      console.log(result);
-      if (!result.id) {
-        ElMessage({
-          message: result,
-          type: 'error'
-        });
-      } else {
-        ElMessage({
-          message: '登陆成功~',
-          type: 'success'
-        });
-        this.$router.push('/main');
-      }
-    }
+<script setup>
+import { reactive } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+const loginForm = reactive({
+  username: 'admin',
+  password: 'admin'
+});
+
+const store = useStore();
+const router = useRouter();
+
+const handleLogin = async () => {
+  const result = await store.dispatch('adminModule/loginAction', {
+    loginForm: loginForm
+  });
+  console.log(result);
+  if (!result.id) {
+    ElMessage({
+      message: result,
+      type: 'error'
+    });
+  } else {
+    ElMessage({
+      message: '登陆成功~',
+      type: 'success'
+    });
+    router.push('/');
   }
 };
 </script>

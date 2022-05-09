@@ -28,5 +28,6 @@ export const contentTableConfig = {
       slotName: 'order_handle'
     }
   ],
+  showHeader: false,
   showIndexColumn: true
 };
