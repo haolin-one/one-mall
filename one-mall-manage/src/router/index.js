@@ -1,21 +1,29 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-const routes = [
+export const routes = [
+  {
+    path: '/',
+    redirect: '/main/home'
+  },
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/Login/Login.vue')
   },
   {
-    path: '/',
-    redirect: '/main/home',
     name: 'main',
+    path: '/main',
     component: () => import('../views/Main/Main.vue'),
     children: [
       {
         path: '/main/home',
         name: 'home',
         component: () => import('../views/Main/Home/Home.vue')
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('../views/Notfound/Notfound.vue')
       }
     ]
   }
