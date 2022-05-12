@@ -58,9 +58,9 @@ export default {
               JSON.stringify(this.orderItem)
           });
           uni.showToast({
-            title:res,
-            icon:'none'
-          })
+            title: res,
+            icon: 'none'
+          });
         }
       });
     },

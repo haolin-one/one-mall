@@ -6,6 +6,9 @@ import * as icons from '@element-plus/icons-vue';
 import './assets/css/index.less';
 import 'normalize.css';
 import { globalRegister } from './global';
+import { refreshLogin } from '@/store';
+
+refreshLogin();
 
 const app = createApp(App);
 

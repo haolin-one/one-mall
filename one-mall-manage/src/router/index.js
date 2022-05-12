@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
+import { sessionCache } from '@/utils/cache';
 
 export const routes = [
   {
@@ -32,6 +33,14 @@ export const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+});
+
+router.beforeEach((to) => {
+  if (to.path !== '/login' && !sessionCache.getItem('admin')) {
+    return '/login';
+  } else if (to.path === '/login' && sessionCache.getItem('admin')) {
+    return '/';
+  }
 });
 
 export default router;

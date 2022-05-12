@@ -32,6 +32,22 @@
         {{ scope.row.gender === '1' ? '男' : '女' }}
       </template>
 
+      <template #level="scope">
+        <p v-if="scope.row.level === 1">一级</p>
+        <p v-if="scope.row.level === 2">二级</p>
+        <p v-if="scope.row.level === 3">三级</p>
+      </template>
+
+      <template #setting="scope">
+        <el-button
+          size="small"
+          :disabled="scope.row.level === 3"
+          plain
+          @click="queryChildrenCate(scope.row.id)"
+          >查看下级</el-button
+        >
+      </template>
+
       <!-- 订单的插槽start -->
       <template #money="scope"> ￥{{ scope.row.total_amount }} </template>
 
@@ -165,7 +181,8 @@ const emit = defineEmits([
   'newBtnClick',
   'updateBtnClick',
   'orderShipBtnClick',
-  'trackBtnClick'
+  'trackBtnClick',
+  'queryChildrenCate'
 ]);
 
 const store = useStore();
@@ -246,6 +263,10 @@ const changeStatus = async (item) => {
     updateData: item,
     id: item.id
   });
+};
+
+const queryChildrenCate = (item) => {
+  emit('queryChildrenCate', { parent_id: item });
 };
 
 defineExpose({ getPageData });

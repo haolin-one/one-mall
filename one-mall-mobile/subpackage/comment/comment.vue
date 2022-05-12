@@ -66,9 +66,9 @@ export default {
         url: '../../pages/my/my'
       });
       uni.showToast({
-        title:res,
-        icon:'none'
-      })
+        title: res,
+        icon: 'none'
+      });
     }
   }
 };

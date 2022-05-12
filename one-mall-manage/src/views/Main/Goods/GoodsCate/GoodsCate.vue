@@ -2,8 +2,8 @@
   <div class="goods-cate">
     <page-search
       :searchFormConfig="searchFormConfig"
-      @queryBtnClick="handleQueryClick"
       @resetBtnClick="handleResetClick"
+      @queryBtnClick="handleQueryClick"
     ></page-search>
     <page-content
       :contentTableConfig="contentTableConfig"
@@ -11,6 +11,7 @@
       pageName="goodsCate"
       @newBtnClick="handleNewData"
       @updateBtnClick="handleUpdateData"
+      @queryChildrenCate="handleQueryClick"
     ></page-content>
     <page-modal
       :modalConfig="modalConfig"
@@ -23,9 +24,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import { searchFormConfig } from './config/search.config';
 import { contentTableConfig } from './config/content.config';
 import { modalConfig } from './config/modal.config';
+import { searchFormConfig } from './config/search.config';
 
 const pageContentRef = ref(null);
 const pageModalRef = ref(null);

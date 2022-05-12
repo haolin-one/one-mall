@@ -99,18 +99,6 @@ const pageModule = {
       const changePageName =
         pageName.slice(0, 1).toUpperCase() + pageName.slice(1);
 
-      // list.forEach((item) => {
-      //   item.children = [];
-      //   if (item.parent_id === 0) {
-      //     list.forEach((item2) => {
-      //       if (item.id === item2.parent_id) {
-      //         item.children.push(item2);
-      //       }
-      //     });
-      //     console.log(item);
-      //   }
-      // });
-
       commit(`change${changePageName}List`, list);
       commit(`change${changePageName}Count`, totalCount);
     },

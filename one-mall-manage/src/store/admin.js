@@ -25,6 +25,18 @@ const adminModule = {
     },
     changeAdminInfo(state, admin) {
       state.admin = admin;
+      sessionCache.setItem('admin', state.admin);
+    },
+    removeMenusList(state) {
+      state.menus = [];
+      sessionCache.removeItem('menus');
+      originRoutes.forEach((item) => {
+        router.addRoute(item);
+      });
+    },
+    removeAdminInfo(state) {
+      state.admin = [];
+      sessionCache.removeItem('admin');
     }
   },
   actions: {
@@ -34,6 +46,20 @@ const adminModule = {
       commit('changeMenusList', menus);
       commit('changeAdminInfo', admin);
       return admin;
+    },
+    refreshLogin({ commit }) {
+      const admin = sessionCache.getItem('admin');
+      if (admin) {
+        commit('changeAdminInfo', admin);
+      }
+      const menus = sessionCache.getItem('menus');
+      if (menus) {
+        commit('changeMenusList', menus);
+      }
+    },
+    logoutAction({ commit }) {
+      commit('removeMenusList');
+      commit('removeAdminInfo');
     }
   },
   getters: {
