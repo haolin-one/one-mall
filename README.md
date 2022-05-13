@@ -10,7 +10,7 @@
 
 ### 后台管理系统(部分)
 
-![首页](http://120.77.30.174:8000/github/one-mall1.png)
+<img src="http://120.77.30.174:8000/github/one-mall1.png" alt="首页"  />
 
 ![订单](http://120.77.30.174:8000/github/one-mall2.png)
 
@@ -18,17 +18,9 @@
 
 ### 前台商城系统(部分)
 
-![登录](http://120.77.30.174:8000/github/one-mall4.png)
+![](http://120.77.30.174:8000/github/one-mall10.png)
 
-![首页](http://120.77.30.174:8000/github/one-mall5.png)
-
-![商品详情](http://120.77.30.174:8000/github/one-mall6.png)
-
-![分类](http://120.77.30.174:8000/github/one-mall8.png)
-
-![购物车](http://120.77.30.174:8000/github/one-mall9.png)
-
-![我的](http://120.77.30.174:8000/github/one-mall7.png)
+![](http://120.77.30.174:8000/github/one-mall11.jpg)
 
 ## 组织结构
 
