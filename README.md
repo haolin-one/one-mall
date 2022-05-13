@@ -8,27 +8,27 @@
 
 ## 项目演示
 
-### 后台管理系统
+### 后台管理系统(部分)
 
-![image-20220513173631862](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513173631862.png)
+![首页](http://120.77.30.174:8000/github/one-mall1.png)
 
-![image-20220513175217797](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513175217797.png)
+![订单](http://120.77.30.174:8000/github/one-mall2.png)
 
-![image-20220513175155153](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513175155153.png)
+![商品](http://120.77.30.174:8000/github/one-mall3.png)
 
-### 前台商城系统
+### 前台商城系统(部分)
 
-![image-20220513220808678](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513220808678.png)
+![登录](http://120.77.30.174:8000/github/one-mall4.png)
 
-![image-20220513220915490](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513220915490.png)
+![首页](http://120.77.30.174:8000/github/one-mall5.png)
 
-![image-20220513221033159](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513221033159.png)
+![商品详情](http://120.77.30.174:8000/github/one-mall6.png)
 
-![image-20220513221246572](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513221246572.png)
+![分类](http://120.77.30.174:8000/github/one-mall8.png)
 
-![image-20220513221257244](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513221257244.png)
+![购物车](http://120.77.30.174:8000/github/one-mall9.png)
 
-![image-20220513221238561](C:\Users\黎羽幻生\AppData\Roaming\Typora\typora-user-images\image-20220513221238561.png)
+![我的](http://120.77.30.174:8000/github/one-mall7.png)
 
 ## 组织结构
 
