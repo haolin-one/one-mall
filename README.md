@@ -10,17 +10,17 @@
 
 ### 后台管理系统(部分)
 
-<img src="http://120.77.30.174:8000/github/one-mall1.png" alt="首页"  />
+![](docs/images/one-mall1.png)
 
-![订单](http://120.77.30.174:8000/github/one-mall2.png)
+![](docs/images/one-mall2.png)
 
-![商品](http://120.77.30.174:8000/github/one-mall3.png)
+![](docs/images/one-mall3.png)
 
 ### 前台商城系统(部分)
 
-![](http://120.77.30.174:8000/github/one-mall10.png)
+![](docs/images/one-mall10.png)
 
-![](http://120.77.30.174:8000/github/one-mall11.jpg)
+![](docs/images/one-mall11.jpg)
 
 ## 组织结构
 
