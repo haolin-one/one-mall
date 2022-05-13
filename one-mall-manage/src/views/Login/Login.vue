@@ -48,7 +48,6 @@ const handleLogin = async () => {
   const result = await store.dispatch('adminModule/loginAction', {
     loginForm: loginForm
   });
-  console.log(result);
   if (!result.id) {
     ElMessage({
       message: result,

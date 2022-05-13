@@ -15,8 +15,6 @@ const data = result.map((item) => {
   return { name: item.cityName, value: item.value };
 });
 
-console.log(data);
-
 function renderItem(params, api) {
   var color = api.visual('color');
   return {

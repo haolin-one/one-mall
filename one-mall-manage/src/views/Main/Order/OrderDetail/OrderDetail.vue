@@ -47,7 +47,7 @@
           ></el-image>
         </template>
         <template #sum="scope">
-          {{ scope.row.goods_count * scope.row.price }}
+          {{ (scope.row.goods_count * scope.row.price).toFixed(2) }}
         </template>
       </hlo-table>
       <div class="totalPrice">

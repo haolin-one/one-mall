@@ -4,7 +4,7 @@
       <span class="title">Vue3 + Koa后台管理系统</span>
     </div>
     <el-menu
-      default-active="home"
+      :default-active="defaultActive"
       class="el-menu-vertical"
       background-color="#0c2135"
       text-color="#b7bdc3"
@@ -15,7 +15,7 @@
       <el-menu-item
         class="home"
         index="home"
-        @click="handleMenuItemClick('home', '')"
+        @click="handleMenuItemClick('home', 'home', '')"
       >
         首页
       </el-menu-item>
@@ -31,7 +31,7 @@
             <el-menu-item
               v-if="subitem.parent_id === item.id"
               :index="subitem.id + ''"
-              @click="handleMenuItemClick(item.name, subitem.name)"
+              @click="handleMenuItemClick(subitem.id, item.name, subitem.name)"
             >
               <i v-if="subitem.icon" :class="subitem.icon"></i>
               <span>{{ subitem.title }}</span>
@@ -44,11 +44,8 @@
 </template>
 
 <script setup>
-// import { getMenusById } from '@/api/menu';
-// import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { sessionCache } from '@/utils/cache';
-// import { useStore } from 'vuex';
 
 defineProps({
   collapse: Boolean,
@@ -57,14 +54,15 @@ defineProps({
   }
 });
 
-const router = useRouter();
-// const store = useStore();
+let defaultActive = sessionCache.getItem('defaultActive') || 'home';
 
-// const userMenus = await getMenusById(1);
-// const userMenus = computed(() => store.getters['adminModule/adminMenusList']);
+const router = useRouter();
+
 const userMenus = sessionCache.getItem('menus');
 
-const handleMenuItemClick = (parentName, childrenName) => {
+const handleMenuItemClick = (active, parentName, childrenName) => {
+  defaultActive = active + '';
+  sessionCache.setItem('defaultActive', defaultActive);
   router.push(`/main/${parentName}/${childrenName}`);
 };
 </script>
