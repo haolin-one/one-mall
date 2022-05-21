@@ -1,5 +1,14 @@
 /* eslint-disable no-undef */
+const fs = require('fs');
+const path = require('path');
 const dotenv = require('dotenv');
+
+const PRIVATE_KEY = fs.readFileSync(
+  path.resolve(__dirname, './keys/private.key')
+);
+const PUBLIC_KEY = fs.readFileSync(
+  path.resolve(__dirname, './keys/public.key')
+);
 
 dotenv.config();
 
@@ -10,7 +19,8 @@ module.exports = {
   MYSQL_PORT,
   MYSQL_DATABASE,
   MYSQL_USER,
-  MYSQL_PASSWORD,
-  FILE_HOST,
-  FILE_PORT
+  MYSQL_PASSWORD
 } = process.env;
+
+module.exports.PUBLIC_KEY = PUBLIC_KEY;
+module.exports.PRIVATE_KEY = PRIVATE_KEY;

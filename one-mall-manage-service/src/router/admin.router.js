@@ -5,7 +5,8 @@ const {
   updateAdmin,
   createAdmin,
   deleteAdmin,
-  login
+  login,
+  getAdminInfoById
 } = require('../controller/admin.controller');
 const { verifyLogin } = require('../middleware/admin.middleware');
 
@@ -16,5 +17,6 @@ adminRouter.post('/list', getAdminList);
 adminRouter.post('/', createAdmin);
 adminRouter.patch('/:id', updateAdmin);
 adminRouter.delete('/:id', deleteAdmin);
+adminRouter.get('/getAdminInfoById/:id', getAdminInfoById);
 
 module.exports = adminRouter;

@@ -12,3 +12,9 @@ export function getMenusById(id) {
     url: `/menu/${id}`
   });
 }
+
+export function getAdminInfoById(id) {
+  return hloAxios.get({
+    url: `admin/getAdminInfoById/${id}`
+  });
+}

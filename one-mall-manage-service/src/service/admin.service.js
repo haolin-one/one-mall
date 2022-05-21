@@ -87,9 +87,15 @@ class adminService {
   }
 
   async getAdminByUsername(username) {
-    const statement = `SELECT username,password FROM admin WHERE username = ?`;
+    const statement = `SELECT * FROM admin WHERE username = ?`;
     const result = await connections.execute(statement, [username]);
     return result[0];
+  }
+
+  async getAdminInfoById(id) {
+    const statement = `SELECT * FROM admin WHERE id = ?`;
+    const result = await connections.execute(statement, [id]);
+    return result[0][0];
   }
 }
 

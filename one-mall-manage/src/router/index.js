@@ -36,10 +36,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  if (to.path !== '/login' && !sessionCache.getItem('admin')) {
-    return '/login';
-  } else if (to.path === '/login' && sessionCache.getItem('admin')) {
-    return '/';
+  if (to.path !== '/login') {
+    if (!sessionCache.getItem('token')) {
+      return '/login';
+    }
+  } else if (to.path === '/login') {
+    if (sessionCache.getItem('token')) {
+      return '';
+    }
   }
 });
 
