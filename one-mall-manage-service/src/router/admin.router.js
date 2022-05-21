@@ -7,10 +7,11 @@ const {
   deleteAdmin,
   login
 } = require('../controller/admin.controller');
+const { verifyLogin } = require('../middleware/admin.middleware');
 
 const adminRouter = new Router({ prefix: '/admin' });
 
-adminRouter.post('/login', login);
+adminRouter.post('/login', verifyLogin, login);
 adminRouter.post('/list', getAdminList);
 adminRouter.post('/', createAdmin);
 adminRouter.patch('/:id', updateAdmin);

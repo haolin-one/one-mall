@@ -3,11 +3,11 @@ import goodsCate from './Goods/GoodsCate';
 import addGoods from './Goods/AddGoods';
 import orderSetting from './Order/OrderSetting';
 import orderList from './Order/OrderList';
-import OrderDetail from './Order/OrderDetail';
+import orderDetail from './Order/OrderDetail';
 import admin from './Permission/Admin';
 import role from './Permission/Role';
 import menu from './Permission/Menu';
-import Banner from './Marketing/Banner';
+import banner from './Marketing/Banner';
 
 export const allRoutes = [
   goodsList,
@@ -18,6 +18,6 @@ export const allRoutes = [
   admin,
   role,
   menu,
-  OrderDetail,
-  Banner
+  banner,
+  orderDetail
 ];

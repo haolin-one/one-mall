@@ -29,17 +29,15 @@ class HLORequest {
 
     this.hloRequest.interceptors.response.use(
       (res) => {
-        const data = res.data;
-        if (data.returnCode === '-1001') {
-          console.log('请求失败~,错误信息');
+        const { error, message } = res.data;
+        if (error) {
+          // eslint-disable-next-line no-undef
+          ElMessage.error(message);
         } else {
-          return data;
+          return res.data;
         }
       },
       (err) => {
-        if (err.response.status === 404) {
-          console.log('404');
-        }
         return err;
       }
     );
