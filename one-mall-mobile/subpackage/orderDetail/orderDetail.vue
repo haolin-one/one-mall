@@ -3,18 +3,7 @@
     <hlo-address :receiverInfo="orderInfo"></hlo-address>
     <uni-card title="商品信息">
       <block v-for="goods in orderItem" :key="goods.id">
-        <view class="goodsInfo" @click="gotoDetail(goods.goodsID)">
-          <view class="goodsPic">
-            <image :src="goods.picture" mode="aspectFit"></image>
-          </view>
-          <view class="name">
-            <text class="name">{{ goods.description }}</text>
-          </view>
-          <view class="cap">
-            <text class="price">￥{{ goods.price }}</text>
-            <text class="count">x {{ goods.goods_count }}</text>
-          </view>
-        </view>
+        <hlo-order-goods :goods="goods"></hlo-order-goods>
         <view class="otherInfo" v-if="goods.remark">
           <view class="title"> 备注信息 </view>
           <view class="content"> {{ goods.remark }} </view>

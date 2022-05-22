@@ -2,18 +2,7 @@
   <view class="comment">
     <uni-card>
       <block v-for="goods in orderItem" :key="goods.id">
-        <view class="goodsInfo">
-          <view class="goodsPic">
-            <image :src="goods.picture" mode="aspectFit"></image>
-          </view>
-          <view class="name">
-            <text class="name">{{ goods.description }}</text>
-          </view>
-          <view class="cap">
-            <text class="price">￥{{ goods.price }}</text>
-            <text class="count">x {{ goods.goods_count }}</text>
-          </view>
-        </view>
+        <hlo-order-goods :goods="goods"></hlo-order-goods>
         <view class="rateStart">
           <view class="correspond">
             <text>描述相符</text>
