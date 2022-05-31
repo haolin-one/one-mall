@@ -15,20 +15,26 @@
       @goodsNavLeftButtonClick="goodsNavLeftButtonClick"
       :goods="goodsDetail"
     ></hlo-goods-nav>
-    <uni-popup class="popup" ref="popup" type="bottom" background-color="#fff">
-      <view class="count">
-        <text>购买数量</text>
-        <uni-number-box
-          v-model="goodsDetail.count"
-          :min="1"
-          :max="goodsDetail.stock"
-        ></uni-number-box>
-      </view>
-      <view class="stock">
-        <text>库存：{{ goodsDetail.stock }}</text>
-      </view>
-      <button type="default" @click="confirmBuy">确认</button>
-    </uni-popup>
+    <view class="popup">
+      <uni-popup ref="popup" type="bottom" background-color="#fff">
+        <view class="goods">
+          <image class="picture" mode="aspectFill" :src="goodsDetail.picture"></image>
+          <text class="description">{{ goodsDetail.description }}</text>
+        </view>
+        <view class="count">
+          <text>购买数量</text>
+          <uni-number-box
+            v-model="goodsDetail.count"
+            :min="1"
+            :max="goodsDetail.stock"
+          ></uni-number-box>
+        </view>
+        <view class="stock">
+          <text>库存：{{ goodsDetail.stock }}</text>
+        </view>
+        <button type="default" @click="confirmBuy">确认</button>
+      </uni-popup>
+    </view>
   </view>
   <view v-else-if="goodsDetail.usable === 0"> 该商品已下架 </view>
 </template>

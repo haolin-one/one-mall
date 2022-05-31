@@ -28,8 +28,21 @@
     width: 100%;
   }
   .popup {
+    .goods{
+      display: flex;
+      padding: 10px;
+      margin-bottom: 300rpx;
+      .picture{
+        width: 100px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      .description{
+        font-size: 24rpx;
+      }
+    }
     .count {
-      padding: 5px;
+      padding: 10px;
       display: flex;
       justify-content: space-between;
     }
@@ -38,7 +51,7 @@
       justify-content: flex-end;
       font-size: 24rpx;
       color: #707070;
-      padding: 5px;
+      padding: 10px;
     }
   }
 }

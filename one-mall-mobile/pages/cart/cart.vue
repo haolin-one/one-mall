@@ -75,8 +75,9 @@ export default {
         count: step
       });
     },
-    changeRadioHandle(c_id, status) {
-      this.changeSelectCart({
+    async changeRadioHandle(c_id, status) {
+      console.log(status)
+      await this.changeSelectCart({
         c_id,
         status
       });
