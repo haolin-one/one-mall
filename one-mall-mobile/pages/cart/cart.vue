@@ -5,9 +5,10 @@
         <view class="goodsInfo">
           <view class="leftGoodsInfo">
             <radio
-              :checked="goods.select_status"
+              :disabled="goods.stock===0"
+              :checked="goods.stock!==0?goods.select_status:false"
               color="#007AFF"
-              @click="changeRadioHandle(goods.c_id, goods.select_status)"
+              @click="changeRadioHandle(goods.c_id, goods.select_status,goods.stock)"
             ></radio>
             <image
               :src="goods.picture"
@@ -21,7 +22,8 @@
             }}</text>
             <view class="otherInfo">
               <view class="stock">
-                <text>库存：{{ goods.stock }}</text>
+                <text v-if="goods.stock !== 0">库存：{{ goods.stock }}</text>
+                <text v-if="goods.stock === 0" class="notStock">商品已下架</text>
               </view>
               <view class="cap">
                 <text class="price">￥{{ goods.price }}</text>
@@ -44,7 +46,7 @@
           <text class="price">{{ totalPrice }}</text>
         </view>
         <view class="submitBtn">
-          <button type="default" size="mini" @click="settlement">结算</button>
+          <button type="default" size="mini" @click="settlement" :disabled="totalCount === 0">结算</button>
         </view>
       </view>
     </view>
@@ -75,13 +77,18 @@ export default {
         count: step
       });
     },
-    async changeRadioHandle(c_id, status) {
-      console.log(status)
-      await this.changeSelectCart({
-        c_id,
-        status
-      });
-      this.getCart(this.userId);
+    async changeRadioHandle(c_id, status,stock) {
+      if(stock!==0){
+        await this.changeSelectCart({
+          c_id,
+          status
+        });
+        this.getCart(this.userId);
+      }else{
+        uni.showToast({
+          title: '商品已经下架咯~'
+        })
+      }
     },
     settlement() {
       let selectGoods = [];

@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import * as echarts from 'echarts';
 import 'echarts/extension/bmap/bmap';
 import { convertData } from '@/components/PageEcharts/utils/convert-data';
 import { getCitySale } from '@/api/dashboard';
@@ -14,17 +13,6 @@ const result = await getCitySale();
 const data = result.map((item) => {
   return { name: item.cityName, value: item.value };
 });
-
-function renderItem(params, api) {
-  var color = api.visual('color');
-  return {
-    type: 'polygon',
-    style: api.style({
-      fill: color,
-      stroke: echarts.color.lift(color)
-    })
-  };
-}
 
 const options = {
   backgroundColor: 'transparent',
@@ -132,18 +120,6 @@ const options = {
         shadowColor: '#333'
       },
       zlevel: 1
-    },
-    {
-      type: 'custom',
-      coordinateSystem: 'bmap',
-      renderItem: renderItem,
-      itemStyle: {
-        opacity: 0.5
-      },
-      animation: false,
-      silent: true,
-      data: [0],
-      z: -10
     }
   ]
 };
